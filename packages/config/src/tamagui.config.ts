@@ -2,7 +2,7 @@ import { createTamagui } from 'tamagui'
 import { createInterFont } from '@tamagui/font-inter'
 import { shorthands } from '@tamagui/shorthands'
 import { tokens } from '@tamagui/themes/v2'
-import { themes } from '@tamagui/themes/v2-themes'
+import { themes as tamaguiThemes } from '@tamagui/themes/v2-themes'
 import { createMedia } from '@tamagui/react-native-media-driver'
 
 import { animations } from '@my/ui/src/animations'
@@ -39,6 +39,48 @@ const headingFont = createInterFont({
   },
 })
 
+
+
+
+const myThemes = {
+  dark: {
+    background: '#333',
+    color: '#fff',
+  },
+  light: {
+    color: '#333',
+    background: '#fff',
+  },
+  light2: {
+    color: '#333',
+    background: '#f3f3f3',
+  },
+  yellow1: {
+    color: '#511b6e',
+    background: '#f7e78d',
+  },
+  lightblue1: {
+    color: '#697291',
+    background: '#cfeef8',
+  },
+  col1: {
+    color: '#3308c0',
+    background: '#ccd2e7',
+  },
+  ebb: {
+    color: '#2b2b40',
+    background: '#e6e0df',
+  },
+  carnation: {
+    color: '#fa5b6b',
+    background: '#204971',
+  },
+  carnation2: {
+    color: '#fd7481',
+    background: '#204971',
+  },
+}
+
 const bodyFont = createInterFont(
   {
     face: {
@@ -65,7 +107,7 @@ export const config = createTamagui({
   settings: {
     allowedStyleValues: 'somewhat-strict',
   },
-  themes,
+  themes: myThemes,
   tokens,
   media: createMedia({
     xs: { maxWidth: 660 },

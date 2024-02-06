@@ -1,98 +1,86 @@
-import {
-  Anchor,
-  Button,
-  H1,
-  Paragraph,
-  Separator,
-  Sheet,
-  useToastController,
-  XStack,
-  YStack,
-} from '@my/ui'
-import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
-import { useState } from 'react'
-import { useLink } from 'solito/link'
+import { H1, H2, H3, Paragraph, Square, Theme, YStack, styled, useMedia } from '@my/ui'
+import { ArticleBox, ArticleBoxSM, Layout1, P1 } from '../../components'
 
-export function HomeScreen() {
-  const linkProps = useLink({
-    href: '/user/nate',
-  })
+const ARTICLES = [
+  {
+    title: 'Star types: universe composition',
+    titleMobile: "Star types: universe composition",
+    text: `Each one of those stars and in fact almost everything around you, yourself included is
+    just made up of those two quarks. Quarks have a bit of a weird charge. 2/3 for the UP
+    quark and -1/2 for the DOWN one. You can remember that "up" means positive and "down"
+    means negative, and the "up" means more charge than the "down". So if you take two UP...`,
+    textMobile: `Each one of those stars and in fact almost everything around you, yourself included is
+    just made up of those two quarks. Quarks have a bit of a weird charge. 2/3 for the UP
+    quark and -1/2 for the DOWN one. You can remember that "up" means positive and "down"
+    means negative, and the "up" means more charge than the "down". So if you take two UP...`
+  },
+  {
+    title: 'Star types: universe composition',
+    titleMobile: "Star types: universe composition",
+    text: `Each one of those stars and in fact almost everything around you, yourself included is
+    just made up of those two quarks. Quarks have a bit of a weird charge. 2/3 for the UP
+    quark and -1/2 for the DOWN one. You can remember that "up" means positive and "down"
+    means negative, and the "up" means more charge than the "down". So if you take two UP...`,
+    textMobile: `Each one of those stars and in fact almost everything around you, yourself included is
+    just made up of those two quarks. Quarks have a bit of a weird charge. 2/3 for the UP
+    quark and -1/2 for the DOWN one. You can remember that "up" means positive and "down"
+    means negative, and the "up" means more charge than the "down". So if you take two UP...`
+  },
+  {
+    title: 'Star types: universe composition',
+    titleMobile: "Star types: universe composition",
+    text: `Each one of those stars and in fact almost everything around you, yourself included is
+    just made up of those two quarks. Quarks have a bit of a weird charge. 2/3 for the UP
+    quark and -1/2 for the DOWN one. You can remember that "up" means positive and "down"
+    means negative, and the "up" means more charge than the "down". So if you take two UP...`,
+    textMobile: `Each one of those stars and in fact almost everything around you, yourself included is
+    just made up of those two quarks. Quarks have a bit of a weird charge. 2/3 for the UP
+    quark and -1/2 for the DOWN one. You can remember that "up" means positive and "down"
+    means negative, and the "up" means more charge than the "down". So if you take two UP...`
+  }
+]
 
+const Mobile = () => {
   return (
-    <YStack f={1} jc="center" ai="center" p="$4" space>
-      <YStack space="$4" bc="$background">
-        <H1 ta="center">Welcome to Tamagui.</H1>
-        <Paragraph ta="center">
-          Here's a basic starter to show navigating from one screen to another. This screen uses the
-          same code on Next.js and React Native.
-        </Paragraph>
-
-        <Separator />
-        <Paragraph ta="center">
-          Made by{' '}
-          <Anchor color="$color12" href="https://twitter.com/natebirdman" target="_blank">
-            @natebirdman
-          </Anchor>
-          ,{' '}
-          <Anchor
-            color="$color12"
-            href="https://github.com/tamagui/tamagui"
-            target="_blank"
-            rel="noreferrer"
-          >
-            give it a ⭐️
-          </Anchor>
-        </Paragraph>
-      </YStack>
-
-      <XStack>
-        <Button {...linkProps}>Link to user</Button>
-      </XStack>
-
-      <SheetDemo />
-    </YStack>
+    <Layout1>
+      {ARTICLES.map((article, index) => (
+        <ArticleBoxSM key={index} my={200} mx={4}>
+          <YStack>
+            <H1>{article.titleMobile}</H1>
+            <P1>
+              {article.textMobile}
+            </P1>
+          </YStack>
+        </ArticleBoxSM>
+      ))}
+    </Layout1>
+  )
+}
+const Desktop = () => {
+  return (
+    <Layout1>
+      {ARTICLES.map((article, index) => {
+        const isLastItem = index === ARTICLES.length-1
+        const isFirstItem = index === 0
+        return (
+        <ArticleBox 
+          key={index} 
+          mt={isFirstItem ? 200 : 20} 
+          mb={isLastItem ? 200 : 0 }
+        >
+          <YStack>
+            <H2 mb="$4">{article.title}</H2>
+            <P1 mb={50}>
+              {article.text}
+            </P1>
+          </YStack>
+        </ArticleBox>
+      )})}
+    </Layout1>
   )
 }
 
-function SheetDemo() {
-  const [open, setOpen] = useState(false)
-  const [position, setPosition] = useState(0)
-  const toast = useToastController()
-
-  return (
-    <>
-      <Button
-        size="$6"
-        icon={open ? ChevronDown : ChevronUp}
-        circular
-        onPress={() => setOpen((x) => !x)}
-      />
-      <Sheet
-        modal
-        animation="medium"
-        open={open}
-        onOpenChange={setOpen}
-        snapPoints={[80]}
-        position={position}
-        onPositionChange={setPosition}
-        dismissOnSnapToBottom
-      >
-        <Sheet.Overlay animation="lazy" enterStyle={{ opacity: 0 }} exitStyle={{ opacity: 0 }} />
-        <Sheet.Frame ai="center" jc="center">
-          <Sheet.Handle />
-          <Button
-            size="$6"
-            circular
-            icon={ChevronDown}
-            onPress={() => {
-              setOpen(false)
-              toast.show('Sheet closed!', {
-                message: 'Just showing how toast works...',
-              })
-            }}
-          />
-        </Sheet.Frame>
-      </Sheet>
-    </>
-  )
+export function HomeScreen() {
+  const media = useMedia()
+  return <>{media.sm ? <Mobile /> : <Desktop />}</>
 }
