@@ -13,15 +13,14 @@ import {
   useToastController,
   XStack,
   YStack,
-  Image
+  Image,
 } from '@my/ui'
 import { Theme } from 'tamagui'
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
 import { useState } from 'react'
 import { useLink } from 'solito/link'
-import img from "../../../Images"
-import { useWindowDimensions } from 'react-native';
-
+import img from '../../../Images'
+import { useWindowDimensions } from 'react-native'
 
 export const PSkill = styled(Paragraph, {
   name: 'ParSkill',
@@ -55,11 +54,9 @@ function SheetDemo() {
 
   return (
     <>
-      <Button
-        size="$6"
-        circular
-        onPress={() => setOpen((x) => !x)}
-      >CV</Button>
+      <Button size="$6" circular onPress={() => setOpen((x) => !x)}>
+        CV
+      </Button>
       <Sheet
         modal
         animation="medium"
@@ -92,82 +89,100 @@ function SheetDemo() {
 }
 
 function ContactInfo() {
-  const windowDimensions = useWindowDimensions();
-
   return (
     <YStack>
       <H2>Curriculum Vitae</H2>
-      <Image
-        source={{ width: windowDimensions.width,  height: windowDimensions.height, uri: img.agcv.src }}
-        width={windowDimensions.width}
-        height={windowDimensions.height}
-        my={100}
-      />
-      <Paragraph ta="center">
-        adomas.gaudi.23@gmail.com
-      </Paragraph>
-      <Paragraph ta="center">
-        +370 61609911
-      </Paragraph>
+      <Image source={{ width: 650, height: 800, uri: img.agcv.src }} my={100} />
+      <Paragraph ta="center">adomas.gaudi.23@gmail.com</Paragraph>
+      <Paragraph ta="center">+370 61609911</Paragraph>
     </YStack>
   )
 }
 
 export function HomeScreen() {
-  const linkProps = useLink({
-    href: '/user/nate',
-  })
   const media = useMedia()
-
   return (
     <Theme name="ebb">
-      <YStack w="100%" h="100%" bc="$background" >
-        <YStack maxWidth={1200} w="100%" mx="auto" bc="" borderColor="$blue1Dark" >
-          <Paragraph p="$4" fontWeight="bold" >
+      <YStack w="100%" h="100%" bc="$background">
+        <YStack maxWidth={1200} w="100%" mx="auto" bc="" borderColor="$blue1Dark">
+          <Paragraph p="$4" fontWeight="bold">
             Built by Adomas Gaudiesius
           </Paragraph>
-          <YStack f={1} mt="$10" jc="center" p="$4" space >
-            <YStack space="$4" minHeight={500} >
-              <H1 
-                mb={100} 
-                fontSize={media.sm ? 30 : undefined} 
-                letterSpacing={"normal"}
-              >
-                Full-Stack Developer <br/> Content Creator
+          <YStack f={1} mt="$10" jc="center" p="$4" space>
+            <YStack space="$4" minHeight={500}>
+              <H1 mb={100} fontSize={media.sm ? 30 : undefined} letterSpacing={'normal'}>
+                Full-Stack Developer <br /> Content Creator
               </H1>
-              <H4>I can create  </H4>
+              <H4>I can create </H4>
               <Skills />
             </YStack>
-            <YStack jc="center" ai="center" pb={100}>
-            </YStack>
+            <YStack jc="center" ai="center" pb={100}></YStack>
           </YStack>
         </YStack>
 
         <Separator></Separator>
-        
-        <YStack  w="100%" minHeight={300} bg="white" >
-          <YStack maxWidth={1200}  
-            w="100%" mx="auto" py={100}
-            p="$4"
-          >
+
+        <YStack w="100%" minHeight={300} bg="white">
+          <YStack maxWidth={1200} w="100%" mx="auto" py={100} p="$4">
             <YStack my={100} maxWidth={800}>
-              <H3>This is Responsive Design</H3>
-              <Paragraph mb={50}>Press Ctrl+Shift+C on Chrome and change the viewport width or togle between mobile and web to see how this website responds.</Paragraph>
+              <H2 mb={50}>Things I've used or created</H2>
+              <H3>Responsive Sites</H3>
+              <Paragraph mb={25}>
+                This site is responsive, check it out on {media.sm ? 'desktop' : ' mobile'}
+              </Paragraph>
               <H3>Clean Code</H3>
-              <Paragraph mb={50}>Employ code practices that make your code readable to anyone.</Paragraph>
+              <Paragraph mb={25}>
+                Employ code practices that make the functions, constants and project structure readable and understandable to anyone.
+              </Paragraph>
               <H3>CI/CD</H3>
-              <Paragraph mb={50}>Integrate automatic deployment to the web immediately after pushing your branch.</Paragraph>
-              <H3>Typescript / eslint</H3>
-              <Paragraph mb={50}>Typescript and ESLint for intelisense coding and error catching before production</Paragraph>
+              <Paragraph mb={25}>
+                Integrate automatic deployment to the web immediately after pushing your branch. Integrate app development to the Google Play Console via Azure.
+              </Paragraph>
+              <H3>Typescript | ESlint</H3>
+              <Paragraph mb={25}>
+                Typescript and ESLint for intelisense coding and error catching before production
+              </Paragraph>
               <H3>SASS, Tailwind, PostCSS</H3>
-              <Paragraph mb={50}>Use modern styling frameworks</Paragraph>
+              <Paragraph mb={25}>Use modern styling frameworks</Paragraph>
+              <H3 mb={25}>Created Forms</H3>
+              <H3 mb={25}>Created image carousels</H3>
             </YStack>
             <YStack ai="center">
               <Theme name="dark">
                 <SheetDemo />
               </Theme>
             </YStack>
-
+          </YStack>
+          <YStack
+            maxWidth={1200}
+            w="100%"
+            mx="auto"
+            py={100}
+            p="$4"
+            borderTopWidth={2}
+            borderColor="$blue1Dark"
+            mb={400}
+          >
+            <H3>Some of my projects</H3>
+            <Anchor href="https://www.npmjs.com/package/chainedcss" target="_blank">Jss tailwind mix</Anchor>
+            <Anchor href="https://elaborate-please.site/" target="_blank">ChatGPT powered book</Anchor>
+            <Anchor href="https://symbiote-project.web.app/" target="_blank">Note taking app with login</Anchor>
+          </YStack>
+          <YStack
+            maxWidth={1600}
+            w="100%"
+            mx="auto"
+            py={100}
+            p="$4"
+            borderTopWidth={2}
+            borderColor="$blue1Dark"
+          >
+            <H1>Adomas Gaudiesius</H1>
+            <Anchor href="https://www.linkedin.com/in/adomas-g-0738b487/" target="_blank"><H1>Linkedin</H1></Anchor>
+            <Anchor href="https://twitter.com/adomas_offtrack" target="_blank"><H1>Twitter</H1></Anchor>
+            <H1>adomas.gaudi.23@gmail.com</H1>
+            <H1>+370 61609911</H1>
+            
           </YStack>
         </YStack>
       </YStack>
