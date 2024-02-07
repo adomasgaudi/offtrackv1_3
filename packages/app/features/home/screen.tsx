@@ -42,7 +42,7 @@ const ARTICLES = [
 const Mobile = () => {
   return (
     <Layout1>
-      <H1>Mobile version will be finished in 2 days, view desktop now</H1>
+      <H1>Mobile version will be finished in 2 days, view on larger desktop for now</H1>
       {/* {ARTICLES.map((article, index) => (
         <ArticleBoxSM key={index} my={200} mx={4}>
           <YStack>
