@@ -1,4 +1,4 @@
-import { Paragraph, Theme, YStack, styled } from '@my/ui'
+import { H1, Paragraph, Theme, YStack, styled } from '@my/ui'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { useRef, useState } from 'react'
 import { XStack } from 'tamagui'
@@ -6,6 +6,13 @@ import { XStack } from 'tamagui'
 export const P1 = styled(Paragraph, {
   name: 'P1',
   fontWeight: 'normal',
+  fontSize: 16,
+  color: '#555',
+})
+
+export const P2 = styled(Paragraph, {
+  name: 'P1',
+  fontWeight: 'bold',
   fontSize: 16,
   color: '#555',
 })
@@ -21,12 +28,25 @@ export const Layout1 = ({ children }) => {
     </Theme>
   )
 }
+export const LayoutLeft = ({ children, bg, ...props }) => {
+  return (
+    <Theme name="light2">
+      <YStack bg="$background" f={1} {...props} >
+        <YStack jc="flex-start" ai="flex-start" maxWidth={800} mx="auto" bg={bg} width={800}>
+          {children}
+        </YStack>
+      </YStack>
+    </Theme>
+  )
+}
 
-const myBoxShadow1 = `   0px 1px 1px hsla(0, 0%, 0%, 0.075), 
-0px 2px 2px hsla(0, 0%, 0%, 0.075), 
-0px 4px 4px hsla(0, 0%, 0%, 0.075), 
-0px 8px 8px hsla(0, 0%, 0%, 0.075), 
-0px 16px 16px hsla(0, 0%, 0%, 0.075)`
+const myBoxShadow1 = `   
+0px 0px 1px hsla(0, 0%, 0%, 0.05), 
+0px 0px 2px hsla(0, 0%, 0%, 0.05), 
+0px 0px 4px hsla(0, 0%, 0%, 0.05), 
+0px 0px 8px hsla(0, 0%, 0%, 0.05), 
+0px 0px 16px hsla(0, 0%, 0%, 0.05)
+`;
 
 export function ArticleBox(props) {
   const [gradientDirection, setGradientDirection] = useState([1, 1])
@@ -56,7 +76,7 @@ export function ArticleBox(props) {
       animation={props.animation || 'bouncy'}
       animateOnly={['transform']}
       backgroundColor="#fff"
-      borderRadius="$9"
+      borderRadius="$1"
       boxShadow={myBoxShadow1}
       hoverStyle={{
         boxShadow: myBoxShadow1 + `, ${shadowDirection} hsl(162, 72%, 43%)`,
@@ -65,7 +85,7 @@ export function ArticleBox(props) {
       cursor="pointer"
       p={20}
       {...props}
-      colors={['#fff', '#f8fffb']}
+      colors={['#fff', '#ffffff']}
       start={gradientDirection}
       end={[0, 0]}
       onMouseMove={handleMouseMove}
@@ -116,3 +136,11 @@ export function ArticleBoxSM(props) {
     </LinearGradient>
   )
 }
+
+export const InsetShadow = styled(H1, {
+  textShadowColor: 'hsla(167, 72%, 36%, 0.4)',
+  textShadowOffset: {width: 1, height: 0},
+  textShadowRadius: 3,
+  color: '$background'
+})
+
