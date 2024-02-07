@@ -23,7 +23,7 @@ const ARTICLES = [
     text: [
       `The universe, is mostly up and down quarks. Each one of the stars above and, in fact, almost everything else around you, yourself included, is
     just made up of those two quarks. Quarks have a bit of a weird charge. 2/3 for the up
-    quark and -1/2 for the down one. You can remember that "up" means positive and "down"
+    quark and -1/3 for the down one. You can remember that "up" means positive and "down"
     means negative, and also that "up" means more of charge than the "down". So if you take two up...`,
     ],
     image: images.quarks3.src,
@@ -68,9 +68,9 @@ const Desktop = () => {
       <YStack bg="$background">
         <XStack w="full" h={60} mb={50} bg="#019564" jc="flex-start" ai="center" gap={200}>
           <XStack maxWidth={800} width={800} m="auto" gap={50}>
-            <H4 color="white" hoverStyle={{ textDecorationStyle: 'underline' }}>
-              Made by Adomas
-            </H4>
+            <P1 color="white" fontWeight="bold">
+              Made with love
+            </P1>
           </XStack>
         </XStack>
 
