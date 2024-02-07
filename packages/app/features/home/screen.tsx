@@ -168,6 +168,7 @@ export function HomeScreen() {
             <Anchor href="https://www.npmjs.com/package/chainedcss" target="_blank">Jss tailwind mix</Anchor>
             <Anchor href="https://elaborate-please.site/" target="_blank">ChatGPT powered book</Anchor>
             <Anchor href="https://symbiote-project.web.app/" target="_blank">Note taking app with login</Anchor>
+            <Anchor href="https://goingoffroad.vercel.app/" target="_blank">My blog website</Anchor>
           </YStack>
           <YStack
             maxWidth={1600}
@@ -181,6 +182,7 @@ export function HomeScreen() {
             <H1>Adomas Gaudiesius</H1>
             <Anchor href="https://www.linkedin.com/in/adomas-g-0738b487/" target="_blank"><H1>Linkedin</H1></Anchor>
             <Anchor href="https://twitter.com/adomas_offtrack" target="_blank"><H1>Twitter</H1></Anchor>
+            <Anchor href="https://medium.com/@goingoffroad" target="_blank"><H1>Medium</H1></Anchor>
             <H1>adomas.gaudi.23@gmail.com</H1>
             <H1>+370 61609911</H1>
             
