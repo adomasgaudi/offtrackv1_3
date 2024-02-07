@@ -146,6 +146,7 @@ export function HomeScreen() {
               <Paragraph mb={25}>Use modern styling frameworks</Paragraph>
               <H3 mb={25}>Created Forms</H3>
               <H3 mb={25}>Created image carousels</H3>
+              <H3 mb={25}>Improved perfomance of Image rendering in an app</H3>
             </YStack>
             <YStack ai="center">
               <Theme name="dark">
