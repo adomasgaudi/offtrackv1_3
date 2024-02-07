@@ -42,14 +42,15 @@ const ARTICLES = [
 const Mobile = () => {
   return (
     <Layout1>
-      {ARTICLES.map((article, index) => (
+      <H1>Mobile version will be finished in 2 days, view desktop now</H1>
+      {/* {ARTICLES.map((article, index) => (
         <ArticleBoxSM key={index} my={200} mx={4}>
           <YStack>
             <H1>{article.title[0]}</H1>
             <P1>{article.title[0]}</P1>
           </YStack>
         </ArticleBoxSM>
-      ))}
+      ))} */}
     </Layout1>
   )
 }
