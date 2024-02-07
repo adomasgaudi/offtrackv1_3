@@ -132,7 +132,7 @@ export function HomeScreen() {
               </Paragraph>
               <H3>Clean Code</H3>
               <Paragraph mb={25}>
-                Employ code practices that make the functions, constants and project structure readable and understandable to anyone.
+                Employ code writing practices that make the functions, constants and project structure readable and understandable to anyone.
               </Paragraph>
               <H3>CI/CD</H3>
               <Paragraph mb={25}>
