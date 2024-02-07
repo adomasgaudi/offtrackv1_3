@@ -1,6 +1,7 @@
-import { H1, H2, H3, Paragraph, Square, Theme, YStack, styled, useMedia, Image } from '@my/ui'
+import { H1, H2, H3, Paragraph, Square, Theme, YStack, styled, useMedia, Image, XStack, Button } from '@my/ui'
 import { ArticleBox, ArticleBoxSM, Layout1, P1 } from '../../components'
 import images from '../../../Images'
+import { useLink } from 'solito/link'
 
 const ARTICLES = [
   {
@@ -14,7 +15,7 @@ const ARTICLES = [
     just made up of those two quarks. Quarks have a bit of a weird charge. 2/3 for the UP
     quark and -1/2 for the DOWN one. You can remember that "up" means positive and "down"
     means negative, and the "up" means more charge than the "down". So if you take two UP...`,
-    image: images.quarks.src
+    image: images.quarks.src,
   },
   {
     title: 'Star types: universe composition',
@@ -27,7 +28,7 @@ const ARTICLES = [
     just made up of those two quarks. Quarks have a bit of a weird charge. 2/3 for the UP
     quark and -1/2 for the DOWN one. You can remember that "up" means positive and "down"
     means negative, and the "up" means more charge than the "down". So if you take two UP...`,
-    image: images.quarks.src
+    image: images.quarks.src,
   },
   {
     title: 'Star types: universe composition',
@@ -40,7 +41,7 @@ const ARTICLES = [
     just made up of those two quarks. Quarks have a bit of a weird charge. 2/3 for the UP
     quark and -1/2 for the DOWN one. You can remember that "up" means positive and "down"
     means negative, and the "up" means more charge than the "down". So if you take two UP...`,
-    image: images.quarks.src
+    image: images.quarks.src,
   },
 ]
 
@@ -62,15 +63,18 @@ const Desktop = () => {
   const handlePress = () => {
     console.log('pressed')
   }
+  const linkProps = useLink({
+    href: '/user/nate',
+  })
   return (
     <Layout1>
       {ARTICLES.map((article, index) => {
         const isLastItem = index === ARTICLES.length - 1
         const isFirstItem = index === 0
         return (
-          <ArticleBox 
-            key={index} 
-            mt={isFirstItem ? 200 : 20} 
+          <ArticleBox
+            key={index}
+            mt={isFirstItem ? 200 : 20}
             mb={isLastItem ? 200 : 0}
             onPress={handlePress}
           >
@@ -78,10 +82,13 @@ const Desktop = () => {
               <Image
                 source={{
                   uri: article.image,
-                  width: "100%",
+                  width: '100%',
                   height: 300,
                 }}
               />
+              <XStack>
+                <Button {...linkProps}>Link to user</Button>
+              </XStack>
               <H2 mb="$4">{article.title}</H2>
               <P1 mb={50}>{article.text}</P1>
             </YStack>
