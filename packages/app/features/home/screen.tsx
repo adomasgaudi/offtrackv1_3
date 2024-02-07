@@ -1,133 +1,176 @@
 import {
+  Anchor,
+  Button,
   H1,
   H2,
   H3,
+  H4,
   Paragraph,
-  Square,
-  Theme,
-  YStack,
+  Separator,
+  Sheet,
   styled,
   useMedia,
-  Image,
+  useToastController,
   XStack,
-  Button,
-  H4,
+  YStack,
+  Image
 } from '@my/ui'
-import { ArticleBox, ArticleBoxSM, InsetShadow, Layout1, LayoutLeft, P1, P2 } from '../../components'
-import images from '../../../Images'
+import { Theme } from 'tamagui'
+import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
+import { useState } from 'react'
 import { useLink } from 'solito/link'
+import img from "../../../Images"
+import { useWindowDimensions } from 'react-native';
 
-const ARTICLES = [
-  {
-    title: ['Stars for beginners - Mostly everything is this'],
-    text: [
-      `The universe, is mostly up and down quarks. Each one of the stars above and, in fact, almost everything else around you, yourself included, is
-    just made up of those two quarks. Quarks have a bit of a weird charge. 2/3 for the up
-    quark and -1/3 for the down one. You can remember that "up" means positive and "down"
-    means negative, and also that "up" means more of charge than the "down". So if you take two up...`,
-    ],
-    image: images.quarks3.src,
-    link: '/article/exoplanetsin10',
-  },
-  {
-    title: ['Stars for beginners - They are all the same'],
-    text: [
-      `All stars are just spheres of hydrogen buring into helium under the pressure of gravity. 4 separate protons trying to merge and change into a nucleus of 2 protons and 2 neutrons. Imagine a gas cloud the mass of Saturn collapsing to form a planet. That planet as well as the biggest star is mostly the same stuff - hydrogen. You can keep adding hydrogen, doubling its mass and it will contract and heat up under the increasing gravity, but it will not be hot enough to fuse hydrogen into helium untill its about 80 times the mass of Jupiter. That's what we call a failed star, a brown dwarf, if its less than 14 Jupiter masses, then its just...`,
-    ],
-    image: images.starsizes.src,
-    link: '/article/exoplanetsin10',
-  },
-]
 
-const Mobile = () => {
+export const PSkill = styled(Paragraph, {
+  name: 'ParSkill',
+  fontWeight: 'bold',
+})
+
+function Skills() {
   return (
-    <Layout1>
-      <H1>Mobile version will be finished in 2 days, view on larger desktop for now</H1>
-      {/* {ARTICLES.map((article, index) => (
-        <ArticleBoxSM key={index} my={200} mx={4}>
-          <YStack>
-            <H1>{article.title[0]}</H1>
-            <P1>{article.title[0]}</P1>
-          </YStack>
-        </ArticleBoxSM>
-      ))} */}
-    </Layout1>
+    <>
+      <Skill title="Apps" skills="React-Native Expo" />
+      <Skill title="Websites" skills="React Vue Next Nuxt PHP jQuery" />
+      <Skill title="Databases" skills="PHP Laravel MySQL Supabase Firebase" />
+    </>
   )
 }
-const myBoxShadow1 = `   
-0px 0px 1px hsla(0, 0%, 0%, 0.025), 
-0px 0px 2px hsla(0, 0%, 0%, 0.025), 
-0px 0px 4px hsla(0, 0%, 0%, 0.025), 
-0px 0px 8px hsla(0, 0%, 0%, 0.025), 
-0px 0px 16px hsla(0, 0%, 0%, 0.025)
-`
-const Desktop = () => {
-  const linkProps = (href) => useLink({ href })
+
+function Skill({ title, skills }) {
   return (
-    <Theme name="light2">
-      <YStack bg="$background">
-        <XStack w="full" h={60} mb={50} bg="#019564" jc="flex-start" ai="center" gap={200}>
-          <XStack maxWidth={800} width={800} m="auto" gap={50}>
-            <P1 color="white" fontWeight="bold">
-              Made with love
-            </P1>
-          </XStack>
-        </XStack>
+    <YStack>
+      <H1>{title}</H1>
+      <PSkill>{skills}</PSkill>
+    </YStack>
+  )
+}
 
-        {/* <Image
-    source={{
-      uri: images.forest.src,
-      width: '100%',
-      height: 300,
-    }}
-    /> */}
-        <LayoutLeft bg="$background">
-          <H2>Que</H2>
-          <P2>Exoplanet within 10ly post </P2>
-          <P2>Stars for beginners</P2>
-          <P2>Interstellar travel - Python project </P2>
-          <P2>Quantum Mechanics - Python & qiskit project </P2>
-          <P2>Front-end Frameworks </P2>
-          <P2>CSS primitives </P2>
-        </LayoutLeft>
-        <Layout1>
-          {ARTICLES.map((article, index) => {
-            const isLastItem = index === ARTICLES.length - 1
-            const isFirstItem = index === 0
-            return (
-              <ArticleBox
-                key={index}
-                mt={isFirstItem ? 200 : 6}
-                mb={isLastItem ? 200 : 0}
-                {...linkProps(article.link)}
-              >
-                <YStack>
-                  <Image
-                    source={{
-                      uri: article.image,
-                      width: '100%',
-                      height: 300,
-                    }}
-                    mb="$4"
-                  />
-                  <H2 mb="$4">{article.title[0]}</H2>
-                  <P1 mb={50}>{article.text[0]}</P1>
-                </YStack>
-              </ArticleBox>
-            )
-          })}
+function SheetDemo() {
+  const [open, setOpen] = useState(false)
+  const [position, setPosition] = useState(0)
+  const toast = useToastController()
+  console.log(img)
 
-          <YStack mb={200} borderRadius="10px" p={10} mt="$10" boxShadow={myBoxShadow1}>
-            <InsetShadow>Writing... </InsetShadow>
-            <InsetShadow>Quantum mechanics post </InsetShadow>
-          </YStack>
-        </Layout1>
-      </YStack>
-    </Theme>
+  return (
+    <>
+      <Button
+        size="$6"
+        circular
+        onPress={() => setOpen((x) => !x)}
+      >CV</Button>
+      <Sheet
+        modal
+        animation="medium"
+        open={open}
+        onOpenChange={setOpen}
+        snapPoints={[80]}
+        position={position}
+        onPositionChange={setPosition}
+        dismissOnSnapToBottom
+      >
+        <Sheet.Overlay animation="lazy" enterStyle={{ opacity: 0 }} exitStyle={{ opacity: 0 }} />
+        <Sheet.Frame ai="center" jc="center">
+          <Sheet.Handle />
+          <Button
+            size="$6"
+            circular
+            icon={ChevronDown}
+            onPress={() => {
+              setOpen(false)
+              toast.show('Warning!', {
+                message: 'I sometimes forget to read emails',
+              })
+            }}
+          />
+          <ContactInfo />
+        </Sheet.Frame>
+      </Sheet>
+    </>
+  )
+}
+
+function ContactInfo() {
+  const windowDimensions = useWindowDimensions();
+
+  return (
+    <YStack>
+      <H2>Curriculum Vitae</H2>
+      <Image
+        source={{ width: windowDimensions.width,  height: windowDimensions.height, uri: img.agcv.src }}
+        width={windowDimensions.width}
+        height={windowDimensions.height}
+        my={100}
+      />
+      <Paragraph ta="center">
+        adomas.gaudi.23@gmail.com
+      </Paragraph>
+      <Paragraph ta="center">
+        +370 61609911
+      </Paragraph>
+    </YStack>
   )
 }
 
 export function HomeScreen() {
+  const linkProps = useLink({
+    href: '/user/nate',
+  })
   const media = useMedia()
-  return <>{media.sm ? <Mobile /> : <Desktop />}</>
+
+  return (
+    <Theme name="ebb">
+      <YStack w="100%" h="100%" bc="$background" >
+        <YStack maxWidth={1200} w="100%" mx="auto" bc="" borderColor="$blue1Dark" >
+          <Paragraph p="$4" fontWeight="bold" >
+            Built by Adomas Gaudiesius
+          </Paragraph>
+          <YStack f={1} mt="$10" jc="center" p="$4" space >
+            <YStack space="$4" minHeight={500} >
+              <H1 
+                mb={100} 
+                fontSize={media.sm ? 30 : undefined} 
+                letterSpacing={"normal"}
+              >
+                Full-Stack Developer <br/> Content Creator
+              </H1>
+              <H4>I can create  </H4>
+              <Skills />
+            </YStack>
+            <YStack jc="center" ai="center" pb={100}>
+            </YStack>
+          </YStack>
+        </YStack>
+
+        <Separator></Separator>
+        
+        <YStack  w="100%" minHeight={300} bg="white" >
+          <YStack maxWidth={1200}  
+            w="100%" mx="auto" py={100}
+            p="$4"
+          >
+            <YStack my={100} maxWidth={800}>
+              <H3>This is Responsive Design</H3>
+              <Paragraph mb={50}>Press Ctrl+Shift+C on Chrome and change the viewport width or togle between mobile and web to see how this website responds.</Paragraph>
+              <H3>Clean Code</H3>
+              <Paragraph mb={50}>Employ code practices that make your code readable to anyone.</Paragraph>
+              <H3>CI/CD</H3>
+              <Paragraph mb={50}>Integrate automatic deployment to the web immediately after pushing your branch.</Paragraph>
+              <H3>Typescript / eslint</H3>
+              <Paragraph mb={50}>Typescript and ESLint for intelisense coding and error catching before production</Paragraph>
+              <H3>SASS, Tailwind, PostCSS</H3>
+              <Paragraph mb={50}>Use modern styling frameworks</Paragraph>
+            </YStack>
+            <YStack ai="center">
+              <Theme name="dark">
+                <SheetDemo />
+              </Theme>
+            </YStack>
+
+          </YStack>
+        </YStack>
+      </YStack>
+    </Theme>
+  )
 }
