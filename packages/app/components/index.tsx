@@ -19,7 +19,7 @@ export const P2 = styled(Paragraph, {
 
 export const Layout1 = ({ children }) => {
   return (
-    <Theme name="light2">
+    <Theme name="f8">
       <YStack bg="$background" f={1}>
         <YStack jc="center" ai="center" maxWidth={800} mx="auto" bg="$background">
           <YStack>{children}</YStack>
@@ -30,7 +30,7 @@ export const Layout1 = ({ children }) => {
 }
 export const LayoutLeft = ({ children, bg, ...props }) => {
   return (
-    <Theme name="light2">
+    <Theme name="f8">
       <YStack bg="$background" f={1} {...props} >
         <YStack jc="flex-start" ai="flex-start" maxWidth={800} mx="auto" bg={bg} width={800}>
           {children}

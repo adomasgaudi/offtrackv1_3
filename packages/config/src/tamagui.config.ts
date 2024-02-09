@@ -55,6 +55,10 @@ const myThemes = {
     color: '#333',
     background: '#f3f3f3',
   },
+  f8: {
+    color: '#333',
+    background: '#f8f8f8',
+  },
   yellow1: {
     color: '#511b6e',
     background: '#f7e78d',
