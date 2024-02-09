@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   H1,
   H2,
@@ -15,14 +15,21 @@ import {
   H4,
   TextArea,
 } from '@my/ui'
-import { ArticleBox, ArticleBoxSM, InsetShadow, Layout1, LayoutLeft, P1, P2 } from '../../components'
+import {
+  ArticleBox,
+  ArticleBoxSM,
+  InsetShadow,
+  Layout1,
+  LayoutLeft,
+  P1,
+  P2,
+} from '../../components'
 import images from '../../../Images'
 import { useLink } from 'solito/link'
 
-
 const useOpenAI = () => {
-  const [data, setData] = useState<any>(null);
-  const OPENAI_KEY = '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';
+  const [data, setData] = useState<any>(null)
+  const OPENAI_KEY = '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'
 
   const fetchData = (inputValue: string) => {
     fetch('https://api.openai.com/v1/chat/completions', {
@@ -36,20 +43,19 @@ const useOpenAI = () => {
         messages: [
           {
             role: 'user',
-            content: `summarise this text: ${inputValue}`,
+            content: `${inputValue}`,
           },
         ],
       }),
     })
       .then((response) => response.json())
       .then((json) => {
-        setData(json.choices[0].message.content);
-      });
-  };
+        setData(json.choices[0].message.content)
+      })
+  }
 
-  return { data, fetchData };
-};
-
+  return { data, fetchData }
+}
 
 const ARTICLES = [
   {
@@ -97,6 +103,8 @@ const myBoxShadow1 = `
 `
 const Desktop = () => {
   const linkProps = (href) => useLink({ href })
+  const [inputValue, setInputValue] = useState('')
+  const { data, fetchData } = useOpenAI()
   return (
     <Theme name="light2">
       <YStack bg="$background">
@@ -129,12 +137,7 @@ const Desktop = () => {
             const isLastItem = index === ARTICLES.length - 1
             const isFirstItem = index === 0
             return (
-              <ArticleBox
-                key={index}
-                mt={isFirstItem ? 200 : 6}
-                mb={isLastItem ? 200 : 0}
-                {...linkProps(article.link)}
-              >
+              <ArticleBox key={index} mt={isFirstItem ? 200 : 6} mb={isLastItem ? 200 : 0}>
                 <YStack>
                   <Image
                     source={{
@@ -143,9 +146,46 @@ const Desktop = () => {
                       height: 300,
                     }}
                     mb="$4"
+                    cursor="pointer"
+                    {...linkProps(article.link)}
                   />
-                  <H2 mb="$4">{article.title[0]}</H2>
-                  <P1 mb={50}>{article.text[0]}</P1>
+                  <H2 mb="$4" cursor="pointer" {...linkProps(article.link)}>
+                    {article.title[0]}
+                  </H2>
+                  {/* <P1 mb={50}>{article.text[0]}</P1> */}
+                  <XStack>
+                    {/* <TextArea
+                      size="$4"
+                      borderWidth={1}
+                      value={inputValue}
+                      width="100%"
+                      onChangeText={(text) => setInputValue(text)}
+                    /> */}
+                    <Button
+                      onPress={() => {
+                        fetchData(
+                          `Summarise this text ${article.text[0]}`
+                        )
+                      }}
+                    >
+                      What is this article about? 
+                    </Button>
+                    <Button
+                      onPress={() => {
+                        fetchData(`Summarise this text like I'm 5 ${article.text[0]}`)
+                      }}
+                    >
+                      More simply please
+                    </Button>
+                    {/* <Button
+                      onPress={() => {
+                        fetchData(inputValue)
+                      }}
+                    >
+                      Summarise this
+                    </Button> */}
+                  </XStack>
+                  <P1> {data}</P1>
                 </YStack>
               </ArticleBox>
             )
@@ -163,32 +203,6 @@ const Desktop = () => {
 
 export function HomeScreen() {
   const media = useMedia()
-  const [inputValue, setInputValue] = useState('');
-  const { data, fetchData } = useOpenAI();
 
-  return (
-    <>
-      {media.sm ? (
-        <Mobile />
-      ) : (
-        <Desktop />
-      )}
-      <YStack>
-        <TextArea
-          size="$4"
-          borderWidth={1}
-          value={inputValue}
-          width="100%"
-          onChangeText={(text) => setInputValue(text)}
-        />
-        <Button
-          onPress={() => {
-            fetchData(inputValue);
-          }}>
-          Post
-        </Button>
-        <H2>Your Result is: {data}</H2>
-      </YStack>
-    </>
-  );
+  return <>{media.sm ? <Mobile /> : <Desktop />}</>
 }

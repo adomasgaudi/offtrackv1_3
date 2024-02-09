@@ -82,7 +82,7 @@ export function ArticleBox(props) {
         boxShadow: myBoxShadow1 + `, ${shadowDirection} hsl(162, 72%, 43%)`,
       }}
       pressStyle={{ scale: 1.015 }}
-      cursor="pointer"
+      
       p={20}
       {...props}
       colors={['#fff', '#ffffff']}
