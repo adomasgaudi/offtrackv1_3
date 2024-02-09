@@ -14,6 +14,10 @@ import {
   Button,
   H4,
   TextArea,
+  H5,
+  Tooltip,
+  TooltipProps,
+  Circle,
 } from '@my/ui'
 import {
   ArticleBox,
@@ -26,6 +30,7 @@ import {
 } from '../../components'
 import images from '../../../Images'
 import { useLink } from 'solito/link'
+import { BrainCircuit, ChevronUp, Plus } from '@tamagui/lucide-icons'
 
 const useOpenAI = () => {
   const [data, setData] = useState<any>(null)
@@ -78,6 +83,37 @@ const ARTICLES = [
     link: '/article/exoplanetsin10',
   },
 ]
+
+function Demo({ Icon, ...props }: TooltipProps & { Icon?: any }) {
+  return (
+    <Tooltip {...props}>
+      <Tooltip.Trigger>
+        <Button bg="none" hoverStyle={{bg: "$background"}} icon={Icon} circular />
+      </Tooltip.Trigger>
+      <Tooltip.Content
+        enterStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
+        exitStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
+        scale={1}
+        x={0}
+        y={0}
+        opacity={1}
+        animation={[
+          'quick',
+          {
+            opacity: {
+              overshootClamping: true,
+            },
+          },
+        ]}
+      >
+        <Tooltip.Arrow />
+        <Paragraph size="$2" lineHeight="$1">
+          ChatGPT summary
+        </Paragraph>
+      </Tooltip.Content>
+    </Tooltip>
+  )
+}
 
 const Mobile = () => {
   return (
@@ -149,10 +185,20 @@ const Desktop = () => {
                     cursor="pointer"
                     {...linkProps(article.link)}
                   />
+                  <XStack jc="space-between">
+                    <XStack gap={20}>
+                      <H5>Research: 5A</H5>
+                      <H5>Writing: 5A</H5>
+                    </XStack>
+                    <XStack>
+                        <Demo groupId="1" placement="top" Icon={BrainCircuit} />
+                      
+                    </XStack>
+                  </XStack>
                   <H2 mb="$4" cursor="pointer" {...linkProps(article.link)}>
                     {article.title[0]}
                   </H2>
-                  {/* <P1 mb={50}>{article.text[0]}</P1> */}
+                  <P1 mb={50}>{article.text[0]}</P1>
                   <XStack>
                     {/* <TextArea
                       size="$4"
@@ -163,12 +209,10 @@ const Desktop = () => {
                     /> */}
                     <Button
                       onPress={() => {
-                        fetchData(
-                          `Summarise this text ${article.text[0]}`
-                        )
+                        fetchData(`Summarise this text ${article.text[0]}`)
                       }}
                     >
-                      What is this article about? 
+                      What is this article about?
                     </Button>
                     <Button
                       onPress={() => {

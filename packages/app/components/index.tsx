@@ -81,7 +81,7 @@ export function ArticleBox(props) {
       hoverStyle={{
         boxShadow: myBoxShadow1 + `, ${shadowDirection} hsl(162, 72%, 43%)`,
       }}
-      pressStyle={{ scale: 1.015 }}
+      // pressStyle={{ scale: 1.015 }}
       
       p={20}
       {...props}
