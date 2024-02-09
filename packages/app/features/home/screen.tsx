@@ -32,14 +32,14 @@ import {
 } from '../../components'
 import images from '../../../Images'
 import { useLink } from 'solito/link'
-import { BrainCircuit, ChevronUp, Plus, Share2 } from '@tamagui/lucide-icons'
+import { BrainCircuit, ChevronUp, MessageCircleQuestion, Plus, Share2 } from '@tamagui/lucide-icons'
 
 const useOpenAI = () => {
   const [data, setData] = useState<any>(null)
   const OPENAI_KEY = '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'
 
-  const fetchData = (inputValue: string) => {
-    fetch('https://api.openai.com/v1/chat/completions', {
+  const fetchData = async (inputValue: string) => {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -54,12 +54,12 @@ const useOpenAI = () => {
           },
         ],
       }),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        setData(json.choices[0].message.content)
-      })
-  }
+    });
+    const json = await response.json();
+    setData(json.choices[0].message.content);
+    console.log(json.choices[0].message.content);
+    return json.choices[0].message.content;
+  };
 
   return { data, fetchData }
 }
@@ -153,32 +153,18 @@ const Desktop = () => {
   const [inputValue, setInputValue] = useState('')
   const [currentText, setCurrentText] = useState(ARTICLES.map((article) => article.text[0]))
 
-  const handleFetchData = (index, text) => {
-    fetchData(`${text}`)
-    setCurrentText((prevText) => {
-      const newText = [...prevText]
-      newText[index] = data
-      return newText
-    })
-  }
+  
   return (
     <Theme name="f8">
       <YStack bg="$background">
         <XStack w="full" h={60} mb={50} bg="#019564" jc="flex-start" ai="center" gap={200}>
           <XStack maxWidth={800} width={800} m="auto" gap={50}>
             <P1 color="white" fontWeight="bold">
-              Made with love
+              Made in China, not
             </P1>
           </XStack>
         </XStack>
 
-        {/* <Image
-    source={{
-      uri: images.forest.src,
-      width: '100%',
-      height: 300,
-    }}
-    /> */}
         <LayoutLeft bg="$background">
           <H2>Que</H2>
           <P2>Exoplanet within 10ly post </P2>
@@ -224,26 +210,25 @@ const Desktop = () => {
                       <H2 mb="$4" cursor="pointer" {...linkProps(article.link)}>
                         {article.title[0]}
                       </H2>
-                      <XStack gap={5}>
+                      <XStack gap={15}>
                         <YStack gap={5}>
-
                         <Demo
                           groupId="1"
                           placement="top"
                           Icon={BrainCircuit}
-                          onPress={() => handleFetchData(index, `summarise: ${article.text[0]}`)}
+                          onPress={() => fetchData(`summarise: ${article.text[0]}`)}
                           tooltipText="ChatGPT summary"
                         />
                         <Demo
                           groupId="1"
                           placement="top"
-                          Icon={BrainCircuit}
-                          onPress={() => handleFetchData(index, `summarise like i'm 5${article.text[0]}`)}
+                          Icon={MessageCircleQuestion}
+                          onPress={() => fetchData(`summarise like i'm 5${article.text[0]}`)}
                           tooltipText="ChatGPT summary for dummies"
                         />
                         </YStack>
-                        <P1 mb={50}>{currentText[index]}</P1>
-                        <P1> {data}</P1>
+                        {/* <P1 mb={50}>{currentText[index]}</P1> */}
+                        <P1> {data ? data : article.text[0]}</P1>
                       </XStack>
                       {/* <P1 mb={50}>{article.text[0]}</P1> */}
                       <XStack jc="center" ai="center" gap={5}>
