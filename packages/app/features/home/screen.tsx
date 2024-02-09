@@ -19,6 +19,38 @@ import { ArticleBox, ArticleBoxSM, InsetShadow, Layout1, LayoutLeft, P1, P2 } fr
 import images from '../../../Images'
 import { useLink } from 'solito/link'
 
+
+const useOpenAI = () => {
+  const [data, setData] = useState<any>(null);
+  const OPENAI_KEY = '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';
+
+  const fetchData = (inputValue: string) => {
+    fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${OPENAI_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo-16k-0613',
+        messages: [
+          {
+            role: 'user',
+            content: `summarise this text: ${inputValue}`,
+          },
+        ],
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setData(json.choices[0].message.content);
+      });
+  };
+
+  return { data, fetchData };
+};
+
+
 const ARTICLES = [
   {
     title: ['Stars for beginners - Mostly everything is this'],
@@ -132,34 +164,7 @@ const Desktop = () => {
 export function HomeScreen() {
   const media = useMedia()
   const [inputValue, setInputValue] = useState('');
-  const [resultValue, setResultValue] = useState('');
-  const [data, setData] = useState<any>(null);
-
-  const OPENAI_KEY = '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';
-
-  const fetchData = () => {
-    fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${OPENAI_KEY}`,
-      },
-      body: JSON.stringify({
-        model: 'gpt-3.5-turbo-16k-0613',
-        messages: [
-          {
-            role: 'user',
-            content: `summarise this text: ${inputValue}`,
-          },
-        ],
-      }),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        console.log("message: ", json.choices)
-        setData(json.choices[0].message.content);
-      });
-  };
+  const { data, fetchData } = useOpenAI();
 
   return (
     <>
@@ -178,7 +183,7 @@ export function HomeScreen() {
         />
         <Button
           onPress={() => {
-            fetchData();
+            fetchData(inputValue);
           }}>
           Post
         </Button>
