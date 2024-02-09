@@ -13,10 +13,25 @@ import {
   Tooltip,
   useMedia,
 } from '@my/ui'
-import { ArticleBox, Layout1, LayoutLeft, InsetShadow, P1, P2 } from '../../components'
+import {
+  ArticleBox,
+  Layout1,
+  LayoutLeft,
+  InsetShadow,
+  P1,
+  P2,
+  ArticleBoxSM,
+} from '../../components'
 import images from '../../../Images'
 import { useLink } from 'solito/link'
-import { BrainCircuit, MessageCircleQuestion, Share2 } from '@tamagui/lucide-icons'
+import {
+  ArrowBigRight,
+  BrainCircuit,
+  MessageCircleQuestion,
+  Share2,
+  Sparkle,
+  Sparkles,
+} from '@tamagui/lucide-icons'
 
 // Custom hook for using OpenAI
 const useOpenAI = () => {
@@ -44,17 +59,11 @@ const useOpenAI = () => {
 }
 
 // Tooltip button component
-const TooltipButton = ({ Icon, onPress, tooltipText }) => (
+const TooltipButton = ({ Trigger, tooltipText, ...props }) => (
   <TooltipGroup delay={{ open: 100, close: 100 }}>
-    <Tooltip>
+    <Tooltip {...props}>
       <Tooltip.Trigger>
-        <Button
-          bg="none"
-          hoverStyle={{ bg: '$background' }}
-          icon={Icon}
-          circular
-          onPress={onPress}
-        />
+        <Trigger />
       </Tooltip.Trigger>
       <Tooltip.Content
         enterStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
@@ -148,15 +157,22 @@ const Desktop = () => {
                     <YStack>
                       <XStack jc="space-between">
                         <XStack gap={20}>
-                          <H5>Research: 5A</H5>
-                          <H5>Writing: 5A</H5>
+                          <H5>Research: some</H5>
+                          <H5>Writing: meh</H5>
                         </XStack>
                         <XStack>
                           <TooltipButton
                             groupId="1"
                             placement="top"
-                            Icon={<Share2 />}
-                            tooltipText="Just copy URL and share it, bruv"
+                            Trigger={() => (
+                              <Button
+                                bg="none"
+                                hoverStyle={{ bg: '$background' }}
+                                icon={<Share2 />}
+                                circular
+                              ></Button>
+                            )}
+                            tooltipText="I'm not responsible for you anoying anyone with this (just copy url)"
                           />
                         </XStack>
                       </XStack>
@@ -167,40 +183,45 @@ const Desktop = () => {
                         <YStack gap={5}>
                           <TooltipButton
                             groupId="1"
-                            placement="top"
-                            Icon={BrainCircuit}
-                            onPress={() => fetchData(`summarise: ${article.text[0]}`)}
-                            tooltipText="ChatGPT summary"
-                          />
-                          <TooltipButton
-                            groupId="1"
-                            placement="top"
-                            Icon={MessageCircleQuestion}
-                            onPress={() => fetchData(`summarise like I'm 5: ${article.text[0]}`)}
-                            tooltipText="ChatGPT summary for dummies"
+                            placement="right"
+                            Trigger={() => (
+                              <Button
+                                bg="none"
+                                hoverStyle={{ bg: '$background' }}
+                                icon={<MessageCircleQuestion />}
+                                circular
+                                onPress={() =>
+                                  fetchData(`summarise in 5 sentences: ${article.text[0]}`)
+                                }
+                              ></Button>
+                            )}
+                            tooltipText="Summarise the whole article"
                           />
                         </YStack>
-                        <P1>{data ? data : article.text[0]}</P1>
+                        <P1 mb={10}>{data ? data : article.text[0]}</P1>
                       </XStack>
                       <XStack jc="center" ai="center" gap={5}>
                         <Input
-                          size="$2"
+                          size="$3"
                           borderWidth={1}
                           borderColor="#cacaca"
                           outlineColor="none"
                           outlineWidth={0}
+                          placeholder="what is a... ?"
                           value={inputValue}
                           width="100%"
                           onChangeText={(text) => setInputValue(text)}
                         />
-                        <Button onPress={() => fetchData(inputValue)}>Go!</Button>
-                        <Button onPress={() => fetchData(`explain quarks in 5 sentences`)}>
-                          About Quarks
-                        </Button>
                         <Button
-                          onPress={() => fetchData(`explain the strong force in 5 sentences`)}
+                          onPress={() => fetchData(inputValue)}
+                          icon={ArrowBigRight}
+                          size="$3"
+                        ></Button>
+                        <Button
+                          onPress={() => fetchData(`explain quarks in 5 sentences`)}
+                          size="$3"
                         >
-                          About Strong Force
+                          What's a quark?
                         </Button>
                       </XStack>
                     </YStack>
@@ -222,9 +243,9 @@ const Desktop = () => {
 // Mobile version component
 // Mobile version component
 const Mobile = () => {
-  const { data, fetchData } = useOpenAI();
-  const [inputValue, setInputValue] = useState('');
-  const linkProps = href => useLink({ href });
+  const { data, fetchData } = useOpenAI()
+  const [inputValue, setInputValue] = useState('')
+  const linkProps = (href) => useLink({ href })
 
   return (
     <Layout1>
@@ -247,25 +268,49 @@ const Mobile = () => {
               cursor="pointer"
               {...linkProps(article.link)}
             />
-            <ArticleBox>
+            <ArticleBoxSM>
               <YStack>
+                <XStack gap={20}>
+                  <H5>Research: 5A</H5>
+                  <H5>Writing: 5A</H5>
+                </XStack>
                 <H2 mb="$2" cursor="pointer" {...linkProps(article.link)}>
                   {article.title[0]}
                 </H2>
-                <TooltipButton
-                  groupId="1"
-                  placement="top"
-                  Icon={BrainCircuit}
-                  onPress={() => fetchData(`summarise: ${article.text[0]}`)}
-                  tooltipText="ChatGPT summary"
-                />
-                <TooltipButton
-                  groupId="1"
-                  placement="top"
-                  Icon={MessageCircleQuestion}
-                  onPress={() => fetchData(`summarise like I'm 5: ${article.text[0]}`)}
-                  tooltipText="ChatGPT summary for dummies"
-                />
+                <XStack>
+                  <TooltipButton
+                    groupId="1"
+                    placement="top"
+                    Trigger={() => (
+                      <Button
+                        bg="none"
+                        hoverStyle={{ bg: '$background' }}
+                        icon={<Sparkles />}
+                        circular
+                        onPress={() => fetchData(`summarise  ${article.text[0]}`)}
+                      >
+                        Simplify
+                      </Button>
+                    )}
+                    tooltipText="ChatGPT summary"
+                  />
+                  <TooltipButton
+                    groupId="1"
+                    placement="top"
+                    Trigger={
+                      <Button
+                        bg="none"
+                        hoverStyle={{ bg: '$background' }}
+                        icon={<Sparkles />}
+                        circular
+                        onPress={() => fetchData(`summarise like I'm 5: ${article.text[0]}`)}
+                      >
+                        Simplify
+                      </Button>
+                    }
+                    tooltipText="ChatGPT summary for dummies"
+                  />
+                </XStack>
                 <P1>{data ? data : article.text[0]}</P1>
                 <XStack jc="center" ai="center" gap={3} mt={3}>
                   <Input
@@ -281,14 +326,13 @@ const Mobile = () => {
                   <Button onPress={() => fetchData(inputValue)}>Go!</Button>
                 </XStack>
               </YStack>
-            </ArticleBox>
+            </ArticleBoxSM>
           </YStack>
         ))}
       </YStack>
     </Layout1>
-  );
-};
-
+  )
+}
 
 // HomeScreen component
 export function HomeScreen() {
