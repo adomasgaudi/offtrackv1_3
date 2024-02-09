@@ -2,43 +2,28 @@ import React, { useState } from 'react'
 import {
   H1,
   H2,
-  H3,
-  Paragraph,
-  Square,
-  Theme,
+  H5,
   YStack,
-  styled,
-  useMedia,
-  Image,
   XStack,
   Button,
-  H4,
-  TextArea,
-  H5,
-  Tooltip,
-  TooltipProps,
-  Circle,
-  TooltipGroup,
+  Image,
   Input,
+  Theme,
+  TooltipGroup,
+  Tooltip,
+  useMedia,
 } from '@my/ui'
-import {
-  ArticleBox,
-  ArticleBoxSM,
-  InsetShadow,
-  Layout1,
-  LayoutLeft,
-  P1,
-  P2,
-} from '../../components'
+import { ArticleBox, Layout1, LayoutLeft, InsetShadow, P1, P2 } from '../../components'
 import images from '../../../Images'
 import { useLink } from 'solito/link'
-import { BrainCircuit, ChevronUp, MessageCircleQuestion, Plus, Share2 } from '@tamagui/lucide-icons'
+import { BrainCircuit, MessageCircleQuestion, Share2 } from '@tamagui/lucide-icons'
 
+// Custom hook for using OpenAI
 const useOpenAI = () => {
-  const [data, setData] = useState<any>(null)
+  const [data, setData] = useState(null)
   const OPENAI_KEY = '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'
 
-  const fetchData = async (inputValue: string) => {
+  const fetchData = async (inputValue) => {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -47,31 +32,57 @@ const useOpenAI = () => {
       },
       body: JSON.stringify({
         model: 'gpt-3.5-turbo-16k-0613',
-        messages: [
-          {
-            role: 'user',
-            content: `${inputValue}`,
-          },
-        ],
+        messages: [{ role: 'user', content: inputValue }],
       }),
-    });
-    const json = await response.json();
-    setData(json.choices[0].message.content);
-    console.log(json.choices[0].message.content);
-    return json.choices[0].message.content;
-  };
+    })
+    const json = await response.json()
+    setData(json.choices[0].message.content)
+    return json.choices[0].message.content
+  }
 
   return { data, fetchData }
 }
 
+// Tooltip button component
+const TooltipButton = ({ Icon, onPress, tooltipText }) => (
+  <TooltipGroup delay={{ open: 100, close: 100 }}>
+    <Tooltip>
+      <Tooltip.Trigger>
+        <Button
+          bg="none"
+          hoverStyle={{ bg: '$background' }}
+          icon={Icon}
+          circular
+          onPress={onPress}
+        />
+      </Tooltip.Trigger>
+      <Tooltip.Content
+        enterStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
+        exitStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
+        scale={1}
+        x={0}
+        y={0}
+        opacity={1}
+        animation={['100ms', { opacity: { overshootClamping: true } }]}
+      >
+        <Tooltip.Arrow />
+        <P1 size="$2" lineHeight="$1">
+          {tooltipText}
+        </P1>
+      </Tooltip.Content>
+    </Tooltip>
+  </TooltipGroup>
+)
+
+// Constants
 const ARTICLES = [
   {
     title: ['Stars for beginners - Mostly everything is this'],
     text: [
       `The universe, is mostly up and down quarks. Each one of the stars above and, in fact, almost everything else around you, yourself included, is
-    just made up of those two quarks. Quarks have a bit of a weird charge. 2/3 for the up
-    quark and -1/3 for the down one. You can remember that "up" means positive and "down"
-    means negative, and also that "up" means more of charge than the "down". So if you take two up...`,
+      just made up of those two quarks. Quarks have a bit of a weird charge. 2/3 for the up
+      quark and -1/3 for the down one. You can remember that "up" means positive and "down"
+      means negative, and also that "up" means more of charge than the "down". So if you take two up...`, // Add the rest of the text
     ],
     image: images.quarks3.src,
     link: '/article/exoplanetsin10',
@@ -79,81 +90,22 @@ const ARTICLES = [
   {
     title: ['Stars for beginners - They are all the same'],
     text: [
-      `All stars are just spheres of hydrogen buring into helium under the pressure of gravity. 4 separate protons trying to merge and change into a nucleus of 2 protons and 2 neutrons. Imagine a gas cloud the mass of Saturn collapsing to form a planet. That planet as well as the biggest star is mostly the same stuff - hydrogen. You can keep adding hydrogen, doubling its mass and it will contract and heat up under the increasing gravity, but it will not be hot enough to fuse hydrogen into helium untill its about 80 times the mass of Jupiter. That's what we call a failed star, a brown dwarf, if its less than 14 Jupiter masses, then its just...`,
+      `All stars are just spheres of hydrogen buring into helium under the pressure of gravity. 4 separate protons trying to merge and change into a nucleus of 2 protons and 2 neutrons. Imagine a gas cloud the mass of Saturn collapsing to form a planet. That planet as well as the biggest star is mostly the same stuff - hydrogen. You can keep adding hydrogen, doubling its mass and it will contract and heat up under the increasing gravity, but it will not be hot enough to fuse hydrogen into helium untill its about 80 times the mass of Jupiter. That's what we call a failed star, a brown dwarf, if its less than 14 Jupiter masses, then its just...`, // Add the rest of the text
     ],
     image: images.starsizes.src,
     link: '/article/exoplanetsin10',
   },
+  // ... Add more articles as needed ...
 ]
 
-function Demo({ Icon, onPress, tooltipText, ...props }: any & { Icon?: any }) {
-  return (
-    <TooltipGroup delay={{ open: 100, close: 100 }}>
-      <Tooltip {...props}>
-        <Tooltip.Trigger>
-          <Button
-            bg="none"
-            hoverStyle={{ bg: '$background' }}
-            icon={Icon}
-            circular
-            onPress={onPress}
-          />
-        </Tooltip.Trigger>
-        <Tooltip.Content
-          enterStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
-          exitStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
-          scale={1}
-          x={0}
-          y={0}
-          opacity={1}
-          animation={[
-            '100ms',
-            {
-              opacity: {
-                overshootClamping: true,
-              },
-            },
-          ]}
-        >
-          <Tooltip.Arrow />
-          <Paragraph size="$2" lineHeight="$1">
-            {tooltipText}
-          </Paragraph>
-        </Tooltip.Content>
-      </Tooltip>
-    </TooltipGroup>
-  )
-}
+const myBoxShadow1 = '0px 0px 1px hsla(0, 0%, 0%, 0.025), 0px 0px 2px hsla(0, 0%, 0%, 0.025), ...'
 
-const Mobile = () => {
-  return (
-    <Layout1>
-      <H1>Mobile version will be finished in 2 days, view on larger desktop for now</H1>
-      {/* {ARTICLES.map((article, index) => (
-        <ArticleBoxSM key={index} my={200} mx={4}>
-          <YStack>
-            <H1>{article.title[0]}</H1>
-            <P1>{article.title[0]}</P1>
-          </YStack>
-        </ArticleBoxSM>
-      ))} */}
-    </Layout1>
-  )
-}
-const myBoxShadow1 = `   
-0px 0px 1px hsla(0, 0%, 0%, 0.025), 
-0px 0px 2px hsla(0, 0%, 0%, 0.025), 
-0px 0px 4px hsla(0, 0%, 0%, 0.025), 
-0px 0px 8px hsla(0, 0%, 0%, 0.025), 
-0px 0px 16px hsla(0, 0%, 0%, 0.025)
-`
+// Desktop version component
 const Desktop = () => {
-  const linkProps = (href) => useLink({ href })
   const { data, fetchData } = useOpenAI()
   const [inputValue, setInputValue] = useState('')
-  const [currentText, setCurrentText] = useState(ARTICLES.map((article) => article.text[0]))
+  const linkProps = (href) => useLink({ href })
 
-  
   return (
     <Theme name="f8">
       <YStack bg="$background">
@@ -174,6 +126,7 @@ const Desktop = () => {
           <P2>Front-end Frameworks </P2>
           <P2>CSS primitives </P2>
         </LayoutLeft>
+
         <Layout1>
           {ARTICLES.map((article, index) => {
             const isLastItem = index === ARTICLES.length - 1
@@ -199,11 +152,11 @@ const Desktop = () => {
                           <H5>Writing: 5A</H5>
                         </XStack>
                         <XStack>
-                          <Demo
+                          <TooltipButton
                             groupId="1"
                             placement="top"
                             Icon={<Share2 />}
-                            tooltipText="just copy url and share it, bruv"
+                            tooltipText="Just copy URL and share it, bruv"
                           />
                         </XStack>
                       </XStack>
@@ -212,25 +165,23 @@ const Desktop = () => {
                       </H2>
                       <XStack gap={15}>
                         <YStack gap={5}>
-                        <Demo
-                          groupId="1"
-                          placement="top"
-                          Icon={BrainCircuit}
-                          onPress={() => fetchData(`summarise: ${article.text[0]}`)}
-                          tooltipText="ChatGPT summary"
-                        />
-                        <Demo
-                          groupId="1"
-                          placement="top"
-                          Icon={MessageCircleQuestion}
-                          onPress={() => fetchData(`summarise like i'm 5${article.text[0]}`)}
-                          tooltipText="ChatGPT summary for dummies"
-                        />
+                          <TooltipButton
+                            groupId="1"
+                            placement="top"
+                            Icon={BrainCircuit}
+                            onPress={() => fetchData(`summarise: ${article.text[0]}`)}
+                            tooltipText="ChatGPT summary"
+                          />
+                          <TooltipButton
+                            groupId="1"
+                            placement="top"
+                            Icon={MessageCircleQuestion}
+                            onPress={() => fetchData(`summarise like I'm 5: ${article.text[0]}`)}
+                            tooltipText="ChatGPT summary for dummies"
+                          />
                         </YStack>
-                        {/* <P1 mb={50}>{currentText[index]}</P1> */}
-                        <P1> {data ? data : article.text[0]}</P1>
+                        <P1>{data ? data : article.text[0]}</P1>
                       </XStack>
-                      {/* <P1 mb={50}>{article.text[0]}</P1> */}
                       <XStack jc="center" ai="center" gap={5}>
                         <Input
                           size="$2"
@@ -242,28 +193,15 @@ const Desktop = () => {
                           width="100%"
                           onChangeText={(text) => setInputValue(text)}
                         />
-                        <Button
-                          onPress={() => {
-                            fetchData(inputValue)
-                          }}
-                        >
-                          Go!
+                        <Button onPress={() => fetchData(inputValue)}>Go!</Button>
+                        <Button onPress={() => fetchData(`explain quarks in 5 sentences`)}>
+                          About Quarks
                         </Button>
                         <Button
-                          onPress={() => {
-                            fetchData(`explain quarks in 5 sentences`)
-                          }}
+                          onPress={() => fetchData(`explain the strong force in 5 sentences`)}
                         >
-                          about quarks
+                          About Strong Force
                         </Button>
-                        <Button
-                          onPress={() => {
-                            fetchData(`explain the strong force in 5 sentences`)
-                          }}
-                        >
-                          about strong force 
-                        </Button>
-                        
                       </XStack>
                     </YStack>
                   </ArticleBox>
@@ -271,7 +209,6 @@ const Desktop = () => {
               </YStack>
             )
           })}
-
           <YStack mb={200} borderRadius="10px" p={10} mt="$10" boxShadow={myBoxShadow1}>
             <InsetShadow>Writing... </InsetShadow>
             <InsetShadow>Quantum mechanics post </InsetShadow>
@@ -282,8 +219,18 @@ const Desktop = () => {
   )
 }
 
+// Mobile version component
+const Mobile = () => (
+  <Layout1>
+    <H1>Mobile version will be finished in 2 days, view on larger desktop for now</H1>
+    {/* Placeholders for mobile version content */}
+  </Layout1>
+)
+
+// HomeScreen component
 export function HomeScreen() {
   const media = useMedia()
-
   return <>{media.sm ? <Mobile /> : <Desktop />}</>
 }
+
+export default HomeScreen
