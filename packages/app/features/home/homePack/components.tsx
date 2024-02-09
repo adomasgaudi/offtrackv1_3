@@ -5,6 +5,9 @@ import { XStack } from 'tamagui'
 
 import { Tooltip, TooltipGroup } from "@my/ui";
 
+
+
+
 // Tooltip button component
 export const TooltipButton = ({ Trigger, tooltipText, ...props }) => (
     <TooltipGroup delay={{ open: 100 }}>
@@ -67,7 +70,7 @@ export const LayoutLeft = ({ children, bg, ...props }) => {
   )
 }
 
-const myBoxShadow1 = `   
+export const myBoxShadow1 = `   
 0px 0px 1px hsla(0, 0%, 0%, 0.05), 
 0px 0px 2px hsla(0, 0%, 0%, 0.05), 
 0px 0px 4px hsla(0, 0%, 0%, 0.05), 
