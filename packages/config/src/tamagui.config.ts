@@ -51,7 +51,7 @@ const myThemes = {
     color: '#333',
     background: '#fff',
   },
-  light2: {
+  f3: {
     color: '#333',
     background: '#f3f3f3',
   },

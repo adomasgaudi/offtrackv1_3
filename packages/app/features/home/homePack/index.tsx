@@ -1,24 +1,29 @@
 import { useEffect, useState } from 'react'
-import { H2, H5, YStack, XStack, Button, Image, Input, Theme, useMedia, Spinner, H1 } from '@my/ui'
 import {
-  ArticleBox,
+  H2,
+  H5,
+  YStack,
+  XStack,
+  Button,
+  Image,
+  Input,
+  Theme,
+  useMedia,
+} from '@my/ui'
+import {
   Layout1,
-  InsetShadow,
   P1,
   ArticleBoxSM,
-  TooltipButton,
-  myBoxShadow1,
 } from './components'
 
 import { useLink } from 'solito/link'
-import { ArrowBigRight, MessageCircleQuestion, Share2, Sparkles } from '@tamagui/lucide-icons'
 import useOpenAI from './useOpenai'
 import ARTICLES from './articlesOBJ'
 import {
   Nav,
   SectionBottom,
-  SectionBottomText,
   SectionFakeArticle,
+  SectionGreen,
   SectionTopText,
 } from './sections'
 import { SectionArticle } from './sectionArticle'
@@ -33,8 +38,8 @@ const Desktop = () => {
   const linkProps = (href) => useLink({ href })
 
   return (
-    <Theme name="f8">
-      <YStack bg="$background">
+    <Theme name="f3">
+      <YStack bg="white">
         <Nav />
         <SectionTopText />
 
@@ -43,22 +48,23 @@ const Desktop = () => {
             const isLastItem = index === ARTICLES.length - 1
             const isFirstItem = index === 0
             return (
-              <SectionArticle
-                {...{
-                  isLastItem,
-                  isFirstItem,
-                  index,
-                  article,
-                  linkProps,
-                  inputValue,
-                  setInputValue,
-                  data,
-                  fetchData,
-                  isLoading,
-                }}
-              />
+                <SectionArticle
+                  {...{
+                    isLastItem,
+                    isFirstItem,
+                    index,
+                    article,
+                    linkProps,
+                    inputValue,
+                    setInputValue,
+                    data,
+                    fetchData,
+                    isLoading,
+                  }}
+                />
             )
           })}
+          <SectionGreen></SectionGreen>
           <SectionFakeArticle />
         </Layout1>
         <SectionBottom />
@@ -103,8 +109,7 @@ const Mobile = () => {
                   {article.title[0]}
                 </H2>
                 <XStack>
-                  <TooltipButton
-                    groupId="1"
+                  {/* <TooltipButton
                     placement="top"
                     Trigger={() => (
                       <Button
@@ -118,9 +123,8 @@ const Mobile = () => {
                       </Button>
                     )}
                     tooltipText="ChatGPT summary"
-                  />
-                  <TooltipButton
-                    groupId="1"
+                  /> */}
+                  {/* <TooltipButton
                     placement="top"
                     Trigger={
                       <Button
@@ -134,7 +138,7 @@ const Mobile = () => {
                       </Button>
                     }
                     tooltipText="ChatGPT summary for dummies"
-                  />
+                  /> */}
                 </XStack>
                 <P1>{data ? data : article.text[0]}</P1>
                 <XStack jc="center" ai="center" gap={3} mt={3}>

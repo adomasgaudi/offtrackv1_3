@@ -36,8 +36,9 @@ export const TooltipButton = ({ Trigger, tooltipText, ...props }) => (
 export const P1 = styled(Paragraph, {
   name: 'P1',
   fontWeight: 'normal',
-  fontSize: 16,
-  color: '#555',
+  fontSize: 15,
+  color: '#666',
+  letterSpacing: '0px',
 })
 
 export const P2 = styled(Paragraph, {
@@ -46,13 +47,20 @@ export const P2 = styled(Paragraph, {
   fontSize: 16,
   color: '#555',
 })
+export const P3 = styled(Paragraph, {
+  name: 'P1',
+  fontWeight: 'bold',
+  fontSize: 13,
+  color: 'white',
+  zIndex: 10
+})
 
 export const Layout1 = ({ children }) => {
   return (
-    <Theme name="f8">
-      <YStack bg="$background" f={1}>
-        <YStack jc="center" ai="center" maxWidth={800} mx="auto" bg="$background">
-          <YStack>{children}</YStack>
+    <Theme name="light">
+      <YStack f={1}>
+        <YStack jc="center" ai="center" w="100%" mx="auto">
+          {children}
         </YStack>
       </YStack>
     </Theme>
@@ -60,7 +68,7 @@ export const Layout1 = ({ children }) => {
 }
 export const LayoutLeft = ({ children, bg, ...props }) => {
   return (
-    <Theme name="f8">
+    <Theme name="light">
       <YStack bg="$background" f={1} {...props} >
         <YStack jc="flex-start" ai="flex-start" maxWidth={800} mx="auto" bg={bg} width={800}>
           {children}
@@ -107,10 +115,10 @@ export function ArticleBox(props) {
       animateOnly={['transform']}
       backgroundColor="#fff"
       borderRadius="$1"
-      boxShadow={myBoxShadow1}
-      hoverStyle={{
-        boxShadow: myBoxShadow1 + `, ${shadowDirection} hsl(162, 72%, 43%)`,
-      }}
+      // boxShadow={myBoxShadow1}
+      // hoverStyle={{
+      //   boxShadow: myBoxShadow1 + `, ${shadowDirection} hsl(162, 72%, 43%)`,
+      // }}
       // pressStyle={{ scale: 1.015 }}
       
       p={20}
