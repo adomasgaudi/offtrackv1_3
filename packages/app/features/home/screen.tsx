@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   H1,
   H2,
@@ -12,6 +13,7 @@ import {
   XStack,
   Button,
   H4,
+  TextArea,
 } from '@my/ui'
 import { ArticleBox, ArticleBoxSM, InsetShadow, Layout1, LayoutLeft, P1, P2 } from '../../components'
 import images from '../../../Images'
@@ -129,5 +131,59 @@ const Desktop = () => {
 
 export function HomeScreen() {
   const media = useMedia()
-  return <>{media.sm ? <Mobile /> : <Desktop />}</>
+  const [inputValue, setInputValue] = useState('');
+  const [resultValue, setResultValue] = useState('');
+  const [data, setData] = useState<any>(null);
+
+  const OPENAI_KEY = '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';
+
+  const fetchData = () => {
+    fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${OPENAI_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo-16k-0613',
+        messages: [
+          {
+            role: 'user',
+            content: `summarise this text: ${inputValue}`,
+          },
+        ],
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log("message: ", json.choices)
+        setData(json.choices[0].message.content);
+      });
+  };
+
+  return (
+    <>
+      {media.sm ? (
+        <Mobile />
+      ) : (
+        <Desktop />
+      )}
+      <YStack>
+        <TextArea
+          size="$4"
+          borderWidth={1}
+          value={inputValue}
+          width="100%"
+          onChangeText={(text) => setInputValue(text)}
+        />
+        <Button
+          onPress={() => {
+            fetchData();
+          }}>
+          Post
+        </Button>
+        <H2>Your Result is: {data}</H2>
+      </YStack>
+    </>
+  );
 }
