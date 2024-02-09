@@ -3,6 +3,33 @@ import { LinearGradient } from '@tamagui/linear-gradient'
 import { useRef, useState } from 'react'
 import { XStack } from 'tamagui'
 
+import { Tooltip, TooltipGroup } from "@my/ui";
+
+// Tooltip button component
+export const TooltipButton = ({ Trigger, tooltipText, ...props }) => (
+    <TooltipGroup delay={{ open: 100 }}>
+      <Tooltip {...props}>
+        <Tooltip.Trigger>
+          <Trigger />
+        </Tooltip.Trigger>
+        <Tooltip.Content
+          enterStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
+          exitStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
+          scale={1}
+          x={0}
+          y={0}
+          opacity={1}
+          animation={['100ms', { opacity: { overshootClamping: true } }]}
+        >
+          <Tooltip.Arrow />
+          <P1 size="$2" lineHeight="$1">
+            {tooltipText}
+          </P1>
+        </Tooltip.Content>
+      </Tooltip>
+    </TooltipGroup>
+  )
+
 export const P1 = styled(Paragraph, {
   name: 'P1',
   fontWeight: 'normal',
