@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   H1,
   H2,
@@ -12,6 +12,7 @@ import {
   TooltipGroup,
   Tooltip,
   useMedia,
+  Spinner,
 } from '@my/ui'
 import {
   ArticleBox,
@@ -36,9 +37,14 @@ import {
 // Custom hook for using OpenAI
 const useOpenAI = () => {
   const [data, setData] = useState(null)
+  const [isLoading, setIsLoading] = useState(false) // Add this line
   const OPENAI_KEY = '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'
-
+  useEffect(() => {
+    console.log('isLoading:', isLoading)
+  }, [isLoading])
   const fetchData = async (inputValue) => {
+    setIsLoading(true) // Set isLoading to true when starting to fetch data
+    console.log('isLoading after set to true:', isLoading) // Log isLoading
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -52,15 +58,17 @@ const useOpenAI = () => {
     })
     const json = await response.json()
     setData(json.choices[0].message.content)
+    console.log('isLoading after set to false:', isLoading) // Log isLoading
+    setIsLoading(false) // Set isLoading to false when data has been fetched
     return json.choices[0].message.content
   }
 
-  return { data, fetchData }
+  return { data, fetchData, isLoading } // Return isLoading
 }
 
 // Tooltip button component
 const TooltipButton = ({ Trigger, tooltipText, ...props }) => (
-  <TooltipGroup delay={{ open: 100, close: 100 }}>
+  <TooltipGroup delay={{ open: 100 }}>
     <Tooltip {...props}>
       <Tooltip.Trigger>
         <Trigger />
@@ -111,7 +119,10 @@ const myBoxShadow1 = '0px 0px 1px hsla(0, 0%, 0%, 0.025), 0px 0px 2px hsla(0, 0%
 
 // Desktop version component
 const Desktop = () => {
-  const { data, fetchData } = useOpenAI()
+  const { data, fetchData, isLoading } = useOpenAI()
+  useEffect(() => {
+    console.log('isLoading!!!:', isLoading)
+  }, [isLoading])
   const [inputValue, setInputValue] = useState('')
   const linkProps = (href) => useLink({ href })
 
@@ -198,7 +209,13 @@ const Desktop = () => {
                             tooltipText="Summarise the whole article"
                           />
                         </YStack>
-                        <P1 mb={10}>{data ? data : article.text[0]}</P1>
+                        {isLoading ? (
+                          <XStack jc="center" ai="center" h={200} f={1}>
+                            <Spinner />
+                          </XStack>
+                        ) : (
+                          <P1 mb={10}>{data ? data : article.text[0]}</P1>
+                        )}
                       </XStack>
                       <XStack jc="center" ai="center" gap={5}>
                         <Input
