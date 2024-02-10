@@ -19,7 +19,7 @@ import {
   Share2,
   Wind,
 } from '@tamagui/lucide-icons'
-import { LinearGradient } from 'tamagui/linear-gradient'
+// import { LinearGradient } from 'tamagui/linear-gradient'
 
 export const Nav = () => {
   return (
@@ -69,8 +69,7 @@ export const SectionFakeArticle = () => {
 }
 export const SectionGreen = () => {
   return (
-    <LinearGradient
-      colors={['#019564', '#3ab88e']}
+    <YStack
       height={150}
       bg="#019564"
       width="100%"
@@ -114,7 +113,7 @@ export const SectionGreen = () => {
         “Villains!” I shrieked, “dissemble no more! I admit the deed! — tear up the planks! — here,
         here! — it is the beating of his hideous heart!”
       </P3>
-    </LinearGradient>
+    </YStack>
   )
 }
 export const SectionBottom = () => {

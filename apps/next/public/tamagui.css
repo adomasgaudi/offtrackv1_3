@@ -14,10 +14,15 @@
     body{background:var(--background);color:var(--color)}
     :root, .t_dark .t_light {--color:#333;--background:#fff;}
   }
-:root .t_light2 {--color:#333;--background:#f3f3f3;}
+:root .t_f3 {--color:#333;--background:#f3f3f3;}
 @media(prefers-color-scheme:light){
     body{background:var(--background);color:var(--color)}
-    .t_light2 {--color:#333;--background:#f3f3f3;}
+    .t_f3 {--color:#333;--background:#f3f3f3;}
+  }
+:root .t_f8 {--color:#333;--background:#f8f8f8;}
+@media(prefers-color-scheme:light){
+    body{background:var(--background);color:var(--color)}
+    .t_f8 {--color:#333;--background:#f8f8f8;}
   }
 :root .t_yellow1 {--color:#511b6e;--background:#f7e78d;}
 @media(prefers-color-scheme:light){
