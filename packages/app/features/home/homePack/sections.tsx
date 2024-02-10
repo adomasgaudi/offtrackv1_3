@@ -44,7 +44,7 @@ export const Nav = () => {
 
 export const SectionTopText = () => {
   return (
-    <LayoutLeft bg="$background">
+    <LayoutLeft bg="white">
       <H1>Welcome to the off track posts</H1>
       <Paragraph pl={10} fontWeight="bold" color="gray" fontSize={12}>
         May I interest you with:

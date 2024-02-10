@@ -163,9 +163,9 @@ const Mobile = () => {
   )
 }
 
-export function Pack() {
+export function HomePack() {
   const media = useMedia()
   return <>{media.sm ? <Mobile /> : <Desktop />}</>
 }
 
-export default Pack
+export default HomePack

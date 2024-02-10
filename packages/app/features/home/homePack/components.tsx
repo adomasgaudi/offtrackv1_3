@@ -69,7 +69,7 @@ export const Layout1 = ({ children }) => {
 export const LayoutLeft = ({ children, bg, ...props }) => {
   return (
     <Theme name="light">
-      <YStack bg="$background" f={1} {...props} >
+      <YStack bg="white" f={1} {...props} >
         <YStack jc="flex-start" ai="flex-start" maxWidth={800} mx="auto" bg={bg} width={800}>
           {children}
         </YStack>

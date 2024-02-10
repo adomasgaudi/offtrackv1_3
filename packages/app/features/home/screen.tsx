@@ -1,8 +1,8 @@
 
-import Pack from './homePack'
+import HomePack from './homePack'
 
 export function HomeScreen() {
-  return <Pack/>
+  return <HomePack/>
 }
 
 export default HomeScreen
