@@ -1,5 +1,6 @@
 
 import images from '../../../../Images'
+import { ArticleInfo } from '../../articles/exoplanetsin10/articleOBJ'
 
 // Constants
 const ARTICLES = [
@@ -13,6 +14,7 @@ const ARTICLES = [
       ],
       image: images.quarks3.src,
       link: '/article/exoplanetsin10',
+      fullText: ArticleInfo.text[0] + ArticleInfo.text[1] + ArticleInfo.text[2],
     },
     {
       title: ['Stars for beginners - They are all the same'],
@@ -21,6 +23,7 @@ const ARTICLES = [
       ],
       image: images.starsizes.src,
       link: '/article/exoplanetsin10',
+      fullText: ArticleInfo.text[0] + ArticleInfo.text[1] + ArticleInfo.text[2],
     },
     // ... Add more articles as needed ...
   ]

@@ -1,4 +1,4 @@
-import ArticleBody from 'app/features/article/bodybuilding'
+import ArticleBody from 'app/features/articles/bodybuilding'
 import Head from 'next/head'
 
 export default function Page() {

@@ -85,7 +85,7 @@ export const SectionArticle = ({
                         hoverStyle={{ bg: '$background' }}
                         icon={<MessageCircleQuestion />}
                         circular
-                        onPress={() => fetchData(`summarise in 5 sentences: ${article.text[0]}`)}
+                        onPress={() => fetchData(`summarise in 4 sentences: ${article.fullText}`)}
                       ></Button>
                     )}
                     tooltipText="Summarise the whole article"

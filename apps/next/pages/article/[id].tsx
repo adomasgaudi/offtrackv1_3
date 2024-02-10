@@ -1,4 +1,4 @@
-import ArticlePage from 'app/features/article/page'
+import ArticlePage from 'app/features/articles/page'
 import Head from 'next/head'
 
 export default function Page() {
