@@ -1,42 +1,15 @@
 import { useEffect, useState } from 'react'
-import {
-  H2,
-  H5,
-  YStack,
-  XStack,
-  Button,
-  Image,
-  Input,
-  Theme,
-  useMedia,
-} from '@my/ui'
-import {
-  Layout1,
-  P1,
-  ArticleBoxSM,
-} from './components'
+import { H2, H5, YStack, XStack, Button, Image, Input, Theme, useMedia } from '@my/ui'
+import { Layout1, P1, ArticleBoxSM } from './components'
 
 import { useLink } from 'solito/link'
 import useOpenAI from './useOpenai'
 import ARTICLES from './articlesOBJ'
-import {
-  Nav,
-  SectionBottom,
-  SectionFakeArticle,
-  SectionGreen,
-  SectionTopText,
-} from './sections'
+import { Nav, SectionBottom, SectionFakeArticle, SectionGreen, SectionTopText } from './sections'
 import { SectionArticle } from './sectionArticle'
 
 // Desktop version component
 const Desktop = () => {
-  const { data, fetchData, isLoading } = useOpenAI()
-  useEffect(() => {
-    console.log('isLoading!!!:', isLoading)
-  }, [isLoading])
-  const [inputValue, setInputValue] = useState('')
-  const linkProps = (href) => useLink({ href })
-
   return (
     <Theme name="f3">
       <YStack bg="white">
@@ -44,26 +17,16 @@ const Desktop = () => {
         <SectionTopText />
 
         <Layout1>
-          {ARTICLES.map((article, index) => {
-            const isLastItem = index === ARTICLES.length - 1
-            const isFirstItem = index === 0
-            return (
-                <SectionArticle
-                  {...{
-                    isLastItem,
-                    isFirstItem,
-                    index,
-                    article,
-                    linkProps,
-                    inputValue,
-                    setInputValue,
-                    data,
-                    fetchData,
-                    isLoading,
-                  }}
-                />
-            )
-          })}
+          {ARTICLES.map((article, index) => (
+            <SectionArticle
+              {...{
+                isLastItem: index === ARTICLES.length - 1,
+                isFirstItem: index === 0,
+                index,
+                article,
+              }}
+            />
+          ))}
           <SectionGreen></SectionGreen>
           <SectionFakeArticle />
         </Layout1>

@@ -9,19 +9,21 @@ import {
   myBoxShadow1,
 } from './components'
 import { ArrowBigRight, MessageCircleQuestion, Share2 } from '@tamagui/lucide-icons'
+import useOpenAI from './useOpenai'
+import { useState } from 'react'
+import { useLink } from 'solito/link'
 
 export const SectionArticle = ({
   isLastItem,
   isFirstItem,
   index,
-  article,
-  linkProps,
-  inputValue,
-  setInputValue,
-  data,
-  fetchData,
-  isLoading,
+  article
 }) => {
+
+  const { data, fetchData, isLoading } = useOpenAI()
+  const [inputValue, setInputValue] = useState('')
+  const linkProps = (href) => useLink({ href })
+  
   return (
     <YStack key={index} mt={isFirstItem ? 200 : 6} mb={isLastItem ? 200 : 100} borderTopWidth={0.5} borderTopColor="#ececec" w="100%" pt={20}>
       <YStack  w="100%" bg="#f3f3f3" m="auto" py={20}>
