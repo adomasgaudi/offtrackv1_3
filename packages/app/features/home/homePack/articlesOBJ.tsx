@@ -12,7 +12,7 @@ const ARTICLES = [
         quark and -1/3 for the down one. You can remember that "up" means positive and "down"
         means negative, and also that "up" means more of charge than the "down". So if you take two up...`, // Add the rest of the text
       ],
-      image: images.quarks3.src,
+      image: images.quarks2.src,
       link: '/article/exoplanetsin10',
       fullText: ArticleInfo.text[0] + ArticleInfo.text[1] + ArticleInfo.text[2],
     },
