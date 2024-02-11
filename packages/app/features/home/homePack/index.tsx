@@ -4,7 +4,7 @@ import { Layout1, P1, ArticleBoxSM } from './components'
 
 import { useLink } from 'solito/link'
 import useOpenAI from './useOpenai'
-import ARTICLES from './articlesOBJ'
+import ARTICLES from './constantsARTICLES'
 import { Nav, SectionBottom, SectionFakeArticle, SectionGreen, SectionTopText } from './sections'
 import { SectionArticle } from './sectionArticle'
 

@@ -33,8 +33,9 @@ export const SectionArticle = ({
           source={{
             uri: article.image,
             width: '100%',
-            height: 300,
+            height: article.imageHeight,
           }}
+          resizeMode="contain"
           cursor="pointer"
           {...linkProps(article.link)}
         />
@@ -85,7 +86,7 @@ export const SectionArticle = ({
                         hoverStyle={{ bg: '$background' }}
                         icon={<MessageCircleQuestion />}
                         circular
-                        onPress={() => fetchData(`summarise in 4 sentences: ${article.fullText}`)}
+                        onPress={() => fetchData(`summarise this text: ${article.fullText}`)}
                       ></Button>
                     )}
                     tooltipText="Summarise the whole article"
@@ -99,7 +100,7 @@ export const SectionArticle = ({
                   borderColor="#cacaca"
                   outlineColor="none"
                   outlineWidth={0}
-                  placeholder="what is a... ?"
+                  placeholder="what is a quark ?"
                   value={inputValue}
                   width="100%"
                   onChangeText={(text) => setInputValue(text)}
@@ -109,9 +110,6 @@ export const SectionArticle = ({
                   icon={ArrowBigRight}
                   size="$3"
                 ></Button>
-                <Button onPress={() => fetchData(`explain quarks in 5 sentences`)} size="$3">
-                  What's a quark?
-                </Button>
               </XStack>
             </YStack>
           </ArticleBox>
