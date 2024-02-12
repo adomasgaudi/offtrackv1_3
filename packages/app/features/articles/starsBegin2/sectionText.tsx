@@ -6,19 +6,18 @@ export const SectionText = () => {
   return (
     <>
       <H2 mb={20} letterSpacing={0}>
-        The universe is mostly made up of "up" and "down" quarks.
+        All stars are just spheres of hydrogen buring into helium under the pressure of gravity. 
       </H2>
-      {/* elementary  */}
-      <P2 mb={30}>
+      <P2>Four separate protons trying to merge and change into a nucleus of 2 protons and 2 neutrons. Imagine a gas cloud the mass of Saturn collapsing to form a planet. That planet as well as the biggest star is mostly the same stuff - hydrogen. You can keep adding hydrogen, doubling its mass and it will contract and heat up under the increasing gravity, but it will not be hot enough to fuse hydrogen into helium untill its about 80 times the mass of Jupiter. If the objects the mass is between 14 to 80 Jupiter masses, we call that a failed star, as it never ignites and is barely detectable even with the best telescopes. The star is still hot from the friction of all of the gass falling in under gravity, but is small and faint, about a 100 000 times less bright than then sun, which is about as bright as the moon is. </P2>
+      {/* <P2 mb={30}>
         Each one of the stars above and, in fact, almost everything else around you, yourself
-        included, is just made up of those two kinds of quarks.
+        included, is just made up of those two quarks.
       </P2>
-      {/* italic */}
       <P2 mb={30}>
-        Quarks have a bit of a weird charge. 2/3 for the "up" quark and -1/3 for the "down" quark.
-        You can remember that "up" means positive and "down" means negative, and also that "up" means more charge than the "down".
+        Quarks have a bit of a weird charge. 2/3 for the up quark and -1/3 for the down one. You can
+        remember that "up" means positive and "down" means negative, and also that "up" means more
+        of charge than the "down".
       </P2>
-      {/* latex */}
       <P2 mb={50}>
         So if you take two "up" quarks and one "down" quark you get a +1 positively charged
         particle, you get a proton. If you take two "down" quarks and one "up" then you get a
@@ -61,12 +60,12 @@ export const SectionText = () => {
         </YStack>
       </XStack>
       <P2 mt={100}>
-        In ancient greek "protos" means "first", and that is a fitting name for the essentially first
+        Etymologically "protos" means "first", and that is a fitting name for the essentially first
         kind of particle in the universe. Take that proton and let it float in a never-ending void,
         this is what the universe is, mostly, a collection of protons. We call it hydrogen (We're
-        simplifying a bit here). hydrogen is just a single proton (see chart below). The quarks inside a proton are held together by the stong force,
+        simplifying a bit here). The quarks inside a proton are held together by the stong force,
         and actually that force sort of leaks out beyond the inner quarks, such that two protons
-        would actually bind together were they not both positively charged. Thats is what we call the residual strong force or nuclear force. But they are both positively charged and hence they repel.
+        would actually bind together were they not both positively charged.
       </P2>
       <Image
         source={{
@@ -82,14 +81,13 @@ export const SectionText = () => {
           height: 400,
         }}
       />
-      {/* italic are */}
       <P2 mb={50}>
-        However, if you were to squeeze
+        But they are both positively changed and hence they repel. However, if you were to squeeze
         two protons together, once sufficient force is present, one of those inner "up" quarks would
         turn into a "down" quark (don't ask me how, that probably requires a PhD) and that means
         that the proton would become a neutron (an extra charged particle is created for this
-        process to conserve the overall charge). -1/3 -1/3 +2/3 = 0 charge - a neutrally charged
-        particle. Neutron comes from the word "neutral". In this case there would be no repelling charge
+        process to conserve the overall charge). -1/2 -1/2 +2/3 = 0 charge - a neutrally charged
+        particle. Neutron from the word "neutral". In this case there would be no repeling charge
         forces, so the proton and the neutron would bind together.
       </P2>
       <Image
@@ -104,7 +102,7 @@ export const SectionText = () => {
         In this case we would have a hydrogen with an extra neutron which we call hydrogen-2 or
         deuterium (deu meaning 2). You can add another proton and the leaking strong force will
         still overcome the repelling force of the two protons and you will have a two proton one
-        neutron particle we call helium-3, which is just one neutron shy of its most stable form,
+        neutron particle we call helium-3, which is just one neutron shy of its most stable form
         helium-4 or just helium.
       </P2>
       <Image
@@ -115,7 +113,7 @@ export const SectionText = () => {
         }}
       />
       <P2>
-        Other combinations like helium-2 or hydrogen-4 or even double neutron particles are also
+        Other combinations like Helium-2 or Hydrogen-4 or even double neutron particles are also
         possible, but most would decay about as fast a photon of light would travel across the
         nucleus. If you wanted to observe such a particle, say you could accelerate and colide large
         nucleuses of atoms or have a very large atom decay into smaller parts. You would not even be
@@ -124,8 +122,8 @@ export const SectionText = () => {
       </P2>
       <P2 mb={50}>
         So there you go, protons and neutrons mixing to create mostly hydrogen and helium. That's
-        how everything starts. A cloud of hydrogen and helium contracts under gravity until it's
-        dense enough to create a proto-star, basically something like Saturn, only without all of
+        how everything starts. A cloud of hydrogen and helium contracts under gravity until its
+        dense enough to create a proto-star, basically something like saturn, only without all of
         the heavier elements. Add more hydrogen till its gravity crushes it so much that the created
         heat and pressure stars fusing together the protons and you have a shining star. Let that
         star die, meaning its fusion stops and before it dies gravity will compress even further and
@@ -145,7 +143,10 @@ export const SectionText = () => {
       </P2>
       <Anchor href="https://www.youtube.com/watch?v=TbzZIMQC6vk&ab_channel=PBSSpaceTime">
         Proton AI video
-      </Anchor>
+      </Anchor> */}
+
+
+
       {/* <P2>
         10 by attracting the surrounding gas and you get something of a similar size but much dense
         something like a jupyter. 10x mass and the pressures and density inside become high enough

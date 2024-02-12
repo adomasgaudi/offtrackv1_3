@@ -33,7 +33,7 @@ export const P1 = styled(Paragraph, {
   fontWeight: 'semi-bold',
   fontSize: 20,
 })
-export default function ArticleStarsBegin1() {
+export default function ArticleExo10() {
   const linkProps = useLink({
     href: '/',
   })

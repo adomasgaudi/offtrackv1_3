@@ -1,4 +1,4 @@
-import ArticleExo10 from 'app/features/articles/starsBegin1'
+import ArticleStarsBegin1 from 'app/features/articles/starsBegin1'
 import Head from 'next/head'
 
 export default function Page() {
@@ -7,7 +7,7 @@ export default function Page() {
       <Head>
         <title>Article</title>
       </Head>
-      <ArticleExo10 />
+      <ArticleStarsBegin1 />
     </>
   )
 }

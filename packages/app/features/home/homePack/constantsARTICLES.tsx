@@ -21,8 +21,18 @@ const ARTICLES = [
       ],
       image: images.quarks2.src,
       imageHeight: 360,
-      link: '/article/exoplanetsin10',
+      link: '/articles/starsBegin1',
       fullText: fullArticles.stars,
+    },
+    {
+      title: ['Stars for beginners - They are all the same'],
+      text: [
+        `All stars are just spheres of hydrogen buring into helium under the pressure of gravity. 4 separate protons trying to merge and change into a nucleus of 2 protons and 2 neutrons. Imagine a gas cloud the mass of Saturn collapsing to form a planet. That planet as well as the biggest star is mostly the same stuff - hydrogen. You can keep adding hydrogen, doubling its mass and it will contract and heat up under the increasing gravity, but it will not be hot enough to fuse hydrogen into helium untill its about 80 times the mass of Jupiter. Before that happens, an object the mass of between 14 to 80 Jupiter masses, we call that a failed star, as it never ignites and is only visible from the faint glow if its matter...`, 
+      ],
+      image: images.starsizes.src,
+      imageHeight: 400,
+      link: '/articles/starsBegin2',
+      fullText: fullArticles.stars2,
     },
     {
       title: ['Exoplanets within 10 light years'],
@@ -33,16 +43,6 @@ const ARTICLES = [
       imageHeight: 300,
       link: 'https://medium.com/@goingoffroad/where-is-the-closest-earth-2-0-there-are-none-within-10-light-years-22448ccb88e3',
       fullText: fullArticles.exoplanets,
-    },
-    {
-      title: ['Stars for beginners - They are all the same'],
-      text: [
-        `All stars are just spheres of hydrogen buring into helium under the pressure of gravity. 4 separate protons trying to merge and change into a nucleus of 2 protons and 2 neutrons. Imagine a gas cloud the mass of Saturn collapsing to form a planet. That planet as well as the biggest star is mostly the same stuff - hydrogen. You can keep adding hydrogen, doubling its mass and it will contract and heat up under the increasing gravity, but it will not be hot enough to fuse hydrogen into helium untill its about 80 times the mass of Jupiter. That's what we call a failed star, a brown dwarf, if its less than 14 Jupiter masses, then its just...`, 
-      ],
-      image: images.starsizes.src,
-      imageHeight: 400,
-      link: '/article/exoplanetsin10',
-      fullText: fullArticles.stars2,
     },
   ]
 
