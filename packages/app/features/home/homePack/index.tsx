@@ -13,7 +13,7 @@ const Desktop = () => {
   return (
     <Theme name="f3">
       <YStack bg="white">
-        <Nav />
+        {/* <Nav /> */}
         <SectionTopText />
 
         <Layout1>
@@ -27,8 +27,10 @@ const Desktop = () => {
               }}
             />
           ))}
-          <SectionGreen></SectionGreen>
           <SectionFakeArticle />
+          <Theme name="f3">
+            <SectionGreen></SectionGreen>
+          </Theme>
         </Layout1>
         <SectionBottom />
       </YStack>

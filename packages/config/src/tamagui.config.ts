@@ -47,6 +47,10 @@ const myThemes = {
     background: '#333',
     color: '#fff',
   },
+  darkGreen: {
+    background: '#333',
+    color: '#4acf4a',
+  },
   light: {
     color: '#333',
     background: '#fff',
