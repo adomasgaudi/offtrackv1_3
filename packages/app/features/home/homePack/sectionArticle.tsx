@@ -23,23 +23,23 @@ export const SectionArticle = ({
   const { data, fetchData, isLoading } = useOpenAI()
   const [inputValue, setInputValue] = useState('')
   const linkProps = (href) => useLink({ href })
-  
+
   return (
     <YStack key={index} mt={isFirstItem ? 200 : 6} mb={isLastItem ? 200 : 100} borderTopWidth={0.5} borderTopColor="#ececec" w="100%" pt={20}>
-      <YStack  w="100%" bg="#f3f3f3" m="auto" py={20}>
+      <YStack w="100%" bg="#f3f3f3" m="auto" py={20}>
 
-      <YStack maxWidth={800} w={800} m="auto">
-        <Image
-          source={{
-            uri: article.image,
-            width: '100%',
-            height: article.imageHeight,
-          }}
-          resizeMode="contain"
-          cursor="pointer"
-          {...linkProps(article.link)}
-        />
-      </YStack>
+        <YStack maxWidth={800} w={800} m="auto">
+          <Image
+            source={{
+              uri: article.image,
+              width: '100%',
+              height: article.imageHeight,
+            }}
+            resizeMode="contain"
+            cursor="pointer"
+            {...linkProps(article.link)}
+          />
+        </YStack>
       </YStack>
       <Theme name="light2">
         <YStack maxWidth={800} m="auto">
@@ -65,7 +65,7 @@ export const SectionArticle = ({
                   />
                 </XStack>
               </XStack>
-              <H2 mb="$4" cursor="pointer" {...linkProps(article.link)}>
+              <H2 mb="$6" cursor="pointer" {...linkProps(article.link)}>
                 {article.title[0]}
               </H2>
               <XStack gap={15}>
