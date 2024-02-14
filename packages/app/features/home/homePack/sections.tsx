@@ -80,26 +80,16 @@ export const SectionTopText = ({ onPress }) => {
             <YStack ai="center" position="relative">
               <Cat />
               <P2 color="white">Quantum</P2>
+              
               <YStack
                 ai="center"
                 position="absolute"
-                opacity={0}
                 x={0}
-                hoverStyle={{ x: 20, opacity: 1 }}
+                hoverStyle={{ x: 10 }}
                 animation="slow"
               >
-                <X />
+                <Cat />
                 <P2 color="white">Quantum</P2>
-              </YStack>
-              <YStack
-                ai="center"
-                position="absolute"
-                x={0}
-                hoverStyle={{ x: 20, rotate: '180deg' }}
-                animation="slow"
-              >
-                <Cat hoverStyle={{ rotate: '180deg' }} animation="slow" />
-                {/* <P2 color="white">Quantum</P2> */}
               </YStack>
             </YStack>
           </XStack>

@@ -12,14 +12,13 @@ import { Atom, Cat, CodeSquare, X } from '@tamagui/lucide-icons'
 // Desktop version component
 const sectionRef = createRef()
 const Desktop = () => {
-  const [isSticky, setIsSticky] = useState(false)
-
+  const [isScrolled, setIsScrolled] = useState(false)
   useEffect(() => {
     const checkScroll = () => {
-      if (window.scrollY >= 500) {
-        setIsSticky(true)
+      if (window.scrollY > 500) {
+        setIsScrolled(true)
       } else {
-        setIsSticky(false)
+        setIsScrolled(false)
       }
     }
 
@@ -33,24 +32,22 @@ const Desktop = () => {
   return (
     <Theme name="f3">
       <YStack bg="white">
-        {/* nav - change this */}
         <XStack
           w="100%"
           h={60}
-          mb={50}
           bg="#019564"
           jc="flex-start"
           ai="center"
           gap={200}
-          position={isSticky ? 'fixed' : 'relative'}
-          top={isSticky ? 0 : 'auto'}
-          opacity={isSticky ? 1 : 0}
-          scaleY={isSticky ? 1 : 0}
+          position="fixed"
+          top={isScrolled ? 0 : 'auto'}
+          opacity={isScrolled ? 1 : 0}
+          scaleY={isScrolled ? 1 : 0}
           zIndex={10}
           animation="fast"
         >
-          <XStack maxWidth={800} width={800} m="auto" gap={10}>
-          <YStack ai="center" hoverStyle={{ opacity: 0 }} animation="slow">
+          <XStack maxWidth={800} width={800} m="auto" gap={40}>
+            <YStack ai="center" hoverStyle={{ opacity: 0 }} x={isScrolled ? 0 : -40} animation="slow">
               <Atom />
               <P2 color="white">Physics</P2>
             </YStack>
@@ -58,39 +55,31 @@ const Desktop = () => {
               ai="center"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
+              x={isScrolled ? 0 : -40}
+              animation="slow"
             >
               <CodeSquare color={isHovered ? '#94ff94' : 'white'} animation="slow" />
               <P2 color={isHovered ? '#9aff9a' : 'white'} animation="slow">
                 Code
               </P2>
             </YStack>
-            <YStack ai="center" position="relative">
+            <YStack ai="center" position="relative" x={isScrolled ? 0 : -40} animation="slow">
               <Cat />
               <P2 color="white">Quantum</P2>
               <YStack
                 ai="center"
                 position="absolute"
-                opacity={0}
                 x={0}
-                hoverStyle={{ x: 20, opacity: 1 }}
+                hoverStyle={{ x: 10}}
                 animation="slow"
               >
-                <X />
+                <Cat  />
                 <P2 color="white">Quantum</P2>
-              </YStack>
-              <YStack
-                ai="center"
-                position="absolute"
-                x={0}
-                hoverStyle={{ x: 20, rotate: '180deg' }}
-                animation="slow"
-              >
-                <Cat hoverStyle={{ rotate: '180deg' }} animation="slow" />
-                {/* <P2 color="white">Quantum</P2> */}
               </YStack>
             </YStack>
           </XStack>
-        </XStack>
+        </XStack> 
+      
         {/* nav end  */}
         <SectionTopText
           onPress={() => sectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
