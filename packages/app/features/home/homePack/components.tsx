@@ -1,4 +1,4 @@
-import { H1, Paragraph, Theme, YStack, styled } from '@my/ui'
+import { H1, H2, Paragraph, Theme, YStack, styled } from '@my/ui'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { useRef, useState } from 'react'
 import { XStack } from 'tamagui'
@@ -10,28 +10,28 @@ import { Tooltip, TooltipGroup } from "@my/ui";
 
 // Tooltip button component
 export const TooltipButton = ({ Trigger, tooltipText, ...props }) => (
-    <TooltipGroup delay={{ open: 100 }}>
-      <Tooltip {...props}>
-        <Tooltip.Trigger>
-          <Trigger />
-        </Tooltip.Trigger>
-        <Tooltip.Content
-          enterStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
-          exitStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
-          scale={1}
-          x={0}
-          y={0}
-          opacity={1}
-          animation={['100ms', { opacity: { overshootClamping: true } }]}
-        >
-          <Tooltip.Arrow />
-          <P1 size="$2" lineHeight="$1">
-            {tooltipText}
-          </P1>
-        </Tooltip.Content>
-      </Tooltip>
-    </TooltipGroup>
-  )
+  <TooltipGroup delay={{ open: 100 }}>
+    <Tooltip {...props}>
+      <Tooltip.Trigger>
+        <Trigger />
+      </Tooltip.Trigger>
+      <Tooltip.Content
+        enterStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
+        exitStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
+        scale={1}
+        x={0}
+        y={0}
+        opacity={1}
+        animation={['100ms', { opacity: { overshootClamping: true } }]}
+      >
+        <Tooltip.Arrow />
+        <P1 size="$2" lineHeight="$1">
+          {tooltipText}
+        </P1>
+      </Tooltip.Content>
+    </Tooltip>
+  </TooltipGroup>
+)
 
 export const P1 = styled(Paragraph, {
   name: 'P1',
@@ -53,6 +53,15 @@ export const P3 = styled(Paragraph, {
   fontSize: 13,
   color: 'white',
   zIndex: 10
+})
+
+export const P4 = styled(Paragraph, {
+  name: 'P1',
+  fontWeight: 'bold',
+  fontSize: 13,
+  color: '#ffffff',
+  zIndex: 10,
+  textAlign: "justify"
 })
 
 export const Layout1 = ({ children }) => {
@@ -120,7 +129,7 @@ export function ArticleBox(props) {
       //   boxShadow: myBoxShadow1 + `, ${shadowDirection} hsl(162, 72%, 43%)`,
       // }}
       // pressStyle={{ scale: 1.015 }}
-      
+
       p={20}
       {...props}
       colors={['#fff', '#ffffff']}
@@ -175,10 +184,11 @@ export function ArticleBoxSM(props) {
   )
 }
 
-export const InsetShadow = styled(H1, {
+export const InsetShadow = styled(H2, {
   textShadowColor: 'hsla(167, 72%, 36%, 0.4)',
-  textShadowOffset: {width: 1, height: 0},
+  textShadowOffset: { width: 1, height: 0 },
   textShadowRadius: 3,
-  color: '$background'
+  letterSpacing: 1,
+  color: 'white'
 })
 

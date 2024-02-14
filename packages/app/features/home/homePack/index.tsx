@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { H2, H5, YStack, XStack, Button, Image, Input, Theme, useMedia } from '@my/ui'
+import { createRef, useEffect, useState } from 'react'
+import { H2, H5, YStack, XStack, Button, Image, Input, Theme, useMedia, H1 } from '@my/ui'
 import { Layout1, P1, ArticleBoxSM } from './components'
 
 import { useLink } from 'solito/link'
@@ -7,15 +7,16 @@ import useOpenAI from './useOpenai'
 import ARTICLES from './constantsARTICLES'
 import { Nav, SectionBottom, SectionFakeArticle, SectionGreen, SectionTopText } from './sections'
 import { SectionArticle } from './sectionArticle'
+import MyComponent from './carousel'
 
 // Desktop version component
+const sectionRef = createRef()
 const Desktop = () => {
   return (
     <Theme name="f3">
       <YStack bg="white">
-        <Nav />
-        <SectionTopText />
-
+        <SectionTopText onPress={() => sectionRef.current?.scrollIntoView({ behavior: 'smooth' })}/>
+        <YStack ref={sectionRef}></YStack>
         <Layout1>
           {ARTICLES.map((article, index) => (
             <SectionArticle
@@ -27,8 +28,10 @@ const Desktop = () => {
               }}
             />
           ))}
-          <SectionGreen></SectionGreen>
           <SectionFakeArticle />
+          <Theme name="f3">
+            <SectionGreen></SectionGreen>
+          </Theme>
         </Layout1>
         <SectionBottom />
       </YStack>

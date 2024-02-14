@@ -46,8 +46,10 @@ export default function ArticleStarsBegin1() {
           <Paragraph p="$4" fontWeight="bold">
             Written by Adomas G.
           </Paragraph>
-          <XStack>
-            <Button {...linkProps}>Home</Button>
+          <XStack p={18}>
+            <Button bg="#37b35e" {...linkProps} size="$3">
+              Home
+            </Button>
           </XStack>
           <YStack f={1} mt="$10" jc="center" p="$4" space>
             <YStack space="$4" minHeight={200}>
@@ -67,7 +69,7 @@ export default function ArticleStarsBegin1() {
             <YStack w="100%" minHeight={300} bg="$background">
               <YStack maxWidth={1200} w="100%" mx="auto" py={100} p="$4">
                 <YStack my={100} maxWidth={800}>
-                 <SectionText></SectionText>
+                  <SectionText></SectionText>
                 </YStack>
               </YStack>
             </YStack>

@@ -1,4 +1,4 @@
-import { Button, H2, H5, Image, Input, Spinner, Theme, XStack, YStack } from '@my/ui'
+import { Button, H2, H5, Image, Input, Paragraph, Spinner, Theme, View, XStack, YStack } from '@my/ui'
 import {
   ArticleBox,
   InsetShadow,
@@ -13,33 +13,49 @@ import useOpenAI from './useOpenai'
 import { useState } from 'react'
 import { useLink } from 'solito/link'
 
-export const SectionArticle = ({
-  isLastItem,
-  isFirstItem,
-  index,
-  article
-}) => {
-
+export const SectionArticle = ({ isLastItem, isFirstItem, index, article }) => {
   const { data, fetchData, isLoading } = useOpenAI()
   const [inputValue, setInputValue] = useState('')
   const linkProps = (href) => useLink({ href })
-  
-  return (
-    <YStack key={index} mt={isFirstItem ? 200 : 6} mb={isLastItem ? 200 : 100} borderTopWidth={0.5} borderTopColor="#ececec" w="100%" pt={20}>
-      <YStack  w="100%" bg="#f3f3f3" m="auto" py={20}>
 
-      <YStack maxWidth={800} w={800} m="auto">
-        <Image
-          source={{
-            uri: article.image,
-            width: '100%',
-            height: article.imageHeight,
-          }}
-          resizeMode="contain"
-          cursor="pointer"
-          {...linkProps(article.link)}
-        />
-      </YStack>
+  return (
+    <YStack
+      key={index}
+      mt={isFirstItem ? 0 : 6}
+      mb={isLastItem ? 200 : 100}
+      borderTopWidth={0.5}
+      borderTopColor="#ececec"
+      w="100%"
+      pt={20}
+    >
+      <YStack w="100%" bg="#f3f3f3" m="auto" py={20}>
+        <YStack maxWidth={800} w={800} m="auto" position="relative">
+          <Image
+            source={{
+              uri: article.image,
+              width: '100%',
+              height: article.imageHeight,
+            }}
+            resizeMode="cover"
+            cursor="pointer"
+            {...linkProps(article.link)}
+          />
+          <View
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              backgroundColor: 'rgba(255, 255, 255, 0.49)',
+              paddingRight: 10,
+              paddingLeft: 10,
+              borderRadius: 2,
+            }}
+          >
+            <P1 color="black" fontWeight="bold">
+              {article.imageTitle}
+            </P1>
+          </View>
+        </YStack>
       </YStack>
       <Theme name="light2">
         <YStack maxWidth={800} m="auto">
@@ -65,7 +81,12 @@ export const SectionArticle = ({
                   />
                 </XStack>
               </XStack>
-              <H2 mb="$4" cursor="pointer" {...linkProps(article.link)}>
+              <H2
+                mb="$6"
+                hoverStyle={{ fontSize: 31, transition: '0.2s' }}
+                cursor="pointer"
+                {...linkProps(article.link)}
+              >
                 {article.title[0]}
               </H2>
               <XStack gap={15}>
@@ -74,7 +95,7 @@ export const SectionArticle = ({
                     <Spinner />
                   </XStack>
                 ) : (
-                  <P1 mb={10}>{data ? data : article.text[0]}</P1>
+                  <P1 mb={30}>{data ? data : article.text[0]}</P1>
                 )}
                 <YStack>
                   <TooltipButton
