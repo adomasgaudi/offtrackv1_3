@@ -51,12 +51,12 @@ export const Nav = () => {
 }
 
 export const SectionTopText = ({ onPress }) => {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onPress()
-    }, 1500)
-    return () => clearTimeout(timer)
-  }, [onPress])
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     onPress()
+  //   }, 1500)
+  //   return () => clearTimeout(timer)
+  // }, [onPress])
   const [isHovered, setIsHovered] = useState(false)
   return (
     <Theme name="darkGreen">
