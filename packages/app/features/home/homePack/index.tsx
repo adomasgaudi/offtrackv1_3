@@ -8,6 +8,7 @@ import ARTICLES from './constantsARTICLES'
 import { Nav, SectionBottom, SectionFakeArticle, SectionGreen, SectionTopText } from './sections'
 import { SectionArticle } from './sectionArticle'
 import { Atom, Cat, CodeSquare, X } from '@tamagui/lucide-icons'
+import { Analytics } from '@vercel/analytics/react';
 
 // Desktop version component
 const sectionRef = createRef()
@@ -32,6 +33,7 @@ const Desktop = () => {
   return (
     <Theme name="f3">
       <YStack bg="white">
+      <Analytics />
         <XStack
           w="100%"
           h={60}

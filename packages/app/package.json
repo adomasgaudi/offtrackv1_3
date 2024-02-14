@@ -14,6 +14,7 @@
     "@tamagui/lucide-icons": "^1.89.8",
     "@tamagui/shorthands": "^1.89.8",
     "@tamagui/themes": "^1.89.8",
+    "@vercel/analytics": "^1.1.3",
     "burnt": "^0.12.1",
     "expo-constants": "~14.4.2",
     "expo-linking": "~5.0.2",
