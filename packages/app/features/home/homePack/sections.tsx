@@ -1,4 +1,17 @@
-import { Button, H1, H2, H5, Image, Input, Paragraph, Spinner, Theme, XStack, YStack } from '@my/ui'
+import {
+  Button,
+  H1,
+  H2,
+  H5,
+  Image,
+  Input,
+  Paragraph,
+  Spinner,
+  Theme,
+  View,
+  XStack,
+  YStack,
+} from '@my/ui'
 import {
   ArticleBox,
   InsetShadow,
@@ -21,55 +34,43 @@ import {
   Cat,
   CodeSquare,
   MessageCircleQuestion,
+  Moon,
   Share2,
   Wind,
 } from '@tamagui/lucide-icons'
 import { useState } from 'react'
-// import { LinearGradient } from 'tamagui/linear-gradient'
 
 export const Nav = () => {
   return (
     <XStack w="full" h={60} mb={50} bg="#019564" jc="flex-start" ai="center" gap={200}>
-      <XStack maxWidth={800} width={800} m="auto" gap={10}>
-        {/* <P1 color="white" fontWeight="bold">
-          Made in China, not
-        </P1>
-        <P1 color="white" fontWeight="bold">
-          Made in China, not
-        </P1>
-        <P1 color="white" fontWeight="bold">
-          Made in China, not
-        </P1>
-        <P1 color="white" fontWeight="bold">
-          Made in China, not
-        </P1> */}
-      </XStack>
+      <XStack maxWidth={800} width={800} m="auto" gap={10}></XStack>
     </XStack>
   )
 }
 
-export const SectionTopText = () => {
+export const SectionTopText = ({onPress}) => {
   return (
     <Theme name="darkGreen">
-
       <YStack bg="$background" h="100vh" jc="center" ai="center">
-        <YStack w={1200} jc="center" ai="center">
+        <YStack w={1200} ai="center">
+          <XStack gap={60} mb={300} w="100%">
+            <Atom />
+            <CodeSquare />
+            <Cat />
+          </XStack>
+          <H1 mb={300} color="$accent">
+            This way to the off-track posts
+          </H1>
 
-          <Button justifySelf="flex-end" ><Atom></Atom></Button>
-          <Button justifySelf="flex-end" ><CodeSquare></CodeSquare></Button>
-          <Button justifySelf="flex-end" ><Cat></Cat></Button>
-          <H1>Welcome to the off track posts</H1>
-          {/* <Paragraph pl={10} fontWeight="bold" color="gray" fontSize={12}>
-        May I interest you with:
-        </Paragraph>
-        <P2 pl={30}>Exoplanet within 10ly post </P2>
-        <P2 pl={50}>Stars for beginners</P2>
-        <P2 pl={70}>Interstellar travel - Python project </P2>
-        <P2 pl={90}>Quantum Mechanics - Python & qiskit project </P2>
-        <P2 pl={110}>Front-end Frameworks </P2>
-      <P2 pl={130}>CSS primitives </P2> */}
-          <Button></Button>
-          <Button circular><ArrowDown></ArrowDown></Button>
+          <Button
+            circular
+            borderWidth={1}
+            hoverStyle={{ borderWidth: 2, borderColor: '$accent2', transition: '.05s' }}
+            borderColor="$accent"
+            onPress={onPress}
+          >
+            <ArrowDown></ArrowDown>
+          </Button>
         </YStack>
       </YStack>
     </Theme>
