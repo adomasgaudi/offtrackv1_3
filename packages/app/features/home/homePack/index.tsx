@@ -1,21 +1,100 @@
 import { createRef, useEffect, useState } from 'react'
 import { H2, H5, YStack, XStack, Button, Image, Input, Theme, useMedia, H1 } from '@my/ui'
-import { Layout1, P1, ArticleBoxSM } from './components'
+import { Layout1, P1, ArticleBoxSM, P2 } from './components'
 
 import { useLink } from 'solito/link'
 import useOpenAI from './useOpenai'
 import ARTICLES from './constantsARTICLES'
 import { Nav, SectionBottom, SectionFakeArticle, SectionGreen, SectionTopText } from './sections'
 import { SectionArticle } from './sectionArticle'
-import MyComponent from './carousel'
+import { Atom, Cat, CodeSquare, X } from '@tamagui/lucide-icons'
 
 // Desktop version component
 const sectionRef = createRef()
 const Desktop = () => {
+  const [isSticky, setIsSticky] = useState(false)
+
+  useEffect(() => {
+    const checkScroll = () => {
+      if (window.scrollY >= 500) {
+        setIsSticky(true)
+      } else {
+        setIsSticky(false)
+      }
+    }
+
+    window.addEventListener('scroll', checkScroll)
+
+    return () => {
+      window.removeEventListener('scroll', checkScroll)
+    }
+  }, [])
+  const [isHovered, setIsHovered] = useState(false)
   return (
     <Theme name="f3">
       <YStack bg="white">
-        <SectionTopText onPress={() => sectionRef.current?.scrollIntoView({ behavior: 'smooth' })}/>
+        {/* nav - change this */}
+        <XStack
+          w="100%"
+          h={60}
+          mb={50}
+          bg="#019564"
+          jc="flex-start"
+          ai="center"
+          gap={200}
+          position={isSticky ? 'fixed' : 'relative'}
+          top={isSticky ? 0 : 'auto'}
+          opacity={isSticky ? 1 : 0}
+          scaleY={isSticky ? 1 : 0}
+          zIndex={10}
+          animation="fast"
+        >
+          <XStack maxWidth={800} width={800} m="auto" gap={10}>
+          <YStack ai="center" hoverStyle={{ opacity: 0 }} animation="slow">
+              <Atom />
+              <P2 color="white">Physics</P2>
+            </YStack>
+            <YStack
+              ai="center"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <CodeSquare color={isHovered ? '#94ff94' : 'white'} animation="slow" />
+              <P2 color={isHovered ? '#9aff9a' : 'white'} animation="slow">
+                Code
+              </P2>
+            </YStack>
+            <YStack ai="center" position="relative">
+              <Cat />
+              <P2 color="white">Quantum</P2>
+              <YStack
+                ai="center"
+                position="absolute"
+                opacity={0}
+                x={0}
+                hoverStyle={{ x: 20, opacity: 1 }}
+                animation="slow"
+              >
+                <X />
+                <P2 color="white">Quantum</P2>
+              </YStack>
+              <YStack
+                ai="center"
+                position="absolute"
+                x={0}
+                hoverStyle={{ x: 20, rotate: '180deg' }}
+                animation="slow"
+              >
+                <Cat hoverStyle={{ rotate: '180deg' }} animation="slow" />
+                {/* <P2 color="white">Quantum</P2> */}
+              </YStack>
+            </YStack>
+          </XStack>
+        </XStack>
+        {/* nav end  */}
+        <SectionTopText
+          onPress={() => sectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
+        />
         <YStack ref={sectionRef}></YStack>
         <Layout1>
           {ARTICLES.map((article, index) => (
