@@ -1,4 +1,5 @@
 import {
+  Anchor,
   Button,
   H1,
   H2,
@@ -37,6 +38,7 @@ import {
   Moon,
   Share2,
   Wind,
+  X,
 } from '@tamagui/lucide-icons'
 import { useEffect, useState } from 'react'
 
@@ -51,32 +53,78 @@ export const Nav = () => {
 export const SectionTopText = ({ onPress }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      onPress();
-    }, 1500); 
-    return () => clearTimeout(timer);
-  }, [onPress]);
+      onPress()
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [onPress])
+  const [isHovered, setIsHovered] = useState(false)
   return (
     <Theme name="darkGreen">
       <YStack bg="$background" h="100vh" jc="center" ai="center">
         <YStack w={1200} ai="center">
           <XStack gap={60} mb={300} w="100%">
-            <Atom />
-            <CodeSquare />
-            <Cat />
+            <YStack ai="center" hoverStyle={{ opacity: 0 }} animation="slow">
+              <Atom />
+              <P2 color="white">Physics</P2>
+            </YStack>
+            <YStack
+              ai="center"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <CodeSquare color={isHovered ? '#94ff94' : 'white'} animation="slow" />
+              <P2 color={isHovered ? '#9aff9a' : 'white'} animation="slow">
+                Code
+              </P2>
+            </YStack>
+            <YStack ai="center" position="relative">
+              <Cat />
+              <P2 color="white">Quantum</P2>
+              <YStack
+                ai="center"
+                position="absolute"
+                opacity={0}
+                x={0}
+                hoverStyle={{ x: 20, opacity: 1 }}
+                animation="slow"
+              >
+                <X />
+                <P2 color="white">Quantum</P2>
+              </YStack>
+              <YStack
+                ai="center"
+                position="absolute"
+                x={0}
+                hoverStyle={{ x: 20, rotate: '180deg' }}
+                animation="slow"
+              >
+                <Cat hoverStyle={{ rotate: '180deg' }} animation="slow" />
+                {/* <P2 color="white">Quantum</P2> */}
+              </YStack>
+            </YStack>
           </XStack>
-          <H1 mb={300} color="$accent" enterStyle={{ opacity: 0, x: -50}} animation="slow">
+          <H1 mb={300} color="$accent" enterStyle={{ opacity: 0, x: -50 }} animation="slow">
             This way to the off-track posts
           </H1>
-
-          <Button
-            circular
-            borderWidth={1}
-            hoverStyle={{ borderWidth: 2, borderColor: '$accent2', transition: '.05s' }}
-            borderColor="$accent"
-            onPress={onPress}
-          >
-            <ArrowDown></ArrowDown>
-          </Button>
+          <YStack position="relative" w="100%" h={100} ai="center">
+            <XStack position="absolute" right={0} h="100%" ai="center" pr={20} gap={30}>
+              <Anchor href="https://goingoffroad.medium.com/">
+                <H2>Medium</H2>
+              </Anchor>
+              <Anchor href="https://twitter.com/adomas_offtrack">
+                <H2>Twitter</H2>
+              </Anchor>
+            </XStack>
+            <Button
+              circular
+              borderWidth={1}
+              hoverStyle={{ borderWidth: 2, borderColor: '$accent2', transition: '.05s' }}
+              borderColor="$accent"
+              onPress={onPress}
+            >
+              <ArrowDown></ArrowDown>
+            </Button>
+          </YStack>
         </YStack>
       </YStack>
     </Theme>
