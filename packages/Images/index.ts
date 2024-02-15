@@ -6,6 +6,10 @@ import quarks from './quarks1.jpg'
 import quarks3 from './quarks1_3.jpg'
 import starsizes from './US_starsizes.png'
 import forest from './forest.jpg'
+import chainedcss from './chainedcss.png'
+import goingofftrack from './goingofftrack.png'
+import elaborate from './elaboratepls.png'
+import symbiote from './symbiote.png'
 
 const images =  {
     output,
@@ -15,6 +19,10 @@ const images =  {
     quarks,
     quarks3,
     starsizes,
-    forest
+    forest,
+    chainedcss,
+    goingofftrack,
+    elaborate,
+    symbiote
 }
 export default images
