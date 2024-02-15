@@ -61,8 +61,8 @@ export const SectionTopText = ({ onPress }) => {
   return (
     <Theme name="darkGreen">
       <YStack bg="$background" h="100vh" jc="center" ai="center">
-        <YStack w={1200} ai="center">
-          <XStack gap={60} mb={300} w="100%">
+        <YStack ai="center">
+          <XStack gap={60} mt={0} w="100%">
             <YStack ai="center" hoverStyle={{ opacity: 0 }} animation="slow">
               <Atom />
               <P2 color="white">Physics</P2>
@@ -80,12 +80,12 @@ export const SectionTopText = ({ onPress }) => {
             <YStack ai="center" position="relative">
               <Cat />
               <P2 color="white">Quantum</P2>
-              
+
               <YStack
                 ai="center"
                 position="absolute"
                 x={0}
-                hoverStyle={{ x: 10 }}
+                hoverStyle={{ x: 5 }}
                 animation="slow"
               >
                 <Cat />
@@ -93,18 +93,12 @@ export const SectionTopText = ({ onPress }) => {
               </YStack>
             </YStack>
           </XStack>
-          <H1 mb={300} color="$accent" enterStyle={{ opacity: 0, x: -50 }} animation="slow">
-            This way to the off-track posts
+          <H1 mb={0} color="$accent" enterStyle={{ opacity: 0, x: -50 }} animation="slow">
+            This way to the off-track post
           </H1>
-          <YStack position="relative" w="100%" h={100} ai="center">
-            <XStack position="absolute" right={0} h="100%" ai="center" pr={20} gap={30}>
-              <Anchor href="https://goingoffroad.medium.com/">
-                <H2>Medium</H2>
-              </Anchor>
-              <Anchor href="https://twitter.com/adomas_offtrack">
-                <H2>Twitter</H2>
-              </Anchor>
-            </XStack>
+          <XStack w="100%" h={100} ai="center">
+
+            <XStack bg="#79ffd2" f={1} h={1}></XStack>
             <Button
               circular
               borderWidth={1}
@@ -114,7 +108,17 @@ export const SectionTopText = ({ onPress }) => {
             >
               <ArrowDown></ArrowDown>
             </Button>
-          </YStack>
+            <XStack bg="#ff8f8f" f={1} h={0} position="relative">
+              <XStack position="absolute" right={0} h="100%" ai="center" pr={20} gap={30}>
+                <Anchor href="https://goingoffroad.medium.com/">
+                  <H2>Medium</H2>
+                </Anchor>
+                <Anchor href="https://twitter.com/adomas_offtrack">
+                  <H2>Twitter</H2>
+                </Anchor>
+              </XStack>
+            </XStack>
+          </XStack>
         </YStack>
       </YStack>
     </Theme>
