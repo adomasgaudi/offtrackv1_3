@@ -64,7 +64,7 @@ export const SectionText = () => {
         In ancient greek "protos" means "first", and that is a fitting name for the essentially first
         kind of particle in the universe. Take that proton and let it float in a never-ending void,
         this is what the universe is, mostly, a collection of protons. We call it hydrogen (We're
-        simplifying a bit here). hydrogen is just a single proton (see chart below). The quarks inside a proton are held together by the stong force,
+        simplifying a bit here). Hydrogen is just a single proton (see chart below). The quarks inside a proton are held together by the stong force,
         and actually that force sort of leaks out beyond the inner quarks, such that two protons
         would actually bind together were they not both positively charged. Thats is what we call the residual strong force or nuclear force. But they are both positively charged and hence they repel.
       </P2>
