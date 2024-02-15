@@ -100,6 +100,23 @@ function ContactInfo() {
   )
 }
 
+const Boxy = ({ children }) => {
+  return (
+    <YStack
+      w={200}
+      h={200}
+      borderRadius={2}
+      bg="#eeeeee"
+      position="absolute"
+      bottom={-200}
+      left={-10}
+      p={10}
+    >
+      {children}
+    </YStack>
+  )
+}
+
 export function HomePack() {
   const media = useMedia()
   return (
@@ -115,7 +132,26 @@ export function HomePack() {
                 Full-Stack Developer <br /> Content Creator
               </H1>
               <H4>I can create </H4>
-              <Skills />
+              <XStack gap={100}>
+                <YStack>
+                  <H1>Apps</H1>
+                  <PSkill>React Native</PSkill>
+                  <PSkill>Expo</PSkill>
+                  <PSkill>Swift</PSkill>
+                </YStack>
+                <YStack>
+                  <H1>Websites</H1>
+                  <PSkill>React</PSkill>
+                  <PSkill>Vue</PSkill>
+                  <PSkill>Next.js</PSkill>
+                </YStack>
+                <YStack>
+                  <H1>Databases</H1>
+                  <PSkill>MySQL</PSkill>
+                  <PSkill>MongoDB</PSkill>
+                  <PSkill>PostgreSQL</PSkill>
+                </YStack>
+              </XStack>
             </YStack>
             <YStack jc="center" ai="center" pb={100}></YStack>
           </YStack>
@@ -124,113 +160,103 @@ export function HomePack() {
         <Separator></Separator>
 
         <YStack w="100%" minHeight={300} bg="white">
-          <YStack maxWidth={1200} w="100%" mx="auto" py={100} p="$4" mb={100}>
-          </YStack>
+          <YStack maxWidth={1200} w="100%" mx="auto" py={100} p="$4" mb={100}></YStack>
           <YStack maxWidth={800} w="100%" mx="auto" p="$4">
-            <H1 mb={50}>Some of my projects</H1>
-            <YStack position="relative" mb={300}>
-              <Image
-                source={{
-                  uri: img.chainedcss.src,
-                  width: '100%',
-                  height: 200,
-                }}
-              />
-              <YStack
-                w={200}
-                h={200}
-                bg="#dbdbdb"
-                position="absolute"
-                bottom={-200}
-                left={-10}
-                p={10}
-              >
-                <H3>ChainedCSS</H3>
+            <H1 mb={150}>Some of my projects</H1>
+            <Anchor href="https://www.npmjs.com/package/chainedcss" target="_blank">
+              {/* <H2>Jss tailwind mix</H2> */}
+              <YStack position="relative" mb={300}>
+                <Image
+                  source={{
+                    uri: img.chainedcss.src,
+                    width: '100%',
+                    height: 200,
+                  }}
+                />
+                <Boxy>
+                  <H3>ChainedCSS</H3>
+                </Boxy>
               </YStack>
-            </YStack>
-            <YStack position="relative" mb={300}>
-              <Image
-                source={{
-                  uri: img.goingofftrack.src,
-                  width: '100%',
-                  height: 600,
-                }}
-              />
-              <YStack
-                w={200}
-                h={200}
-                bg="#dbdbdb"
-                position="absolute"
-                bottom={-200}
-                left={-10}
-                p={10}
-              >
-                <H3>A blog website</H3>
-                <P1></P1>
+            </Anchor>
+            <Anchor href="https://goingoffroad.vercel.app/" target="_blank">
+              {/* <H2>My blog website</H2> */}
+              <YStack position="relative" mb={300}>
+                <Image
+                  source={{
+                    uri: img.goingofftrack.src,
+                    width: '100%',
+                    height: 600,
+                  }}
+                />
+                <YStack
+                  w={200}
+                  h={200}
+                  bg="#dbdbdb"
+                  position="absolute"
+                  bottom={-200}
+                  left={-10}
+                  p={10}
+                >
+                  <H3>A blog website</H3>
+                  <P1></P1>
+                </YStack>
               </YStack>
-            </YStack>
-            <YStack position="relative" mb={300}>
-              <Image
-                source={{
-                  uri: img.elaborate.src,
-                  width: '100%',
-                  height: 400,
-                }}
-              />
-              <YStack
-                w={200}
-                h={200}
-                bg="#dbdbdb"
-                position="absolute"
-                bottom={-50}
-                left={-10}
-                p={10}
-              >
-                <H3>AI powered book</H3>
-                <P1></P1>
+            </Anchor>
+            <Anchor href="https://elaborate-please.site/" target="_blank">
+              {/* <H2>ChatGPT powered book</H2> */}
+              <YStack position="relative" mb={300}>
+                <Image
+                  source={{
+                    uri: img.elaborate.src,
+                    width: '100%',
+                    height: 400,
+                  }}
+                />
+                <YStack
+                  w={200}
+                  h={200}
+                  bg="#dbdbdb"
+                  position="absolute"
+                  bottom={-50}
+                  left={-10}
+                  p={10}
+                >
+                  <H3>AI powered book</H3>
+                  <P1></P1>
+                </YStack>
               </YStack>
-            </YStack>
-            <YStack position="relative" mb={300}>
-              <Image
-                source={{
-                  uri: img.symbiote.src,
-                  width: '100%',
-                  height: 200,
-                }}
-              />
-              <YStack
-                w={200}
-                h={200}
-                bg="#dbdbdb"
-                position="absolute"
-                bottom={-50}
-                right={-10}
-                p={10}
-              >
-                <H3>Notes with login</H3>
-                <P1></P1>
+            </Anchor>
+            <Anchor href="https://symbiote-project.web.app/" target="_blank" mb={200}>
+              {/* <H2>Note taking app with login</H2> */}
+              <YStack position="relative" mb={300}>
+                <Image
+                  source={{
+                    uri: img.symbiote.src,
+                    width: '100%',
+                    height: 200,
+                  }}
+                />
+                <YStack
+                  w={200}
+                  h={200}
+                  bg="#dbdbdb"
+                  position="absolute"
+                  bottom={-50}
+                  right={-10}
+                  p={10}
+                >
+                  <H3>Notes with login</H3>
+                  <P1></P1>
+                </YStack>
               </YStack>
-            </YStack>
+            </Anchor>
             {/* <Anchor
               href="https://www.canva.com/design/DAFw9y_t9FE/2iLOPcyAJs_lsOLUBMp06g/view?utm_content=DAFw9y_t9FE&utm_campaign=designshare&utm_medium=link&utm_source=editor"
               target="_blank"
             >
               <H2>My CV</H2>
             </Anchor> */}
-            {/* <Anchor href="https://goingoffroad.vercel.app/" target="_blank">
-            <H2>My blog website</H2>
-            </Anchor>
-            <Anchor href="https://www.npmjs.com/package/chainedcss" target="_blank">
-              <H2>Jss tailwind mix</H2>
-            </Anchor> */}
-            {/* <Anchor href="https://elaborate-please.site/" target="_blank" mb={200}>
-              
-              <H2>ChatGPT powered book</H2>
-            </Anchor> */}
-            {/* <Anchor href="https://symbiote-project.web.app/" target="_blank" mb={200}>
-              
-              <H2>Note taking app with login</H2>
-            </Anchor> */}
+
             {/* <Paragraph>AI book summary app [will upload feb 9th]</Paragraph> */}
             <YStack ai="center">
               <Theme name="dark">
