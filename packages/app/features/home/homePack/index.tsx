@@ -9,6 +9,7 @@ import { Nav, SectionBottom, SectionFakeArticle, SectionGreen, SectionTopText } 
 import { SectionArticle } from './sectionArticle'
 import { Atom, Cat, CodeSquare, X } from '@tamagui/lucide-icons'
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Desktop version component
 const sectionRef = createRef()
@@ -34,6 +35,7 @@ const Desktop = () => {
     <Theme name="f3">
       <YStack bg="white">
       <Analytics />
+      <SpeedInsights/>
         <XStack
           w="100%"
           h={60}
