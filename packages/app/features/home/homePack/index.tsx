@@ -14,6 +14,7 @@ import {
   XStack,
   YStack,
   Image,
+  View,
 } from '@my/ui'
 import { Theme } from 'tamagui'
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
@@ -51,7 +52,6 @@ function SheetDemo() {
   const [open, setOpen] = useState(false)
   const [position, setPosition] = useState(0)
   const toast = useToastController()
-  console.log(img)
 
   return (
     <>
@@ -82,7 +82,15 @@ function SheetDemo() {
               })
             }}
           />
-          <ContactInfo />
+          <View w="100%" bg="red" h="100%" p={10}>
+
+          <View w="100%" bg="blue" h="100%">
+          <H1>jhgjhgj</H1>
+
+          <H1>jhgjhgj</H1>
+          </View>
+          </View>
+          {/* <ContactInfo /> */}
         </Sheet.Frame>
       </Sheet>
     </>
@@ -100,20 +108,28 @@ function ContactInfo() {
   )
 }
 
-const Boxy = ({ children }) => {
+const Boxy = ({ children, mobile }) => {
   return (
-    <YStack
-      w={200}
-      h={200}
-      borderRadius={2}
-      bg="#eeeeee"
-      position="absolute"
-      bottom={-200}
-      left={-10}
-      p={10}
-    >
-      {children}
-    </YStack>
+    <>
+      {mobile ? (
+        <View w={200} h={200} borderRadius={2} m="auto" p={10} bg="#eeeeee">
+          {children}
+        </View>
+      ) : (
+        <YStack
+          w={200}
+          h={200}
+          borderRadius={2}
+          bg="#eeeeee"
+          position="absolute"
+          bottom={-200}
+          left={-10}
+          p={10}
+        >
+          {children}
+        </YStack>
+      )}
+    </>
   )
 }
 
@@ -123,35 +139,35 @@ export function HomePack() {
     <Theme name="ebb">
       <YStack w="100%" h="100%" bc="$background">
         <YStack maxWidth={1200} w="100%" mx="auto" bc="" borderColor="$blue1Dark">
-          <Paragraph p="$4" fontWeight="bold">
-            Built by Adomas Gaudiesius
-          </Paragraph>
-          <YStack f={1} mt="$10" jc="center" p="$4" space>
-            <YStack space="$4" minHeight={500}>
-              <H1 mb={100} fontSize={media.sm ? 30 : undefined} letterSpacing={'normal'}>
-                Full-Stack Developer <br /> Content Creator
-              </H1>
-              <H4>I can create </H4>
-              <XStack gap={100}>
-                <YStack>
-                  <H1>Apps</H1>
-                  <PSkill>React Native</PSkill>
-                  <PSkill>Expo</PSkill>
-                  <PSkill>Swift</PSkill>
-                </YStack>
-                <YStack>
-                  <H1>Websites</H1>
-                  <PSkill>React</PSkill>
-                  <PSkill>Vue</PSkill>
-                  <PSkill>Next.js</PSkill>
-                </YStack>
-                <YStack>
-                  <H1>Databases</H1>
-                  <PSkill>MySQL</PSkill>
-                  <PSkill>MongoDB</PSkill>
-                  <PSkill>PostgreSQL</PSkill>
-                </YStack>
-              </XStack>
+          <YStack f={1} mt="$10" jc="center" >
+            <YStack minHeight={500}>
+              <YStack flexWrap="wrap" w="100%" ai="flex-start" px={50}>
+                <Paragraph fontWeight="bold" mb={50}>Built by Adomas Gaudiesius</Paragraph>
+                <H1 mb={100} fontSize={media.sm ? 30 : undefined} letterSpacing={'normal'}>
+                  Full-Stack Developer <br /> Content Creator
+                </H1>
+                <H4 alignSelf="flex-start">I create </H4>
+                <View gap={100} jc="center" flexDirection={media.sm ? 'column' : 'row'}>
+                  <YStack>
+                    <H1>Apps</H1>
+                    <PSkill>React Native</PSkill>
+                    <PSkill>Expo</PSkill>
+                    <PSkill>Swift</PSkill>
+                  </YStack>
+                  <YStack>
+                    <H1>Websites</H1>
+                    <PSkill>React</PSkill>
+                    <PSkill>Vue</PSkill>
+                    <PSkill>Next.js</PSkill>
+                  </YStack>
+                  <YStack>
+                    <H1>Databases</H1>
+                    <PSkill>MySQL</PSkill>
+                    <PSkill>MongoDB</PSkill>
+                    <PSkill>PostgreSQL</PSkill>
+                  </YStack>
+                </View>
+              </YStack>
             </YStack>
             <YStack jc="center" ai="center" pb={100}></YStack>
           </YStack>
@@ -163,6 +179,23 @@ export function HomePack() {
           <YStack maxWidth={1200} w="100%" mx="auto" py={100} p="$4" mb={100}></YStack>
           <YStack maxWidth={800} w="100%" mx="auto" p="$4">
             <H1 mb={150}>Some of my projects</H1>
+                    <Anchor href="https://goingofftrack.blog" target="_blank">
+                      {/* <H2>My blog website</H2> */}
+                      <YStack position="relative" mb={300}>
+                        <Image
+                          source={{
+                            uri: img.goingofftrack.src,
+                            width: '100%',
+                            height: media.sm ? 200 : 400,
+                          }}
+                        />
+                        <Boxy mobile={media.sm}>
+                          {/* <H3>ChainedCSS</H3> */}
+                          <H3>A blog website</H3>
+                          <P1></P1>
+                        </Boxy>
+                      </YStack>
+                    </Anchor>
             <Anchor href="https://www.npmjs.com/package/chainedcss" target="_blank">
               {/* <H2>Jss tailwind mix</H2> */}
               <YStack position="relative" mb={300}>
@@ -170,36 +203,12 @@ export function HomePack() {
                   source={{
                     uri: img.chainedcss.src,
                     width: '100%',
-                    height: 200,
+                    height: media.sm ? 100 : 200,
                   }}
                 />
-                <Boxy>
+                <Boxy mobile={media.sm}>
                   <H3>ChainedCSS</H3>
                 </Boxy>
-              </YStack>
-            </Anchor>
-            <Anchor href="https://goingoffroad.vercel.app/" target="_blank">
-              {/* <H2>My blog website</H2> */}
-              <YStack position="relative" mb={300}>
-                <Image
-                  source={{
-                    uri: img.goingofftrack.src,
-                    width: '100%',
-                    height: 600,
-                  }}
-                />
-                <YStack
-                  w={200}
-                  h={200}
-                  bg="#dbdbdb"
-                  position="absolute"
-                  bottom={-200}
-                  left={-10}
-                  p={10}
-                >
-                  <H3>A blog website</H3>
-                  <P1></P1>
-                </YStack>
               </YStack>
             </Anchor>
             <Anchor href="https://elaborate-please.site/" target="_blank">
@@ -209,21 +218,14 @@ export function HomePack() {
                   source={{
                     uri: img.elaborate.src,
                     width: '100%',
-                    height: 400,
+                    height: media.sm ? 200 : 400,
                   }}
                 />
-                <YStack
-                  w={200}
-                  h={200}
-                  bg="#dbdbdb"
-                  position="absolute"
-                  bottom={-50}
-                  left={-10}
-                  p={10}
-                >
-                  <H3>AI powered book</H3>
+                <Boxy mobile={media.sm}>
+                  <H3>AI</H3>
+                  <H3>A blog website</H3>
                   <P1></P1>
-                </YStack>
+                </Boxy>
               </YStack>
             </Anchor>
             <Anchor href="https://symbiote-project.web.app/" target="_blank" mb={200}>
@@ -233,31 +235,16 @@ export function HomePack() {
                   source={{
                     uri: img.symbiote.src,
                     width: '100%',
-                    height: 200,
+                    height: media.sm ? 125 : 250,
                   }}
                 />
-                <YStack
-                  w={200}
-                  h={200}
-                  bg="#dbdbdb"
-                  position="absolute"
-                  bottom={-50}
-                  right={-10}
-                  p={10}
-                >
-                  <H3>Notes with login</H3>
-                  <P1></P1>
-                </YStack>
+                <Boxy mobile={media.sm}>
+                  <H3>Google signin </H3>
+                  <H3>Different User info</H3>
+                  <H3>Note taking</H3>
+                </Boxy>
               </YStack>
             </Anchor>
-            {/* <Anchor
-              href="https://www.canva.com/design/DAFw9y_t9FE/2iLOPcyAJs_lsOLUBMp06g/view?utm_content=DAFw9y_t9FE&utm_campaign=designshare&utm_medium=link&utm_source=editor"
-              target="_blank"
-            >
-              <H2>My CV</H2>
-            </Anchor> */}
-
-            {/* <Paragraph>AI book summary app [will upload feb 9th]</Paragraph> */}
             <YStack ai="center">
               <Theme name="dark">
                 <SheetDemo />
@@ -287,8 +274,8 @@ export function HomePack() {
             <Anchor href="https://github.com/adomasgaudi" target="_blank">
               <H1>Github</H1>
             </Anchor>
-            <H1>adomas.gaudi.23@gmail.com</H1>
-            <H1>+370 61609911</H1>
+            <H2 fontSize={media.sm ? "$9" : "$10"}>+370 61609911</H2>
+            <H2 fontSize={media.sm ? "$8" : "$10"} letterSpacing={-1}>adomas.gaudi.23@gmail.com</H2>
           </YStack>
         </YStack>
       </YStack>
