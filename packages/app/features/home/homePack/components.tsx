@@ -75,17 +75,17 @@ export const Layout1 = ({ children }) => {
     </Theme>
   )
 }
-export const LayoutLeft = ({ children, bg, ...props }) => {
-  return (
-    <Theme name="light">
-      <YStack bg="white" f={1} {...props} >
-        <YStack jc="flex-start" ai="flex-start" maxWidth={800} mx="auto" bg={bg} width={800}>
-          {children}
-        </YStack>
-      </YStack>
-    </Theme>
-  )
-}
+// export const LayoutLeft = ({ children, bg, ...props }) => {
+//   return (
+//     <Theme name="light">
+//       <YStack bg="white" f={1} {...props} >
+//         <YStack jc="flex-start" ai="flex-start" maxWidth={800} mx="auto" bg={bg} width={800}>
+//           {children}
+//         </YStack>
+//       </YStack>
+//     </Theme>
+//   )
+// }
 
 export const myBoxShadow1 = `   
 0px 0px 1px hsla(0, 0%, 0%, 0.05), 
