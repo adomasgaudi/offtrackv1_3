@@ -90,7 +90,7 @@ export const SectionText = () => {
         that the proton would become a neutron (an extra charged particle is created for this
         process to conserve the overall charge). -1/3 -1/3 +2/3 = 0 charge - a neutrally charged
         particle. Neutron comes from the word "neutral". In this case there would be no repelling charge
-        forces, so the proton and the neutron would bind together.
+        forces, so the proton and the neutron would bind together due to the strong force.
       </P2>
       <Image
         source={{
@@ -114,16 +114,17 @@ export const SectionText = () => {
           height: 800,
         }}
       />
-      <P2>
+      <P2 mb={100}>
         Other combinations like helium-2 or hydrogen-4 or even double neutron particles are also
-        possible, but most would decay about as fast a photon of light would travel across the
+        possible, but most would decay about as fast as a photon of light would travel across the
         nucleus. If you wanted to observe such a particle, say you could accelerate and colide large
         nucleuses of atoms or have a very large atom decay into smaller parts. You would not even be
         able to detect it with a detector as it would not exist long enough to get to it. You would
         have to infer its existance from the scatering of other particles.
       </P2>
+      <H2 mb={30}>Conclusion</H2>
       <P2 mb={50}>
-        So there you go, protons and neutrons mixing to create mostly hydrogen and helium. That's
+        So there you go, protons and neutrons mixing together to create mostly hydrogen and helium. That's
         how everything starts. A cloud of hydrogen and helium contracts under gravity until it's
         dense enough to create a proto-star, basically something like Saturn, only without all of
         the heavier elements. Add more hydrogen till its gravity crushes it so much that the created
