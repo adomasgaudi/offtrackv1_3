@@ -141,7 +141,7 @@ const Boxy = ({ children, mobile }) => {
 
 const Project = ({ href, imgSrc, title, descriptions, media }) => (
   <Anchor href={href} target="_blank">
-    <YStack position="relative" mb={150}>
+    <YStack position="relative" mb={250}>
       <Image
         source={{
           uri: imgSrc,
@@ -183,6 +183,18 @@ const PROJECTS = [
     imgSrc: img.symbiote.src,
     title: "Note app",
     descriptions: ["Google sign-in", "Firebase user data", "CRUD editable notes"]
+  },
+  {
+    href: "https://the-traveler-9b680.web.app",
+    imgSrc: img.forest.src,
+    title: "Some buggy game I made a while ago",
+    descriptions: ["Healing, improving algorithm", "responsive"]
+  },
+  {
+    href: "https://submersion-9.web.app",
+    imgSrc: img.forest.src,
+    title: "My old vue language blog",
+    descriptions: ["Vue.js", "sass, pug", ""]
   }
 ];
 
