@@ -84,9 +84,9 @@ function CVSheet() {
             icon={ChevronDown}
             onPress={() => {
               setOpen(false)
-              toast.show('Warning!', {
-                message: 'I sometimes forget to read emails',
-              })
+              // toast.show('Warning!', {
+              //   message: 'I sometimes forget to read emails',
+              // })
             }}
             mb={10}
             bg="#fdfdfd"
@@ -114,7 +114,7 @@ function CuriculumVitae() {
   )
 }
 
-const Boxy = ({ children, mobile }) => {
+const Boxy = ({ children, mobile, mt, ...props }) => {
   return (
     <>
       {mobile ? (
@@ -123,14 +123,20 @@ const Boxy = ({ children, mobile }) => {
         </View>
       ) : (
         <YStack
-          w={200}
-          h={200}
-          borderRadius={2}
+          maxW={400}
+          {...props}
+          mt={mt}
+          maxH={400}
+          borderRadius={10}
           bg="#eeeeee"
           position="absolute"
           bottom={-200}
           left={-10}
           p={10}
+
+          x={0}
+          hoverStyle={{ x: 20, bg: "#ff4b4b" }}
+          animation="bouncy"
         >
           {children}
         </YStack>
@@ -139,20 +145,20 @@ const Boxy = ({ children, mobile }) => {
   )
 }
 
-const Project = ({ href, imgSrc, title, descriptions, media }) => (
+const Project = ({ href, imgSrc, imgWidth, title, descriptions, media }) => (
   <Anchor href={href} target="_blank">
-    <YStack position="relative" mb={250}>
+    <YStack position="relative" mb={250} >
       <Image
         source={{
           uri: imgSrc,
           width: '100%',
-          height: media.sm ? 200 : 400,
+          height: media.sm ? imgWidth : imgWidth * 2,
         }}
       />
-      <Boxy mobile={media.sm}>
-        <H3>{title}</H3>
+      <Boxy mobile={media.sm} mt={-100}>
+        <H2 size="$10">{title}</H2>
         {descriptions.map((desc, index) => (
-          <H4 key={index}>{desc}</H4>
+          <H4 size="$6" key={index}>{desc}</H4>
         ))}
       </Boxy>
     </YStack>
@@ -163,36 +169,42 @@ const PROJECTS = [
   {
     href: "https://goingofftrack.blog",
     imgSrc: img.goingofftrack.src,
+    imgWidth: 200,
     title: "A blog website",
     descriptions: ['ChatGPT summaries', 'Responsive layout']
   },
   {
     href: "https://www.npmjs.com/package/chainedcss",
     imgSrc: img.chainedcss.src,
+    imgWidth: 150,
     title: "CSS-in-JS",
     descriptions: ['Tailwind Style', 'NPM Package']
   },
   {
     href: "https://elaborate-please.site/",
     imgSrc: img.elaborate.src,
+    imgWidth: 200,
     title: "AI Powered reading",
     descriptions: ['Language learning']
   },
   {
     href: "https://symbiote-project.web.app/",
     imgSrc: img.symbiote.src,
+    imgWidth: 130,
     title: "Note app",
     descriptions: ["Google sign-in", "Firebase user data", "CRUD editable notes"]
   },
   {
     href: "https://the-traveler-9b680.web.app",
-    imgSrc: img.forest.src,
+    imgSrc: img.theTraveler.src,
+    imgWidth: 600,
     title: "Some buggy game I made a while ago",
     descriptions: ["Healing, improving algorithm", "responsive"]
   },
   {
     href: "https://submersion-9.web.app",
-    imgSrc: img.forest.src,
+    imgSrc: img.submersioncards.src,
+    imgWidth: 200,
     title: "My old vue language blog",
     descriptions: ["Vue.js", "sass, pug", ""]
   }
@@ -201,39 +213,39 @@ const PROJECTS = [
 export function HomePack() {
   const media = useMedia()
   return (
-    <Theme name="ebb">
+    <Theme name="dark">
       <YStack w="100%" h="100%" bc="$background">
-        <YStack maxWidth={1200} w="100%" mx="auto" bc="" borderColor="$blue1Dark">
+        <YStack maxWidth={1600} w="100%" mx="auto" borderColor="$blue1Dark">
           <YStack f={1} mt="$10" jc="center">
             <YStack minHeight={500}>
-              <YStack flexWrap="wrap" w="100%" ai="flex-start" px={50}>
+              <YStack flexWrap="wrap" w="100%" ai="flex-start" px={20}>
                 <Paragraph fontWeight="bold" mb={50}>
                   Built by Adomas Gaudiesius
                 </Paragraph>
-                <H1 mb={100} fontSize={media.sm ? 30 : undefined} letterSpacing={'normal'}>
+                <H1 mb={100} size={media.sm ? "$9" : "$15"} letterSpacing={'normal'} w="content-fit" textAlign="justify">
                   Full-Stack Developer <br /> Content Creator
+                  {/* <H4 alignSelf="flex-start">I create </H4> */}
+                  <View gap={100} jc="space-between" w="100%" flexDirection={media.sm ? 'column' : 'row'} >
+                    <YStack>
+                      <H1>Apps</H1>
+                      <PSkill>React Native</PSkill>
+                      <PSkill>Expo</PSkill>
+                      <PSkill>Swift</PSkill>
+                    </YStack>
+                    <YStack>
+                      <H1>Websites</H1>
+                      <PSkill>React</PSkill>
+                      <PSkill>Vue</PSkill>
+                      <PSkill>Next.js</PSkill>
+                    </YStack>
+                    <YStack>
+                      <H1>Databases</H1>
+                      <PSkill>MySQL</PSkill>
+                      <PSkill>MongoDB</PSkill>
+                      <PSkill>PostgreSQL</PSkill>
+                    </YStack>
+                  </View>
                 </H1>
-                <H4 alignSelf="flex-start">I create </H4>
-                <View gap={100} jc="center" flexDirection={media.sm ? 'column' : 'row'}>
-                  <YStack>
-                    <H1>Apps</H1>
-                    <PSkill>React Native</PSkill>
-                    <PSkill>Expo</PSkill>
-                    <PSkill>Swift</PSkill>
-                  </YStack>
-                  <YStack>
-                    <H1>Websites</H1>
-                    <PSkill>React</PSkill>
-                    <PSkill>Vue</PSkill>
-                    <PSkill>Next.js</PSkill>
-                  </YStack>
-                  <YStack>
-                    <H1>Databases</H1>
-                    <PSkill>MySQL</PSkill>
-                    <PSkill>MongoDB</PSkill>
-                    <PSkill>PostgreSQL</PSkill>
-                  </YStack>
-                </View>
               </YStack>
             </YStack>
             <YStack jc="center" ai="center" pb={100}></YStack>
@@ -241,57 +253,63 @@ export function HomePack() {
         </YStack>
 
         <Separator></Separator>
+        <Theme name="carnation">
 
-        <YStack w="100%" minHeight={300} bg="white">
-          <YStack maxWidth={1200} w="100%" mx="auto" py={100} p="$4" mb={100}></YStack>
-          <YStack maxWidth={800} w="100%" mx="auto" p="$4">
-            <H1 mb={150}>Some of my projects</H1>
-            {PROJECTS.map((project, index) => (
-              <Project
-                key={index}
-                href={project.href}
-                imgSrc={project.imgSrc}
-                title={project.title}
-                descriptions={project.descriptions}
-                media={media}
-              />
-            ))}
-            <YStack ai="center">
-              <Theme name="light">
-                <CVSheet />
-              </Theme>
+          <YStack w="100%" minHeight={300} bg="$background">
+            <YStack maxWidth={1600} w="100%" mx="auto" py={100} px={20} mb={100}>
+
+              <H1 maxWidth={1600} mb={150} size={media.sm ? "$9" : "$14"} textAlign="left">
+                Some of my projects</H1>
+            </YStack>
+            <YStack maxWidth={1200} w="100%" mx="auto" p="$4">
+              {PROJECTS.map((project, index) => (
+                <Project
+                  key={index}
+                  href={project.href}
+                  imgSrc={project.imgSrc}
+                  imgWidth={project.imgWidth}
+                  title={project.title}
+                  descriptions={project.descriptions}
+                  media={media}
+                />
+              ))}
+              <YStack ai="center">
+                <Theme name="light">
+                  <CVSheet />
+                </Theme>
+              </YStack>
+            </YStack>
+
+            <YStack
+              maxWidth={1600}
+              w="100%"
+              mx="auto"
+              py={100}
+              p="$4"
+              borderTopWidth={2}
+              borderColor="$blue1Dark"
+            >
+              <H1>Adomas Gaudiesius</H1>
+              <Anchor href="https://www.linkedin.com/in/adomas-g-0738b487/" target="_blank">
+                <H1>Linkedin</H1>
+              </Anchor>
+              <Anchor href="https://twitter.com/adomas_offtrack" target="_blank">
+                <H1>Twitter</H1>
+              </Anchor>
+              <Anchor href="https://medium.com/@goingoffroad" target="_blank">
+                <H1>Medium</H1>
+              </Anchor>
+              <Anchor href="https://github.com/adomasgaudi" target="_blank">
+                <H1>Github</H1>
+              </Anchor>
+              <H2 fontSize={media.sm ? '$9' : '$10'}>+370 61609911</H2>
+              <H2 fontSize={media.sm ? '$8' : '$10'} letterSpacing={-1}>
+                adomas.gaudi.23@gmail.com
+              </H2>
             </YStack>
           </YStack>
-
-          <YStack
-            maxWidth={1600}
-            w="100%"
-            mx="auto"
-            py={100}
-            p="$4"
-            borderTopWidth={2}
-            borderColor="$blue1Dark"
-          >
-            <H1>Adomas Gaudiesius</H1>
-            <Anchor href="https://www.linkedin.com/in/adomas-g-0738b487/" target="_blank">
-              <H1>Linkedin</H1>
-            </Anchor>
-            <Anchor href="https://twitter.com/adomas_offtrack" target="_blank">
-              <H1>Twitter</H1>
-            </Anchor>
-            <Anchor href="https://medium.com/@goingoffroad" target="_blank">
-              <H1>Medium</H1>
-            </Anchor>
-            <Anchor href="https://github.com/adomasgaudi" target="_blank">
-              <H1>Github</H1>
-            </Anchor>
-            <H2 fontSize={media.sm ? '$9' : '$10'}>+370 61609911</H2>
-            <H2 fontSize={media.sm ? '$8' : '$10'} letterSpacing={-1}>
-              adomas.gaudi.23@gmail.com
-            </H2>
-          </YStack>
-        </YStack>
-      </YStack>
-    </Theme>
+        </Theme>
+      </YStack >
+    </Theme >
   )
 }
