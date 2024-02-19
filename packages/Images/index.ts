@@ -10,8 +10,10 @@ import chainedcss from './chainedcss.png'
 import goingofftrack from './goingofftrack.png'
 import elaborate from './elaboratepls.png'
 import symbiote from './symbiote.png'
+import theTraveler from './thetraveler.png'
+import submersioncards from './submersioncards.png'
 
-const images =  {
+const images = {
     output,
     agcv,
     stars,
@@ -23,6 +25,8 @@ const images =  {
     chainedcss,
     goingofftrack,
     elaborate,
-    symbiote
+    symbiote,
+    theTraveler,
+    submersioncards
 }
 export default images

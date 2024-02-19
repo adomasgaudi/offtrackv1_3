@@ -76,7 +76,7 @@ const myThemes = {
     background: '#204971',
   },
   carnation2: {
-    color: '#fd7481',
+    color: 'hsl(354, 97%, 72%)',
     background: '#204971',
   },
 }
