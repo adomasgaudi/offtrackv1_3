@@ -3,30 +3,44 @@ import { Theme } from 'tamagui'
 import { GrainyFractalNoise, GrayBlur } from './svgs'
 import { CVSheet, PSkill, Project } from './sections'
 import { PROJECTS } from './constants'
+import { P2 } from '../homePack/sections'
+import { useState } from 'react'
+import { P1 } from '../../article/exoplanetsin10'
 
-const SkillSection = () => (
-  <>
-    <YStack>
-      <H1>Apps</H1>
-      <PSkill>React Native</PSkill>
-      <PSkill>Expo</PSkill>
-      <PSkill>Tamagui</PSkill>
-    </YStack>
-    <YStack>
-      <H1>Websites</H1>
-      <PSkill>React</PSkill>
-      <PSkill>Vue</PSkill>
-      <PSkill>Next.js</PSkill>
-      <PSkill>PHP</PSkill>
-    </YStack>
-    <YStack>
-      <H1>Databases</H1>
-      <PSkill>MySQL</PSkill>
-      <PSkill>Laravel</PSkill>
-      <PSkill>Firebase</PSkill>
-    </YStack>
-  </>
-)
+const SkillSection = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <>
+      <YStack 
+        height={isHovered ? 150 : 60} 
+        overflow="hidden"
+        hoverStyle={{ transition: '2s' }}
+        transition="1s"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <H1 mb={10}>Apps</H1>
+        <P1>React Native</P1>
+        <P1>Expo</P1>
+        <P1>Tamagui</P1>
+      </YStack>
+      <YStack>
+        <H1>Websites</H1>
+        <PSkill>React</PSkill>
+        <PSkill>Vue</PSkill>
+        <PSkill>Next.js</PSkill>
+        <PSkill>PHP</PSkill>
+      </YStack>
+      <YStack>
+        <H1>Databases</H1>
+        <PSkill>MySQL</PSkill>
+        <PSkill>Laravel</PSkill>
+        <PSkill>Firebase</PSkill>
+      </YStack>
+    </>
+  );
+}
 
 const SectionBottomLinks = ({ mobile }) => (
   <YStack maxWidth={1100} w="100%" mx="auto" py={100} p="$4">
