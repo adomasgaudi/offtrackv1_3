@@ -105,9 +105,9 @@ export const Boxy = ({ children, mobile, mt, ...props }) => {
           maxH={400}
           borderRadius={10}
           bg="#eeeeee"
-          position="absolute"
-          bottom={-200}
-          left={-10}
+          // position="absolute"
+          // bottom={-200}
+          // left={-10}
           p={10}
           x={0}
           hoverStyle={{ x: 20, bg: '#ff4b4b' }}
@@ -122,7 +122,7 @@ export const Boxy = ({ children, mobile, mt, ...props }) => {
 
 export const Project = ({ href, imgSrc, imgWidth, title, descriptions, media }) => (
   <Anchor href={href} target="_blank">
-    <YStack position="relative" mb={250}>
+    <YStack position="relative" mb={50}>
       <Image
         source={{
           uri: imgSrc,
@@ -130,7 +130,7 @@ export const Project = ({ href, imgSrc, imgWidth, title, descriptions, media }) 
           height: media.sm ? imgWidth : imgWidth * 2,
         }}
       />
-      <Boxy mobile={media.sm} mt={-100}>
+      <Boxy mobile={media.sm} mt={10} mb={100}>
         <H2 size="$10">{title}</H2>
         {descriptions.map((desc, index) => (
           <H4 size="$6" key={index}>
