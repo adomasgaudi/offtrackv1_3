@@ -14,6 +14,7 @@ import {
 } from './sections'
 import { SectionArticle } from './sections/sectionArticle'
 import { Analytics } from '@vercel/analytics/react'
+import Spline from '@splinetool/react-spline';
 
 // Desktop version component
 const sectionRef = createRef()

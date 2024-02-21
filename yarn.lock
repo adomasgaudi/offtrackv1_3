@@ -4350,6 +4350,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@splinetool/react-spline@npm:^2.2.6":
+  version: 2.2.6
+  resolution: "@splinetool/react-spline@npm:2.2.6"
+  dependencies:
+    lodash.debounce: "npm:^4.0.8"
+    react-merge-refs: "npm:^2.0.1"
+  peerDependencies:
+    "@splinetool/runtime": "*"
+    react: ">=17.0.0"
+    react-dom: ">=17.0.0"
+  checksum: 10/fcc17035506a9d26ddfac4204f5008b05cef3fd5c7453661b1ed13c7966324158e2c6284d88d8793cd3ec64b55b1ec9ceccb454a3d6e59797fb9ad45fe2c4f44
+  languageName: node
+  linkType: hard
+
+"@splinetool/runtime@npm:^1.0.53":
+  version: 1.0.53
+  resolution: "@splinetool/runtime@npm:1.0.53"
+  dependencies:
+    on-change: "npm:^4.0.0"
+    semver-compare: "npm:^1.0.0"
+  checksum: 10/c6b3c3fe13201178bd61382f5cd89a001ee79f203f528e09c17f75a23173f34f0b4698eee7dbc44b0931807e6154bb5a066f96bb7b923049992c9eb1ca0763b3
+  languageName: node
+  linkType: hard
+
 "@swc/helpers@npm:0.5.2":
   version: 0.5.2
   resolution: "@swc/helpers@npm:0.5.2"
@@ -6835,6 +6859,8 @@ __metadata:
   resolution: "app@workspace:packages/app"
   dependencies:
     "@my/ui": "npm:0.0.1"
+    "@splinetool/react-spline": "npm:^2.2.6"
+    "@splinetool/runtime": "npm:^1.0.53"
     "@tamagui/animations-react-native": "npm:^1.89.8"
     "@tamagui/colors": "npm:^1.89.8"
     "@tamagui/font-inter": "npm:^1.89.8"
@@ -15466,6 +15492,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"on-change@npm:^4.0.0":
+  version: 4.0.2
+  resolution: "on-change@npm:4.0.2"
+  checksum: 10/bda86aa65e47b784646719500c6c8a56c646bad296332e3b3f2dc529ffbb5b744749721143be1e725bc8e7300d07a5bf6b827c1e3aa2d14ea54df8fff4435c4b
+  languageName: node
+  linkType: hard
+
 "on-finished@npm:2.4.1":
   version: 2.4.1
   resolution: "on-finished@npm:2.4.1"
@@ -16694,6 +16727,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-merge-refs@npm:^2.0.1":
+  version: 2.1.1
+  resolution: "react-merge-refs@npm:2.1.1"
+  checksum: 10/40564bc4c16520ef830d4fe7a2bd298c23a42d644a8fcb2353cdc6cf16aa82eac681c554df4c849397b25af9dbe728086566e1a01f65f95d2301dc8fc8f6809f
+  languageName: node
+  linkType: hard
+
 "react-native-gesture-handler@npm:~2.12.0":
   version: 2.12.1
   resolution: "react-native-gesture-handler@npm:2.12.1"
@@ -17597,6 +17637,13 @@ __metadata:
     "@types/semver": "npm:^6.0.1"
     semver: "npm:^6.3.0"
   checksum: 10/10ba6518f26be4bec326429f7eef4b203d458a649ec4f1e853814c4b5ad7c3df22845f9efab6f5c9574db065e467e0d83c89ac6ec6577c04c04244f52d742f25
+  languageName: node
+  linkType: hard
+
+"semver-compare@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "semver-compare@npm:1.0.0"
+  checksum: 10/75f9c7a7786d1756f64b1429017746721e07bd7691bdad6368f7643885d3a98a27586777e9699456564f4844b407e9f186cc1d588a3f9c0be71310e517e942c3
   languageName: node
   linkType: hard
 

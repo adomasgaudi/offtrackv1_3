@@ -8,6 +8,8 @@
   ],
   "dependencies": {
     "@my/ui": "0.0.1",
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^1.0.53",
     "@tamagui/animations-react-native": "^1.89.8",
     "@tamagui/colors": "^1.89.8",
     "@tamagui/font-inter": "^1.89.8",
