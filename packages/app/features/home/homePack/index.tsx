@@ -48,7 +48,7 @@ const Desktop = ({ mobile, xs }) => {
               }}
             />
           ))}
-          <YStack ref={sectionQuantumRef} w={800}>
+          <YStack ref={sectionQuantumRef} w="100%" maxWidth={800}>
             <SectionFakeArticle />
           </YStack>
           <Theme name="f3">

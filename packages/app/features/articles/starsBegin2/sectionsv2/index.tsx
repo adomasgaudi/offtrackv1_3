@@ -2,6 +2,7 @@ import { Paragraph, Image, YStack, useMedia, Text, XStack, Theme, Button } from 
 import { H1, H3, P } from '../partsv2/comps'
 import images from '../../../../../Images'
 import { Brain, Moon, Twitter } from '@tamagui/lucide-icons'
+import { useLink } from 'solito/link'
 const decorPR = {
   textDecorationStyle: 'dashed',
   textDecorationLine: 'underline',
@@ -24,24 +25,28 @@ const borderX = {
   borderLeftColor: '$faint',
 }
 
-
-export const SectionTop = ({handleChangeTheme}) => {
+export const SectionTop = ({ handleChangeTheme }) => {
   const mobile = useMedia().xs
 
   return (
     <YStack px={mobile ? 10 : 40} borderBottomWidth={2} borderBottomColor="$faint">
-      <XStack maxWidth={1200} px={10} w="100%" m="auto" py={5}  jc="space-between">
-    
+      <XStack maxWidth={1200} px={10} w="100%" m="auto" py={5} jc="space-between" ai="center">
         <P
           textTransform="uppercase"
           color="$color"
           fontWeight={400}
           letterSpacing={3}
           fontSize={mobile ? 10 : 12}
-          >
+        >
           written by Adomas gaudi
         </P>
-        <Button hoverStyle={{ bg: "$accent"}} animation="fast" pressStyle={{ bg: "$background"}} icon={Moon} onPress={handleChangeTheme}></Button>
+        <Button
+          hoverStyle={{ bg: '$accent' }}
+          animation="fast"
+          pressStyle={{ bg: '$background' }}
+          icon={Moon}
+          onPress={handleChangeTheme}
+        ></Button>
       </XStack>
       {/* <YStack maxWidth={1200} w="100%" m="auto" py={200} {...borderX}>
         {mobile && (
@@ -80,10 +85,23 @@ const myBoxShadow1 = `
 0px 0px 16px hsla(0, 0%, 0%, 0.05)
 `
 const SectionMainContent = ({ mobile }) => {
+  const linkProps = useLink({ href: '/' })
   return (
     <YStack>
+      <XStack mb={50} mt={10}>
+        <Button
+          hoverStyle={{ bg: '$accent' }}
+          animation="fast"
+          pressStyle={{ bg: '$background' }}
+          {...linkProps}
+          boxShadow={myBoxShadow1}
+          size="$2"
+        >
+          <P color="$primary">HOME</P>
+        </Button>
+      </XStack>
       {mobile && (
-        <YStack {...blP} px={3} mb={50}>
+        <YStack {...blP} px={3} my={50}>
           <H1.Color>
             Stars are{' '}
             <Text bg="$accent" hoverStyle={{ bg: 'red' }} animation="slow">
@@ -94,10 +112,15 @@ const SectionMainContent = ({ mobile }) => {
         </YStack>
       )}
       {!mobile && (
-        <YStack {...brP}>
+        <YStack {...brP} my={150}>
           <H1.Color textAlign="right">
             Stars are{' '}
-            <Text bg="$accent" px={5} hoverStyle={{ bg: '$primary', color: '$color' }} animation="slow">
+            <Text
+              bg="$accent"
+              px={5}
+              hoverStyle={{ bg: '$primary', color: '$color' }}
+              animation="slow"
+            >
               hydrogen
             </Text>
           </H1.Color>
@@ -107,13 +130,7 @@ const SectionMainContent = ({ mobile }) => {
         </YStack>
       )}
       <XStack mb={50} gap={50}>
-        <P
-          
-          color="$color"
-          px={15}
-          borderRadius={4}
-          boxShadow={myBoxShadow1}
-        >
+        <P color="$color" px={15} borderRadius={4} boxShadow={myBoxShadow1}>
           2min read
         </P>
         {/* <XStack
@@ -181,7 +198,7 @@ export const SectionMain = () => {
 
   return (
     <YStack w="100%" maxWidth={1200} m="auto" px={10} {...borderX}>
-      <YStack w="100%" maxWidth={800} m="auto" pt={media.xs ? 100 : 200} pb={200}>
+      <YStack w="100%" maxWidth={800} m="auto" pt={media.xs ? 0 : 0} pb={200}>
         <SectionMainContent mobile={media.xs} />
       </YStack>
     </YStack>

@@ -1,39 +1,27 @@
 import {
   Button,
   H1,
-  H3,
   H4,
   Paragraph,
   Separator,
   Theme,
   XStack,
   YStack,
-  Image,
   useMedia,
   styled,
-  H2,
 } from '@my/ui'
-import { ChevronLeft } from '@tamagui/lucide-icons'
-import React from 'react'
-import { createParam } from 'solito'
 import { useLink } from 'solito/link'
 
-import { P2 } from './comps'
 import { SectionText } from './sectionText'
+import ArticleStars1v2 from '../starsBegin1v2'
 
-const { useParam } = createParam<{ id: string }>()
-const RedBox = ({ title, linkProps }) => (
-  <YStack w={300} h={300} bg="#ff7272" p={10} jc="center" m={5}>
-    <H3>{title}</H3>
-    <Button {...linkProps}>Read</Button>
-  </YStack>
-)
+
 export const P1 = styled(Paragraph, {
   name: 'ParSkill',
   fontWeight: 'semi-bold',
   fontSize: 20,
 })
-export default function ArticleStarsBegin1() {
+const ArticleStarsBegin1 = () => {
   const linkProps = useLink({
     href: '/',
   })
@@ -85,3 +73,6 @@ export default function ArticleStarsBegin1() {
     </Theme>
   )
 }
+
+
+export default ArticleStars1v2
