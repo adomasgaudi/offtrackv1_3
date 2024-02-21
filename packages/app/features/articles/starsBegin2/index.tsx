@@ -12,15 +12,18 @@ import {
   useMedia,
   styled,
   H2,
+  Spinner,
 } from '@my/ui'
 import { ChevronLeft } from '@tamagui/lucide-icons'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { createParam } from 'solito'
 import { useLink } from 'solito/link'
 
-import { P2 } from './comps'
-import { SectionText } from './sectionText'
+import { P2 } from './parts/comps'
+import { SectionText } from './sections/sectionText'
 import { SectionFoot, SectionMain, SectionTop } from './sectionsv2'
+import { SVGPaper, SVGWrap } from './parts/svgs'
+import { LoadingWrapper } from './partsv2/loading'
 
 const { useParam } = createParam<{ id: string }>()
 const RedBox = ({ title, linkProps }) => (
@@ -34,10 +37,6 @@ export const P1 = styled(Paragraph, {
   fontWeight: 'semi-bold',
   fontSize: 20,
 })
-
-
-
-
 
 const ArticleStars2v1 = () => {
   const linkProps = useLink({
@@ -90,16 +89,69 @@ const ArticleStars2v1 = () => {
   )
 }
 
+const ArticleStars2v3 = () => {
+  const [isMobile, setIsMobile] = useState(null)
+  const mediaQuery = useMedia()
 
+  useEffect(() => {
+    setIsMobile(mediaQuery.xs)
+  }, [mediaQuery])
 
-const ArticleStars2v2 = () => {
+  if (isMobile === null) {
+    return null // or a loading spinner
+  }
+
   return (
-    <Theme name="carnation"> 
-      <SectionTop />
-      <SectionMain />
-      <SectionFoot />
+    <Theme name="light">
+      {isMobile ? (
+        <YStack w={500} h={500} bg="blue">
+          <H1>Desktop</H1>
+        </YStack>
+      ) : (
+        // <YStack minHeight="100vh">
+        //   <SVGWrap SVG={SVGPaper} w="100%" h="100%" minHeight="100vh">
+        //     <YStack px={20}>
+        //       <SectionTop />
+        //       <SectionMain />
+        //       <SectionFoot />
+        //     </YStack>
+        //   </SVGWrap>
+        // </YStack>
+        <YStack w={100} h={100} bg="red">
+          <H1>Desktop</H1>
+        </YStack>
+      )}
     </Theme>
   )
 }
 
-export default ArticleStars2v1
+const ArticleStars2v2 = () => {
+  return (
+    <LoadingWrapper>
+      {(isMobile) => (
+        <Theme name="red">
+          <YStack minHeight="100vh">
+            <SVGWrap
+              SVG={SVGPaper}
+              w="100%"
+              h="100%"
+              minHeight="100vh"
+              color1="#fff8f8"
+              color2="#ebebeb"
+              color3="#f7f7f7"
+              color4="#e2e2e2"
+            >
+              <YStack>
+                <SectionTop />
+                <SectionMain />
+                <SectionFoot />
+              </YStack>
+            </SVGWrap>
+          </YStack>
+        </Theme>
+      )}
+    </LoadingWrapper>
+  )
+}
+
+export default ArticleStars2v2
