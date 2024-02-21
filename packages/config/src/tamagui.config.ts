@@ -173,6 +173,20 @@ const myThemes = {
     color: '#fa5b6b',
     background: '#204971',
   },
+  leafDark: {
+    accent: '#79B6B1',
+    secondary: '#3D705B',
+    primary: '#B4D0A8',
+    background: '#B4D0A8',
+    color: '#EFF5EC',
+  },
+  leafLight: {
+    accent: '#4A8782',
+    secondary: '#8fc1ac',
+    primary: '#3A562E',
+    background: '#F3F7F2',
+    color: '#0E140B',
+  },
   red: {
     color: '#383838',
     colorl1: '#383838',
