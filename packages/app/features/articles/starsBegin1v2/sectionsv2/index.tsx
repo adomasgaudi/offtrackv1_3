@@ -1,4 +1,16 @@
-import { Paragraph, H3 as H3T, Image, YStack, useMedia, Text, XStack, Theme, Button, Anchor } from '@my/ui'
+import {
+  Paragraph,
+  H3 as H3T,
+  Image,
+  YStack,
+  useMedia,
+  Text,
+  XStack,
+  Theme,
+  Button,
+  Anchor,
+  View,
+} from '@my/ui'
 import { H1, H3, P } from '../partsv2/comps'
 import images from '../../../../../Images'
 import { Brain, Moon, Twitter } from '@tamagui/lucide-icons'
@@ -170,7 +182,7 @@ const SectionMainContent = ({ mobile }) => {
         particle, you get a proton. If you take two "down" quarks and one "up" then you get a
         neutron, a neutrally charged particle.
       </P>
-      <XStack gap={50}>
+      <View flexDirection={mobile ? "column" : "row"} gap={50}>
         <YStack f={1}>
           <H1.Base mb={20} textAlign="center">
             Proton - positive
@@ -182,9 +194,9 @@ const SectionMainContent = ({ mobile }) => {
               height: 400,
             }}
             resizeMode="cover"
-        borderRadius={10}
-        boxShadow={myBoxShadow1}
-        mb={30}
+            borderRadius={10}
+            boxShadow={myBoxShadow1}
+            mb={30}
           />
           <XStack jc="space-around">
             <H3T>UP</H3T>
@@ -203,9 +215,9 @@ const SectionMainContent = ({ mobile }) => {
               height: 400,
             }}
             resizeMode="cover"
-        borderRadius={10}
-        boxShadow={myBoxShadow1}
-        mb={30}
+            borderRadius={10}
+            boxShadow={myBoxShadow1}
+            mb={30}
           />
           <XStack jc="space-around">
             <H3T>UP</H3T>
@@ -213,7 +225,7 @@ const SectionMainContent = ({ mobile }) => {
             <H3T>DOWN</H3T>
           </XStack>
         </YStack>
-      </XStack>
+      </View>
       <P mt={100}>
         In ancient greek "protos" means "first", and that is a fitting name for the essentially
         first kind of particle in the universe. Take that proton and let it float in a never-ending
@@ -228,7 +240,7 @@ const SectionMainContent = ({ mobile }) => {
         source={{
           uri: images.chargeForce1.src,
           width: '100%',
-          height: 300,
+          height: mobile ? 150 : 300,
         }}
         resizeMode="cover"
         borderRadius={10}
@@ -239,7 +251,7 @@ const SectionMainContent = ({ mobile }) => {
         source={{
           uri: images.quarksv4.src,
           width: '100%',
-          height: 400,
+          height: mobile ? 200 : 400,
         }}
         resizeMode="cover"
         borderRadius={10}
@@ -260,7 +272,7 @@ const SectionMainContent = ({ mobile }) => {
         source={{
           uri: images.quarks2.src,
           width: '100%',
-          height: 400,
+          height: mobile ? 200 : 400,
         }}
         resizeMode="cover"
         borderRadius={10}
@@ -279,14 +291,14 @@ const SectionMainContent = ({ mobile }) => {
         source={{
           uri: images.isotopes.src,
           width: '100%',
-          height: 800,
+          height: mobile ? 300 : 800,
         }}
         resizeMode="cover"
         borderRadius={10}
         boxShadow={myBoxShadow1}
         mb={30}
       />
-      
+
       <P mb={100}>
         Other combinations like helium-2 or hydrogen-4 or even double neutron particles are also
         possible, but most would decay about as fast as a photon of light would travel across the
@@ -324,8 +336,6 @@ const SectionMainContent = ({ mobile }) => {
       <Anchor href="https://www.youtube.com/watch?v=TbzZIMQC6vk&ab_channel=PBSSpaceTime">
         Proton AI video
       </Anchor>
-
-      
     </YStack>
   )
 }
