@@ -1,4 +1,4 @@
-import { createTamagui, createTokens } from 'tamagui'
+import { createFont, createTamagui, createTokens } from 'tamagui'
 import { createInterFont } from '@tamagui/font-inter'
 import { shorthands } from '@tamagui/shorthands'
 import { tokens } from '@tamagui/themes/v2'
@@ -39,10 +39,53 @@ const headingFont = createInterFont({
     15: -6,
   },
   face: {
-    700: { normal: 'InterBold' },
+    700: { normal: "Times New Roman" },
   },
 })
 
+const myInterFont = createFont({
+  family: 'Playfair Display, Helvetica, Arial, sans-serif',
+  size: {
+    1: 12,
+    2: 14,
+    3: 15,
+    // ...
+  },
+  lineHeight: {
+    1: 17,
+    2: 22,
+    3: 25,
+    // ...
+  },
+  weight: {
+    4: '300',
+    6: '600',
+  },
+  letterSpacing: {
+    4: 0,
+    8: -1,
+  },
+
+  // for native only, alternate family based on weight/style
+  face: {
+    // pass in weights as keys
+    700: { normal: 'InterBold', italic: 'InterBold-Italic' },
+    800: { normal: 'InterBold', italic: 'InterBold-Italic' },
+    900: { normal: 'InterBold', italic: 'InterBold-Italic' },
+  },
+})
+
+const bodyFont = createInterFont(
+  {
+    face: {
+      700: { normal: "Times New Roman" },
+    },
+  },
+  {
+    sizeSize: (size) => Math.round(size * 1.1),
+    sizeLineHeight: (size) => Math.round(size * 1.1 + (size > 20 ? 10 : 10)),
+  }
+)
 
 const myAnimations = createAnimations({
   fast: {
@@ -131,23 +174,22 @@ const myThemes = {
     color: '#fa5b6b',
     background: '#204971',
   },
+  red: {
+    color: '#383838',
+    colorl1: '#383838',
+    colorl2: '#555555',
+    colorl4: '#a0a0a0',
+    accentl1: '#fa5b6b',
+    accentl4: '#fa8491',
+    background: '#204971',
+  },
   carnation2: {
     color: '#fd7481',
     background: '#204971',
   },
 }
 
-const bodyFont = createInterFont(
-  {
-    face: {
-      700: { normal: 'InterBold' },
-    },
-  },
-  {
-    sizeSize: (size) => Math.round(size * 1.1),
-    sizeLineHeight: (size) => Math.round(size * 1.1 + (size > 20 ? 10 : 10)),
-  }
-)
+
 
 export const config = createTamagui({
   defaultFont: 'body',
@@ -159,6 +201,7 @@ export const config = createTamagui({
   fonts: {
     body: bodyFont,
     heading: headingFont,
+    inter: myInterFont,
   },
   settings: {
     allowedStyleValues: 'somewhat-strict',
