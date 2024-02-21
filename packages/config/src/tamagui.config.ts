@@ -39,7 +39,7 @@ const headingFont = createInterFont({
     15: -6,
   },
   face: {
-    700: { normal: "Times New Roman" },
+    700: { normal: "InterBold" },
   },
 })
 
@@ -49,7 +49,6 @@ const myInterFont = createFont({
     1: 12,
     2: 14,
     3: 15,
-    // ...
   },
   lineHeight: {
     1: 17,
@@ -78,7 +77,7 @@ const myInterFont = createFont({
 const bodyFont = createInterFont(
   {
     face: {
-      700: { normal: "Times New Roman" },
+      500: { normal: "InterBold" },
     },
   },
   {
