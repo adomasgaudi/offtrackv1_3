@@ -15,6 +15,7 @@ import quarks2 from './quarks2v1.jpg'
 import hIsotopes from './h-isotopes.webp'
 import isotopes from './isotopes.jpg'
 import exoplanetList from './exoplanetList.png'
+import browndwarf from './browndwarf.jpg'
 
 const images =  {
     output,
@@ -34,5 +35,6 @@ const images =  {
     hIsotopes,
     isotopes,
     exoplanetList,
+    browndwarf
 }
 export default images

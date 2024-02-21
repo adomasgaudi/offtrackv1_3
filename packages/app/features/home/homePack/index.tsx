@@ -14,7 +14,7 @@ import {
 } from './sections'
 import { SectionArticle } from './sections/sectionArticle'
 import { Analytics } from '@vercel/analytics/react'
-import Spline from '@splinetool/react-spline';
+import Spline from '@splinetool/react-spline'
 
 // Desktop version component
 const sectionRef = createRef()
@@ -26,7 +26,10 @@ const Desktop = ({ mobile, xs }) => {
     <Theme name="f3">
       <YStack bg="white">
         <Analytics />
-        <Nav {...{ isScrolled, isHovered, setIsHovered }} onCatPress={() => sectionQuantumRef.current?.scrollIntoView({ behavior: 'smooth' })} />
+        <Nav
+          {...{ isScrolled, isHovered, setIsHovered }}
+          onCatPress={() => sectionQuantumRef.current?.scrollIntoView({ behavior: 'smooth' })}
+        />
         <SectionTopText
           {...{ mobile, xs }}
           onPress={() => sectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
@@ -45,8 +48,9 @@ const Desktop = ({ mobile, xs }) => {
               }}
             />
           ))}
-          <YStack ref={sectionQuantumRef}></YStack>
-          <SectionFakeArticle />
+          <YStack ref={sectionQuantumRef} w={800}>
+            <SectionFakeArticle />
+          </YStack>
           <Theme name="f3">
             <SectionEdgarAlanPoe {...{ mobile }} />
           </Theme>

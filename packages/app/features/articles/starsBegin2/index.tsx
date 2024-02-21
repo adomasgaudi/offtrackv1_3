@@ -20,6 +20,7 @@ import { useLink } from 'solito/link'
 
 import { P2 } from './comps'
 import { SectionText } from './sectionText'
+import { SectionFoot, SectionMain, SectionTop } from './sectionsv2'
 
 const { useParam } = createParam<{ id: string }>()
 const RedBox = ({ title, linkProps }) => (
@@ -33,7 +34,12 @@ export const P1 = styled(Paragraph, {
   fontWeight: 'semi-bold',
   fontSize: 20,
 })
-export default function ArticleExo10() {
+
+
+
+
+
+const ArticleStars2v1 = () => {
   const linkProps = useLink({
     href: '/',
   })
@@ -50,9 +56,9 @@ export default function ArticleExo10() {
             <Button {...linkProps}>Home</Button>
           </XStack>
           <YStack f={1} mt="$10" jc="center" p="$4" space>
-            <YStack space="$4" minHeight={200}>
+            <YStack gap="$4" minHeight={200}>
               <H1 mb={100} fontSize={media.sm ? 30 : undefined} letterSpacing={'normal'}>
-                Stars for beginners - Mostly everything is this
+                Stars for beginners - Stars are hydrogen
               </H1>
               <H4>Protons under gravity</H4>
               <Paragraph fontWeight="bold">2024 Feb</Paragraph>
@@ -67,7 +73,7 @@ export default function ArticleExo10() {
             <YStack w="100%" minHeight={300} bg="$background">
               <YStack maxWidth={1200} w="100%" mx="auto" py={100} p="$4">
                 <YStack my={100} maxWidth={800}>
-                 <SectionText></SectionText>
+                  <SectionText></SectionText>
                 </YStack>
               </YStack>
             </YStack>
@@ -83,3 +89,17 @@ export default function ArticleExo10() {
     </Theme>
   )
 }
+
+
+
+const ArticleStars2v2 = () => {
+  return (
+    <Theme name="carnation"> 
+      <SectionTop />
+      <SectionMain />
+      <SectionFoot />
+    </Theme>
+  )
+}
+
+export default ArticleStars2v1
