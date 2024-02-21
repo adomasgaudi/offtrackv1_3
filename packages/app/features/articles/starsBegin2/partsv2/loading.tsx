@@ -21,5 +21,5 @@ export const LoadingWrapper = ({ children }) => {
     return <LoadingScreen />
   }
 
-  return children(isMobile)
+  return children
 }

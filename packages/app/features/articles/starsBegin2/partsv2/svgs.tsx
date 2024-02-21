@@ -71,12 +71,12 @@ export const SVG1 = ({ color1, color2 }) => (
   </svg>
 )
 
-
 export const SVGPaper = ({ color1, color2, color3, color4 }) => {
   const stopColor1 = color1 || 'hsla(56, 14%, 81%, 1.00)'
   const stopColor2 = color2 || 'rgba(255,255,255,0)'
   const stopColor3 = color3 || 'hsl(0, 0%, 78%)'
   const stopColor4 = color4 || 'rgba(255,255,255,0)'
+  const grainColor = color1 || 'hsla(128, 70%, 41%, 1)'
   return (
     <svg version="1.1" viewBox="0 0 100% 100%" width="100%" height="100%">
       <defs>
@@ -162,18 +162,76 @@ export const SVGPaper = ({ color1, color2, color3, color4 }) => {
         </filter>
       </defs>
       <g>
-        <rect width="100%" height="100%" fill="hsl(0, 0%, 100%)"></rect>
+        <rect width="100%" height="100%" fill={grainColor}></rect>
         <rect width="100%" height="100%" fill="url(#gggrain-gradient3)"></rect>
         <rect width="100%" height="100%" fill="url(#gggrain-gradient2)"></rect>
         <rect
           width="100%"
           height="100%"
-          fill="transparent"
+          fill="#c92323fa"
           filter="url(#gggrain-filter)"
           opacity="1"
-          // style="mix-blend-mode: normal"
+          // style=""
         ></rect>
       </g>
+    </svg>
+  )
+}
+export const SVGDarkPaper = ({ color1, color2, color3, color4 }) => {
+  const stopColor1 = color1 || 'hsla(56, 14%, 81%, 1.00)'
+  const stopColor2 = color2 || 'rgba(255,255,255,0)'
+  const stopColor3 = color3 || 'hsl(0, 0%, 78%)'
+  const stopColor4 = color4 || 'rgba(255,255,255,0)'
+  const grainColor = color1 || 'hsla(128, 70%, 41%, 1)'
+  return (
+    <svg
+      version="1.1"
+      viewBox="0 0 100% 100%"
+      width="100%"
+      height="100%"
+      opacity="1"
+    >
+      <defs>
+        <filter
+          id="nnnoise-filter"
+          x="-20%"
+          y="-20%"
+          width="140%"
+          height="140%"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+          color-interpolation-filters="linearRGB"
+        >
+          <feTurbulence
+            type="turbulence"
+            baseFrequency="0.2"
+            numOctaves="4"
+            seed="15"
+            stitchTiles="stitch"
+            x="0%"
+            y="0%"
+            width="100%"
+            height="100%"
+            result="turbulence"
+          ></feTurbulence>
+          <feSpecularLighting
+            surfaceScale="6"
+            specularConstant="1.5"
+            specularExponent="20"
+            lighting-color="#505050"
+            x="0%"
+            y="0%"
+            width="100%"
+            height="100%"
+            in="turbulence"
+            result="specularLighting"
+          >
+            <feDistantLight azimuth="3" elevation="85"></feDistantLight>
+          </feSpecularLighting>
+        </filter>
+      </defs>
+      <rect width="100%" height="100%" fill="#090D08"></rect>
+      <rect width="100%" height="100%" fill="#505050" filter="url(#nnnoise-filter)"></rect>
     </svg>
   )
 }
@@ -183,6 +241,7 @@ export const SVGWrap = ({ children, color1, color2, color3, color4, SVG, ...prop
     <View position="absolute" w="100%" h="100%" top="0" left="0">
       <SVG {...{ color1, color2, color3, color4 }} />
     </View>
+    {/* <View w="100%" h="100%" position="absolute" top="0" left="0" bg="#ff1e1e72"></View> */}
     <View zIndex={1}>{children}</View>
   </View>
 )

@@ -177,14 +177,17 @@ const myThemes = {
     accent: '#79B6B1',
     secondary: '#3D705B',
     primary: '#B4D0A8',
-    background: '#B4D0A8',
+    background: '#090D08',
+    faint: '#131b12',
     color: '#EFF5EC',
+    // color: '#46b80d',
   },
   leafLight: {
     accent: '#4A8782',
     secondary: '#8fc1ac',
     primary: '#3A562E',
     background: '#F3F7F2',
+    faint: '#e8ebe7',
     color: '#0E140B',
   },
   red: {

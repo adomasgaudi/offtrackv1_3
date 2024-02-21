@@ -1,44 +1,48 @@
-import { Paragraph, Image, YStack, useMedia, Text, XStack } from '@my/ui'
+import { Paragraph, Image, YStack, useMedia, Text, XStack, Theme, Button } from '@my/ui'
 import { H1, H3, P } from '../partsv2/comps'
 import images from '../../../../../Images'
-import { Brain, Twitter } from '@tamagui/lucide-icons'
+import { Brain, Moon, Twitter } from '@tamagui/lucide-icons'
 const decorPR = {
   textDecorationStyle: 'dashed',
   textDecorationLine: 'underline',
-  textDecorationColor: '$accentl1',
+  textDecorationColor: '$accent',
 }
 const brP = {
   borderRightWidth: 2,
-  borderRightColor: '$accentl1',
+  borderRightColor: '$accent',
   pr: 10,
 }
 const blP = {
   borderLeftWidth: 2,
-  borderLeftColor: '$accentl1',
+  borderLeftColor: '$accent',
   pr: 10,
 }
 const borderX = {
   borderRightWidth: 1,
-  borderRightColor: '#e7e7e7',
+  borderRightColor: '$faint',
   borderLeftWidth: 1,
-  borderLeftColor: '#e7e7e7',
+  borderLeftColor: '$faint',
 }
-export const SectionTop = () => {
+
+
+export const SectionTop = ({handleChangeTheme}) => {
   const mobile = useMedia().xs
 
   return (
-    <YStack px={mobile ? 10 : 40} borderBottomWidth={2}>
-      <YStack maxWidth={1200} px={10} w="100%" m="auto" py={5} {...borderX}>
+    <YStack px={mobile ? 10 : 40} borderBottomWidth={2} borderBottomColor="$faint">
+      <XStack maxWidth={1200} px={10} w="100%" m="auto" py={5}  jc="space-between">
+    
         <P
           textTransform="uppercase"
-          color="#999"
+          color="$color"
           fontWeight={400}
           letterSpacing={3}
           fontSize={mobile ? 10 : 12}
-        >
+          >
           written by Adomas gaudi
         </P>
-      </YStack>
+        <Button hoverStyle={{ bg: "$accent"}} animation="fast" pressStyle={{ bg: "$background"}} icon={Moon} onPress={handleChangeTheme}></Button>
+      </XStack>
       {/* <YStack maxWidth={1200} w="100%" m="auto" py={200} {...borderX}>
         {mobile && (
           <YStack {...blP} px={3}>
@@ -82,49 +86,47 @@ const SectionMainContent = ({ mobile }) => {
         <YStack {...blP} px={3} mb={50}>
           <H1.Color>
             Stars are{' '}
-            <Text bg="yellow" hoverStyle={{ bg: 'red' }} animation="slow">
+            <Text bg="$accent" hoverStyle={{ bg: 'red' }} animation="slow">
               hydrogen
             </Text>
           </H1.Color>
-          <P color="$accentl4">2024 FEB</P>
+          <P color="$accent">2024 FEB</P>
         </YStack>
       )}
       {!mobile && (
         <YStack {...brP}>
           <H1.Color textAlign="right">
             Stars are{' '}
-            <Text bg="yellow" px={5} hoverStyle={{ bg: 'red', color: 'white' }} animation="slow">
+            <Text bg="$accent" px={5} hoverStyle={{ bg: '$primary', color: '$color' }} animation="slow">
               hydrogen
             </Text>
           </H1.Color>
-          <P color="$accentl4" textAlign="right">
+          <P color="$accent" textAlign="right">
             2024 FEB
           </P>
         </YStack>
       )}
       <XStack mb={50} gap={50}>
         <P
-          borderWidth={1}
-          borderColor="#e1e1e1"
-          color="#c7c7c7"
+          
+          color="$color"
           px={15}
           borderRadius={4}
           boxShadow={myBoxShadow1}
         >
           2min read
         </P>
-        <XStack
-          borderWidth={1}
-          borderColor="#e1e1e1"
-          color="#c7c7c7"
+        {/* <XStack
+          
+          color="$color"
           px={15}
           borderRadius={4}
           boxShadow={myBoxShadow1}
           jc="center"
           ai="center"
         >
-          <Twitter size="$1" color="#c7c7c7" />
-        </XStack>
+          <Twitter size="$1" color="$color" />
+        </XStack> */}
         {/* <XStack borderWidth={1} borderColor="#e1e1e1" color="#c7c7c7" px={15} borderRadius={4} boxShadow={myBoxShadow1} jc="center" ai="center">
         <Brain size="$1" color="#c7c7c7" />
       </XStack> */}
@@ -161,7 +163,7 @@ const SectionMainContent = ({ mobile }) => {
       {/* <H1.Base mb={20} mt={100}>
         Brown Dwarfs
       </H1.Base> */}
-      <H3.Base color="#e8e8e8" mt={100}>
+      <H3.Base color="$color" mt={100}>
         Writting... more soon
       </H3.Base>
       {/* <P>
@@ -188,7 +190,7 @@ export const SectionMain = () => {
 export const SectionFoot = () => {
   const mobile = useMedia().xs
   return (
-    <YStack borderTopWidth={2} px={mobile ? 10 : 40}>
+    <YStack borderTopWidth={2} borderTopColor="$faint" px={mobile ? 10 : 40}>
       <YStack maxWidth={1200} w="100%" m="auto" py={100}>
         {/* <P>Home</P> */}
       </YStack>
