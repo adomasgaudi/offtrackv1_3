@@ -115,9 +115,9 @@ const SectionMainContent = ({ mobile }) => {
       {mobile && (
         <YStack {...blP} px={3} my={50}>
           <H1.Color>
-            Everything is just these
+            Everything is just these 
             <Text bg="$accent" hoverStyle={{ bg: 'red' }} animation="slow">
-              two
+               two 
             </Text>
             quarks
           </H1.Color>
