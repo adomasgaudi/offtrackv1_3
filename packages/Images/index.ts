@@ -12,6 +12,8 @@ import elaborate from './elaboratepls.png'
 import symbiote from './symbiote.png'
 import theTraveler from './thetraveler.png'
 import submersioncards from './submersioncards.png'
+import cvBlack from './blackCV.png'
+
 
 const images = {
     output,
@@ -27,6 +29,7 @@ const images = {
     elaborate,
     symbiote,
     theTraveler,
-    submersioncards
+    submersioncards,
+    cvBlack
 }
 export default images

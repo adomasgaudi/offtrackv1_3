@@ -7,7 +7,7 @@ import images from '../../../../../Images'
 export const PSkill = styled(Paragraph, {
   name: 'ParSkill',
   fontWeight: 'bold',
-  hoverStyle: {color: "red"}
+  hoverStyle: {color: "red", transition: ".3s"}
 })
 
 export const Skills = () => {
@@ -79,9 +79,9 @@ export const CVSheet = () => {
 export const CuriculumVitae = () => {
   const media = useMedia()
   return (
-    <YStack w="100%" h={500} ai="center">
+    <YStack w="100%" h={800} overflow="scroll" ai="center" py={200}>
       <Image
-        source={{ width: media.xs ? '100%' : 600, height: media.xs ? 500 : 800, uri: images.agcv.src }}
+        source={{ width: media.xs ? '100%' : 600, height: media.xs ? 500 : 850, uri: images.cvBlack.src }}
         shadowRadius={2}
         shadowOffset={2}
         shadowColor="black"
