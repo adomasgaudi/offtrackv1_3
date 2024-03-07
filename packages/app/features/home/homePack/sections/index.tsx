@@ -67,9 +67,9 @@ export const CVSheet = () => {
             }}
             mb={10}
             bg="#fdfdfd"
-          />
-
-          <CuriculumVitae />
+          ></Button>
+          <View w={300} bg="red" h={500}></View>
+          {/* <CuriculumVitae /> */}
         </Sheet.Frame>
       </Sheet>
     </>
@@ -103,7 +103,7 @@ export const Boxy = ({ children, mobile, mt, ...props }) => {
           maxW={400}
           {...props}
           mt={mt}
-          maxH={400}
+          maxHeight={400}
           borderRadius={10}
           bg="#eeeeee"
           // position="absolute"

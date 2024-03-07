@@ -191,7 +191,7 @@ export function HomePack() {
                 ))}
                 <YStack ai="center">
                   <Theme name="light">
-                    <CVSheet />
+                    {/* <CVSheet /> */}
                   </Theme>
                 </YStack>
               </YStack>
