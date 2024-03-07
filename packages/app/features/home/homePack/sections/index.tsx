@@ -1,11 +1,11 @@
 import { Anchor, Button, H1, H2, H4, Image, Paragraph, Sheet, View, YStack, styled, useMedia, useToastController } from '@my/ui'
 import { ChevronDown } from '@tamagui/lucide-icons'
 import { useState } from 'react'
-import images from '../../../../../Images'
+import images from '../../../../../images'
 
 
 export const PSkill = styled(Paragraph, {
-  name: 'ParSkill',
+  name: 'ParSkill',a
   fontWeight: 'bold',
   hoverStyle: {color: "red", transition: ".3s"}
 })

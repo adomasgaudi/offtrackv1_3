@@ -55,29 +55,21 @@ const myThemes = {
     color: '#333',
     background: '#f3f3f3',
   },
-  yellow1: {
-    color: '#511b6e',
-    background: '#f7e78d',
+  leafDark: {
+    accent: '#79B6B1',
+    secondary: '#3D705B',
+    primary: '#B4D0A8',
+    background: '#090D08',
+    faint: '#131b12',
+    color: '#EFF5EC',
   },
-  lightblue1: {
-    color: '#697291',
-    background: '#cfeef8',
-  },
-  col1: {
-    color: '#3308c0',
-    background: '#ccd2e7',
-  },
-  ebb: {
-    color: '#2b2b40',
-    background: '#e6e0df',
-  },
-  carnation: {
-    color: '#fa5b6b',
-    background: '#204971',
-  },
-  carnation2: {
-    color: 'hsl(354, 97%, 72%)',
-    background: '#204971',
+  leafLight: {
+    accent: '#4A8782',
+    secondary: '#8fc1ac',
+    primary: '#3A562E',
+    background: '#F3F7F2',
+    faint: '#e8ebe7',
+    color: '#0E140B',
   },
 }
 

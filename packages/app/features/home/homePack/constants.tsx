@@ -1,4 +1,4 @@
-import images from '../../../../Images'
+import images from '../../../../images'
 export const PROJECTS = [
     {
       href: 'https://goingofftrack.blog',
