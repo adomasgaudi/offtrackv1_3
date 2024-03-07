@@ -27,20 +27,20 @@ const SkillSection = () => {
         <P1>Tamagui</P1>
       </YStack> */}
       <YStack cursor="pointer">
-        <H1>Apps</H1>
+        <H1 mb={20}>Apps</H1>
         <PSkill>React Native</PSkill>
         <PSkill>Expo</PSkill>
         <PSkill>Tamagui</PSkill>
       </YStack>
       <YStack cursor="pointer">
-        <H1>Websites</H1>
+        <H1 mb={20}>Websites</H1>
         <PSkill>React</PSkill>
         <PSkill>Vue</PSkill>
         <PSkill>Next.js</PSkill>
         <PSkill>PHP</PSkill>
       </YStack>
       <YStack cursor="pointer">
-        <H1>Databases</H1>
+        <H1 mb={20}>Databases</H1>
         <PSkill>PHP</PSkill>
         <PSkill>MySQL</PSkill>
         <PSkill>Laravel</PSkill>
@@ -159,6 +159,7 @@ export function HomePack() {
                         jc="space-between"
                         w="100%"
                         flexDirection={media.sm ? 'column' : 'row'}
+                        mt={20}
                       >
                         <SkillSection />
                       </View>
