@@ -42,7 +42,7 @@ const headingFont = createInterFont({
 
 
 
-const myThemes = {
+export const myThemes = {
   dark: {
     background: '#333',
     color: '#fff',
@@ -62,6 +62,7 @@ const myThemes = {
     background: '#090D08',
     faint: '#131b12',
     color: '#EFF5EC',
+    color33: '#cacfc8',
   },
   leafLight: {
     accent: '#4A8782',
@@ -70,6 +71,25 @@ const myThemes = {
     background: '#F3F7F2',
     faint: '#e8ebe7',
     color: '#0E140B',
+    color33:'#22311b',
+  },
+  yellowLight: {
+    accent: '#e8ca5c',
+    secondary: '#e1cf8e',
+    primary: '#b8a253',
+    background: '#faf9f7',
+    faint: '#e8ebe7',
+    color: '#0c0c0b',
+    color33: '#32322e',
+  },
+  yellowDark: {
+    accent: "#a18317",
+    secondary: "#715f1e",
+    primary: "#ae9847",
+    background: "#090806",
+    faint: "#131b12",
+    color: "#f3f3f2",
+    color33: '#dadad8',
   },
 }
 

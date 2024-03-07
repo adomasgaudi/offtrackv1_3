@@ -178,11 +178,13 @@ export const SVGPaper = ({ color1, color2, color3, color4 }) => {
   )
 }
 export const SVGDarkPaper = ({ color1, color2, color3, color4 }) => {
-  const stopColor1 = color1 || 'hsla(56, 14%, 81%, 1.00)'
-  const stopColor2 = color2 || 'rgba(255,255,255,0)'
+  const stopColor1 = color1 || "#505050"
+  const stopColor2 = color2 || "#090D08"
   const stopColor3 = color3 || 'hsl(0, 0%, 78%)'
   const stopColor4 = color4 || 'rgba(255,255,255,0)'
   const grainColor = color1 || 'hsla(128, 70%, 41%, 1)'
+  // "#090D08"
+  // #505050
   return (
     <svg
       version="1.1"
@@ -218,7 +220,7 @@ export const SVGDarkPaper = ({ color1, color2, color3, color4 }) => {
             surfaceScale="6"
             specularConstant="1.5"
             specularExponent="20"
-            lighting-color="#505050"
+            lightingColor={stopColor1}
             x="0%"
             y="0%"
             width="100%"
@@ -230,8 +232,8 @@ export const SVGDarkPaper = ({ color1, color2, color3, color4 }) => {
           </feSpecularLighting>
         </filter>
       </defs>
-      <rect width="100%" height="100%" fill="#090D08"></rect>
-      <rect width="100%" height="100%" fill="#505050" filter="url(#nnnoise-filter)"></rect>
+      <rect width="100%" height="100%" fill={stopColor2}></rect>
+      <rect width="100%" height="100%" fill={stopColor1} filter="url(#nnnoise-filter)"></rect>
     </svg>
   )
 }
@@ -241,7 +243,6 @@ export const SVGWrap = ({ children, color1, color2, color3, color4, SVG, ...prop
     <View position="absolute" w="100%" h="100%" top="0" left="0">
       <SVG {...{ color1, color2, color3, color4 }} />
     </View>
-    {/* <View w="100%" h="100%" position="absolute" top="0" left="0" bg="#ff1e1e72"></View> */}
     <View zIndex={1}>{children}</View>
   </View>
 )
@@ -262,3 +263,91 @@ export const SVGSplatCircle = () => (
     <circle cx="100" cy="100" r="100" style="filter: url(#displacementFilter)" />
   </svg>
 )
+
+
+
+
+export const myThemes = {
+  dark: {
+    background: '#333',
+    color: '#fff',
+  },
+  light: {
+    color: '#333',
+    background: '#fff',
+  },
+  light2: {
+    color: '#333',
+    background: '#f3f3f3',
+  },
+  leafDark: {
+    accent: '#79B6B1',
+    secondary: '#3D705B',
+    primary: '#B4D0A8',
+    background: '#090D08',
+    faint: '#131b12',
+    color: '#EFF5EC',
+  },
+  leafLight: {
+    accent: '#4A8782',
+    secondary: '#8fc1ac',
+    primary: '#3A562E',
+    background: '#F3F7F2',
+    faint: '#e8ebe7',
+    color: '#0E140B',
+  },
+  yellowLight: {
+    accent: '#e8ca5c',
+    secondary: '#e1cf8e',
+    primary: '#b8a253',
+    background: '#faf9f7',
+    faint: '#e8ebe7',
+    color: '#0c0c0b',
+  },
+  yellowDark: {
+    accent: "#a18317",
+    secondary: "#715f1e",
+    primary: "#ae9847",
+    background: "#090806",
+    faint: "#131b12",
+    color: "#f3f3f2",
+  },
+}
+
+export const THEME_COLORS = [
+  ['yellowLight', 'yellowDark'],
+  ['leafLight', 'leafDark'],
+]
+
+export const svgColors = (themenum) => ({
+  light: [myThemes[THEME_COLORS[themenum][0]].primary, '#ebebeb00', '#f7f7f7', '#e2e2e200'],
+  dark: ['#1a1a1a', '#2a2a2a', '#3a3a3a', '#4a4a4a']
+})
+
+
+export const colorsP = (isDark, themeNum) => {
+  const selectedColors = isDark ? svgColors(themeNum).dark : svgColors(themeNum).light;
+  return {
+    color1: selectedColors[0],
+    color2: selectedColors[1],
+    color3: selectedColors[2],
+    color4: selectedColors[3],
+  }
+}
+
+
+
+
+export const SVGWrapFull = ({ children, isDark, themenum }) => {
+  return (
+    <SVGWrap
+      SVG={isDark ? SVGDarkPaper : SVGPaper}
+      w="100%"
+      h="100%"
+      minHeight="100vh"
+      {...colorsP(isDark, themenum)}
+    >
+      {children}
+    </SVGWrap>
+  )
+}
