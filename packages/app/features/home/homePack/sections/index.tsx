@@ -2,6 +2,7 @@ import { Button, H1, H3, XStack, useMedia, Text, YStack, H2, View, Anchor, Parag
 import { Rainbow, SunMoon } from '@tamagui/lucide-icons'
 import { ButtonNav, Card, Cont, Container, ContainerXS, Hero, heroShadowP } from '../comps'
 import { SVGCard, SVGWrapFull } from '../comps/Svgs'
+import { useState } from 'react'
 
 
 
@@ -14,35 +15,70 @@ export const SectionNav = ({ handleColorChange, handleThemeChange }) => {
     </Container>
   )
 }
-export const SectionTop = ({ isDark, themeNum }) => {
 
+
+const stylesx = {
+  text: (hoverOn) => ({
+    bg: hoverOn ? "blue" : "red",
+    w: hoverOn ? 200 : 0,
+    h: hoverOn ? 50 : 0,
+    transition: "1s",
+    // overflow: "hidden",
+  }),
+  hero: {
+    color: "$color33",
+    borderWidth: 1,
+    borderRadius: 20,
+    borderColor: "$primary",
+    p: 20
+  },
+  cont: {
+    f: 1,
+    // bg: "red",
+    py: 10,
+    // hoverStyle: { f: 4, transition: "0.3s" },
+  }
+  // f: 1,
+  // animation: "bouncy",
+  // p: 20,
+  // position: "relative"
+
+}
+
+export const SectionTop = ({ isDark, themeNum }) => {
+  const [hoverOn, setHoverOn] = useState(false)
   const mobile = useMedia().md
+
+  const handleHover = (e) => {
+    console.log(e)
+    setHoverOn(prev => !prev)
+  }
   return (
     <>
-      <Cont {...{ mobile }} pb={100}>
-        <Hero my={50} size={mobile ? "$9" : "$14"} textAlign="center">
-          <Text color="$primary">
-            Front-end&nbsp;
+      <Cont {...{ mobile }} pb={100} minHeight="100vh">
+        <Hero mt={50} mb={50} fontSize={mobile ? "$10" : 140} w="100%" >
+          <Text borderBottomWidth={3} borderBottomColor="$primary" pb={0}>
+            Front-end
           </Text>
-          Developer
+        </Hero>
+        <Hero mb={50} fontSize={mobile ? "$10" : 140} w="100%" textAlign="right" >
+          <Text fontFamily="TimesNewRoman" color="$secondary" >
+            Developer
+          </Text>
         </Hero>
 
-        {/*  */}
-        
-        <View gap={50} flexDirection={mobile ? "column" : "row"}>
-          <Card>
-            <H2 color="$color">Websites</H2>
-            <YStack>React.js - Next.js</YStack>
-            <YStack></YStack>
-          </Card>
-          <Card>
-            <H2 color="$color">Apps</H2>
-            <YStack>React Native - Expo</YStack>
-            <YStack>Tamagui</YStack>
-          </Card>
-        </View>
 
-        {/*  */}
+      </Cont>
+      <Cont {...{ mobile }}>
+        <Anchor href="https://goingofftrack.blog/" target="_blank" mt={100} mb={100}>
+          <Hero my={50} size={mobile ? "$10" : "$14"}>
+            <Text color="$color33">
+              My Projects <Text color="$secondary">
+                {">>"}
+              </Text>
+            </Text>
+          </Hero>
+        </Anchor>
       </Cont>
       <View borderTopWidth={1}>
         <Cont  {...{ mobile }}>
@@ -84,3 +120,47 @@ export const SectionTop = ({ isDark, themeNum }) => {
 
   )
 }
+
+
+
+// <View gap={50} flexDirection={mobile ? "column" : "row"}>
+// <XStack maxWidth={400} width={400} p={10} m="auto">
+//   <XStack {...stylesx.cont} jc="flex-start">
+//     <H2 {...stylesx.hero}>Apps</H2>
+//     {/* <YStack {...stylesx.text(hoverOn)}>React Native - Expo</YStack> */}
+//   </XStack>
+//   <XStack {...stylesx.cont} jc="flex-end">
+//     <H2 {...stylesx.hero}>Web</H2>
+//     {/* <YStack {...stylesx.text(hoverOn)}>React Native - Expo</YStack> */}
+//   </XStack>
+  
+  
+//   {/* <YStack {...stylesx}>
+//     <XStack>
+//       <H2 color="$color">Web</H2>
+//       <YStack position="absolute">React.js - Next.js</YStack>
+//     </XStack>
+//   </YStack>
+//   <YStack f={1} hoverStyle={{ f: 4, transition: "0.3s" }} animation="bouncy" borderWidth={1} borderRadius={20} borderColor="$primary" p={20} position="relative">
+//     <XStack >
+
+//       <YStack position="absolute">React.js - Next.js</YStack>
+//       <H2 color="$color">Web</H2>
+//     </XStack>
+//   </YStack> */}
+//   {/* <XStack f={1} hoverStyle={{ f: 4, transition: "0.3s" }} animation="bouncy" p={20}>
+//     <YStack>React Native - Expo</YStack>
+//     <H2 color="$color">Apps</H2>
+//   </XStack> */}
+// </XStack>
+// {/* <Card>
+//   <H2 color="$color">Websites</H2>
+//   <YStack>React.js - Next.js</YStack>
+//   <YStack></YStack>
+// </Card>
+// <Card>
+//   <H2 color="$color">Apps</H2>
+//   <YStack>React Native - Expo</YStack>
+//   <YStack>Tamagui</YStack>
+// </Card> */}
+// </View>

@@ -112,7 +112,7 @@ export const Cont = ({ children, mobile, ...props }) => {
 
 export const Card = styled(YStack, {
   name: 'Card',
-  borderRadius: 4,
+  borderRadius: "100%",
   borderColor: "$accent",
   borderWidth: 1,
   shadow: 1,
