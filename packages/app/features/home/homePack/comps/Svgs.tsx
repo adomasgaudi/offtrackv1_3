@@ -1,4 +1,4 @@
-import { View } from '@my/ui'
+import { View, YStack } from '@my/ui'
 
 export const GrainyFractalNoise = () => (
   <svg viewBox="0 0 100% 100%" width="100%" height="100%" opacity="0.5">
@@ -171,7 +171,7 @@ export const SVGPaper = ({ color1, color2, color3, color4 }) => {
           fill="#c92323fa"
           filter="url(#gggrain-filter)"
           opacity="1"
-          // style=""
+        // style=""
         ></rect>
       </g>
     </svg>
@@ -319,13 +319,17 @@ export const THEME_COLORS = [
   ['leafLight', 'leafDark'],
 ]
 
-export const svgColors = (themenum) => ({
-  light: [myThemes[THEME_COLORS[themenum][0]].primary, '#ebebeb00', '#f7f7f7', '#e2e2e200'],
+export const svgColorsPrimary = (themenum) => ({
+  light: [myThemes[THEME_COLORS[themenum][0]].background, '#ebebeb00', '#f7f7f7', '#e2e2e200'],
+  dark: ['#1a1a1a', '#2a2a2a', '#3a3a3a', '#4a4a4a']
+})
+export const svgColorsBasic = (themenum) => ({
+  light: [myThemes[THEME_COLORS[themenum][0]].color, '#ebebeb00', '#f7f7f7', '#e2e2e200'],
   dark: ['#1a1a1a', '#2a2a2a', '#3a3a3a', '#4a4a4a']
 })
 
 
-export const colorsP = (isDark, themeNum) => {
+export const colorsP = (isDark, themeNum, svgColors) => {
   const selectedColors = isDark ? svgColors(themeNum).dark : svgColors(themeNum).light;
   return {
     color1: selectedColors[0],
@@ -338,16 +342,59 @@ export const colorsP = (isDark, themeNum) => {
 
 
 
-export const SVGWrapFull = ({ children, isDark, themenum }) => {
+export const SVGWrapFull = ({ children, isDark, themeNum }) => {
   return (
     <SVGWrap
       SVG={isDark ? SVGDarkPaper : SVGPaper}
       w="100%"
       h="100%"
       minHeight="100vh"
-      {...colorsP(isDark, themenum)}
+      {...colorsP(isDark, themeNum, svgColorsPrimary)}
     >
       {children}
     </SVGWrap>
+  )
+}
+
+export const SVGCard = ({ children, isDark, themenum }) => {
+
+  return (
+
+    <SVGWrap
+      SVG={isDark ? SVGDarkPaper : SVGPaper}
+      w="100%"
+      h="100%"
+      borderRadius="20px"
+      overflow="hidden"
+      p={20}
+      {...colorsP(!isDark, themenum, svgColorsBasic)}
+    >
+      {children}
+    </SVGWrap>
+  )
+}
+
+
+export const SVGShape1 = () => {
+  return (
+    <svg
+      // xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      // xmlns:xlink="http://www.w3.org/1999/xlink"
+      // xmlns:svgjs="http://svgjs.dev/svgjs"
+      viewBox="0 0 600 600">
+      <path
+        d="M166.9456024169922,281.9560546875C166.68409729003906,325.1045913696289,178.97489166259766,384.59727986653644,219.50836181640625,403.5564880371094C260.04183197021484,422.5156962076823,369.6129506429036,423.1694641113281,410.14642333984375,395.7113037109375C450.6798960367839,368.2531433105469,471.7311604817708,281.82530975341797,462.7091979980469,238.80752563476562C453.68723551432294,195.78974151611328,396.286616007487,153.29497528076172,356.0146484375,137.60459899902344C315.742680867513,121.91422271728516,252.58890024820963,120.60669199625652,221.077392578125,144.66526794433594C189.56588490804037,168.72384389241537,167.2071075439453,238.8075180053711,166.9456024169922,281.9560546875C166.68409729003906,325.1045913696289,178.97489166259766,384.59727986653644,219.50836181640625,403.5564880371094"
+        fill="url(&quot;#SvgjsLinearGradient1000&quot;)"
+        stroke-width="2"
+        stroke="hsl(340, 45%, 30%)"></path>
+      <defs>
+        <linearGradient id="SvgjsLinearGradient1000"><stop stop-color="hsl(37, 99%, 67%)" offset="0">
+        </stop><stop stop-color="hsl(316, 73%, 52%)" offset="1"></stop>
+        </linearGradient>
+        <radialGradient id="SvgjsRadialGradient1001"><stop stop-color="hsl(340, 45%, 50%)" offset="0"></stop><stop stop-color="hsl(340, 45%, 80%)" offset="1"></stop>
+        </radialGradient>
+      </defs>
+    </svg>
   )
 }
