@@ -1,8 +1,9 @@
-import { Button, H1, H3, XStack, useMedia, Text, YStack, H2, View, Anchor, Paragraph } from '@my/ui'
+import { Button, H1, H3, XStack, useMedia, Text, YStack, H2, View, Anchor, Paragraph, Image } from '@my/ui'
 import { Rainbow, SunMoon } from '@tamagui/lucide-icons'
 import { ButtonNav, Card, Cont, Container, ContainerXS, Hero, heroShadowP } from '../comps'
 import { SVGCard, SVGWrapFull } from '../comps/Svgs'
 import { useState } from 'react'
+import images from '../../../../../images'
 
 
 
@@ -45,6 +46,13 @@ const stylesx = {
 
 }
 
+const myBoxShadow1 = `   
+0px 0px 1px hsla(0, 0%, 0%, 0.05), 
+0px 0px 2px hsla(0, 0%, 0%, 0.05), 
+0px 0px 4px hsla(0, 0%, 0%, 0.05), 
+0px 0px 8px hsla(0, 0%, 0%, 0.05), 
+0px 0px 16px hsla(0, 0%, 0%, 0.05)
+`
 export const SectionTop = ({ isDark, themeNum }) => {
   const [hoverOn, setHoverOn] = useState(false)
   const mobile = useMedia().md
@@ -66,8 +74,17 @@ export const SectionTop = ({ isDark, themeNum }) => {
             Developer
           </Text>
         </Hero>
-
-
+        <Image
+          source={{
+            uri: mobile ? images.mobileframe.src : images.webframe.src,
+            width: '100%',
+            height: mobile ? 400 : 650,
+          }}
+          resizeMode="cover"
+          borderRadius={10}
+          boxShadow={myBoxShadow1}
+          mb={30}
+        />
       </Cont>
       <Cont {...{ mobile }}>
         <Anchor href="https://goingofftrack.blog/" target="_blank" mt={100} mb={100}>
