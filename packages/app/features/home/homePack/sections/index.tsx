@@ -7,7 +7,8 @@ import images from '../../../../../Images'
 export const PSkill = styled(Paragraph, {
   name: 'ParSkill',
   fontWeight: 'bold',
-  hoverStyle: {color: "red", transition: ".3s"}
+  color: 'black',
+  hoverStyle: {color: "blue", transition: ".3s"}
 })
 
 export const Skills = () => {

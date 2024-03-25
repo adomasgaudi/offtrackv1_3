@@ -8,45 +8,23 @@ import { useState } from 'react'
 import { P1 } from '../../article/exoplanetsin10'
 
 const SkillSection = () => {
-  // const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <>
-      {/* <YStack 
-        height={isHovered ? 150 : 60} 
-        overflow="hidden"
-        hoverStyle={{ transition: '2s' }}
-        transition="1s"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        cursor="pointer"
-      >
-        <H1 mb={10}>Apps</H1>
-        <P1>React Native</P1>
-        <P1>Expo</P1>
-        <P1>Tamagui</P1>
-      </YStack> */}
-      <YStack cursor="pointer">
-        <H1 mb={20}>Apps</H1>
+    <XStack jc="space-around" w="100%" >
+      
+      <YStack cursor="pointer" bg="white" borderRadius="100%" color="red" p={30} w={300} h={300} jc="center" ai="center">
+        <H1 mb={20} color="black">Apps</H1>
         <PSkill>React Native</PSkill>
         <PSkill>Expo</PSkill>
         <PSkill>Tamagui</PSkill>
       </YStack>
-      <YStack cursor="pointer">
-        <H1 mb={20}>Websites</H1>
+      <YStack cursor="pointer" bg="white" borderRadius="100%" color="red" p={30} w={300} h={300} jc="center" ai="center">
+        <H1 mb={20} color="black">Websites</H1>
         <PSkill>React</PSkill>
-        <PSkill>Vue</PSkill>
         <PSkill>Next.js</PSkill>
         <PSkill>PHP</PSkill>
       </YStack>
-      <YStack cursor="pointer">
-        <H1 mb={20}>Databases</H1>
-        <PSkill>PHP</PSkill>
-        <PSkill>MySQL</PSkill>
-        <PSkill>Laravel</PSkill>
-        <PSkill>Firebase</PSkill>
-      </YStack>
-    </>
+
+    </XStack>
   );
 }
 
@@ -109,13 +87,13 @@ export function HomePack() {
                     w="content-fit"
                     textAlign="justify"
                   >
-                    <Text fontFamily="TimesNewRoman">Full-Stack Developer</Text> <br /> Content
-                    Creator
+                    <Text fontFamily="TimesNewRoman">Full-Stack </Text> <br />
                     <View
                       gap={100}
                       jc="space-between"
                       w="100%"
                       flexDirection={media.sm ? 'column' : 'row'}
+                      mb={100}
                     >
                       <SkillSection />
                     </View>
@@ -146,24 +124,24 @@ export function HomePack() {
                       Built by Adomas Gaudiesius
                     </Paragraph>
                     <H1
-                      mb={100}
-                      size={media.sm ? '$9' : '$15'}
+                      mb={50}
+                      size={media.sm ? '$9' : '$14'}
                       letterSpacing={'normal'}
                       w="content-fit"
                       textAlign="justify"
                     >
-                      <Text fontFamily="TimesNewRoman">Full-Stack Developer</Text> <br /> Content
-                      Creator
-                      <View
-                        gap={100}
-                        jc="space-between"
-                        w="100%"
-                        flexDirection={media.sm ? 'column' : 'row'}
-                        mt={20}
-                      >
-                        <SkillSection />
-                      </View>
+                      <Text>Front-End Developer</Text> <br />
                     </H1>
+                    <View
+                      gap={100}
+                      jc="space-between"
+                      w="100%"
+                      flexDirection={media.sm ? 'column' : 'row'}
+                      mt={20}
+                      mb={100}
+                    >
+                      <SkillSection />
+                    </View>
                   </YStack>
                 </YStack>
                 <YStack jc="center" ai="center" pb={100}></YStack>
