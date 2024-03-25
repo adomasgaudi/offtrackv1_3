@@ -63,13 +63,13 @@ export const SectionTop = ({ isDark, themeNum }) => {
   }
   return (
     <>
-      <Cont {...{ mobile }} pb={100} minHeight="100vh">
-        <Hero mt={50} mb={50} fontSize={mobile ? "$10" : 140} w="100%" >
+      <Cont {...{ mobile }} pb={mobile ? 0 : 100} minHeight="100vh">
+        <Hero mt={50} mb={mobile ? -40 : 50} letterSpacing={mobile && -1} fontSize={mobile ? "$10" : 140} w="100%" >
           <Text borderBottomWidth={3} borderBottomColor="$primary" pb={0}>
             Front-end
           </Text>
         </Hero>
-        <Hero mb={50} fontSize={mobile ? "$10" : 140} w="100%" textAlign="right" >
+        <Hero mb={50} fontSize={mobile ? "$12" : 140} w="100%" textAlign={mobile ? "left" : "right"} letterSpacing={mobile && -1} >
           <Text fontFamily="TimesNewRoman" color="$secondary" >
             Developer
           </Text>
