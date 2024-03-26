@@ -1,9 +1,8 @@
 import { Button, H1, H3, XStack, useMedia, Text, YStack, H2, View, Anchor, Paragraph, Image } from '@my/ui'
 import { Rainbow, SunMoon } from '@tamagui/lucide-icons'
-import { ButtonNav, Card, Cont, Container, ContainerXS, Hero, heroShadowP } from '../comps'
-import { SVGCard, SVGWrapFull } from '../comps/Svgs'
+import { ButtonNav, Card, Cont, Container, Hero } from '../comps'
 import { useState } from 'react'
-import images from '../../../../../images'
+import { images } from '../../../../images'
 
 
 
